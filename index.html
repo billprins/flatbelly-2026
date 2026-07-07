@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>The 2026 Flatbelly — Hillwood Country Club</title>
+<title>The 2026 Flatbelly — Hillwood Country Club · July 23–25</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
@@ -11,7 +11,7 @@
 :root{
   --fb-black:#1a1a1a;--fb-gold:#b8964a;--fb-gold-l:#d4b06a;
   --fb-gold-bg:#c9a96e;--fb-pale:#f5ede0;--fb-white:#ffffff;
-  --fb-green:#1e5c3a;--fb-muted:#6b6355;--fb-dark:#111111;
+  --fb-pink:#d6368b;--fb-pink-pale:#f7dcea;--fb-muted:#6b6355;--fb-dark:#111111;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
@@ -57,7 +57,7 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#ddd5c8;padding:1
 .hero::before{content:'';position:absolute;inset:0;background-image:repeating-linear-gradient(0deg,transparent,transparent 39px,rgba(184,150,74,.07) 40px),repeating-linear-gradient(90deg,transparent,transparent 39px,rgba(184,150,74,.07) 40px);}
 .hero-badge{display:inline-block;border:1px solid var(--fb-gold);color:var(--fb-gold-l);font-size:11px;letter-spacing:.2em;text-transform:uppercase;padding:5px 18px;margin-bottom:22px;position:relative;}
 .hero-title{font-family:'Playfair Display',serif;font-size:60px;font-weight:700;color:#fff;line-height:1.05;position:relative;margin-bottom:6px;}
-.hero-title em{font-style:italic;color:var(--fb-gold-l);}
+.hero-title em{font-style:italic;color:#f18ec4;}
 .hero-subtitle{font-size:20px;font-weight:300;color:rgba(255,255,255,.65);letter-spacing:.08em;position:relative;margin-bottom:26px;font-style:italic;}
 .hero-divider{display:flex;align-items:center;justify-content:center;gap:16px;position:relative;margin-bottom:26px;}
 .hero-divider span{width:60px;height:1px;background:var(--fb-gold);}
@@ -73,6 +73,12 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#ddd5c8;padding:1
 .glance-label{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--fb-gold);margin-bottom:5px;}
 .glance-value{font-family:'Playfair Display',serif;font-size:17px;color:var(--fb-dark);}
 .glance-sub{font-size:12px;color:var(--fb-muted);font-style:italic;margin-top:3px;}
+
+/* REGISTRATION STRIP */
+.reg-strip{background:var(--fb-pink-pale);border:1px solid rgba(214,54,139,.35);padding:18px 22px;display:flex;align-items:center;gap:18px;margin-top:20px;}
+.reg-icon{font-size:26px;color:var(--fb-pink);flex-shrink:0;}
+.reg-headline{font-family:'Playfair Display',serif;font-size:18px;color:var(--fb-dark);margin-bottom:4px;}
+.reg-sub{font-size:13.5px;color:var(--fb-muted);font-style:italic;line-height:1.55;}
 
 /* SCHEDULE */
 .day-block{margin-bottom:28px;}
@@ -99,17 +105,12 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#ddd5c8;padding:1
 .format-sub{font-size:12.5px;color:var(--fb-muted);margin-top:4px;line-height:1.5;font-style:italic;}
 
 /* PRIZES */
-.trophy-prize{background:var(--fb-green);color:#fff;padding:28px 32px;display:flex;align-items:center;gap:24px;margin-bottom:20px;}
-.trophy-prize-icon{font-size:40px;color:rgba(255,255,255,.9);flex-shrink:0;}
-.trophy-prize-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:6px;}
-.trophy-prize-name{font-family:'Playfair Display',serif;font-size:26px;margin-bottom:5px;line-height:1.2;}
-.trophy-prize-desc{font-size:14px;color:rgba(255,255,255,.72);font-style:italic;line-height:1.6;}
-.trophy-prize-note{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:8px;border-top:1px solid rgba(255,255,255,.15);padding-top:8px;}
-.special-prize{background:var(--fb-black);color:#fff;padding:22px;display:flex;align-items:center;gap:20px;margin-bottom:16px;}
-.sp-icon{font-size:32px;color:var(--fb-gold-l);flex-shrink:0;}
-.sp-label{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--fb-gold-l);margin-bottom:5px;}
-.sp-name{font-family:'Playfair Display',serif;font-size:22px;margin-bottom:3px;color:#fff;}
-.sp-desc{font-size:13px;color:rgba(255,255,255,.62);font-style:italic;}
+.jacket-prize{background:var(--fb-pink);color:#fff;padding:28px 32px;display:flex;align-items:center;gap:24px;margin-bottom:20px;}
+.jacket-prize-img{width:110px;flex-shrink:0;filter:drop-shadow(0 2px 8px rgba(0,0,0,.25));}
+.jacket-prize-label{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:6px;}
+.jacket-prize-name{font-family:'Playfair Display',serif;font-size:26px;margin-bottom:5px;line-height:1.2;}
+.jacket-prize-desc{font-size:14px;color:rgba(255,255,255,.8);font-style:italic;line-height:1.6;}
+.jacket-prize-note{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.5);margin-top:8px;border-top:1px solid rgba(255,255,255,.2);padding-top:8px;}
 .prizes-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;}
 .prize-card{border:1px solid rgba(184,150,74,.35);padding:20px;background:var(--fb-white);}
 .prize-rank{font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--fb-gold);margin-bottom:8px;display:flex;align-items:center;gap:8px;}
@@ -117,7 +118,7 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#ddd5c8;padding:1
 .prize-name{font-family:'Playfair Display',serif;font-size:19px;margin-bottom:5px;color:var(--fb-dark);}
 .prize-desc{font-size:13px;color:var(--fb-muted);font-style:italic;line-height:1.5;}
 
-/* GIFTS & POOLS */
+/* POOLS */
 .gifts-content{display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:start;}
 .gifts-list{list-style:none;margin-top:14px;}
 .gifts-list li{display:flex;align-items:flex-start;gap:9px;padding:7px 0;border-bottom:1px solid rgba(184,150,74,.15);font-size:15px;color:var(--fb-dark);}
@@ -134,21 +135,17 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#ddd5c8;padding:1
 .meal-block{margin-bottom:24px;}
 .meal-header{background:var(--fb-black);color:var(--fb-gold-l);padding:9px 18px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;display:flex;align-items:center;gap:10px;}
 .meal-body{border:1px solid rgba(184,150,74,.22);border-top:none;padding:16px 20px;background:var(--fb-white);}
-.meal-cols{display:grid;grid-template-columns:1fr 1fr;gap:0 28px;}
-.meal-item{padding:5px 0;border-bottom:1px solid rgba(184,150,74,.1);display:flex;gap:8px;align-items:flex-start;}
-.meal-item:last-child{border-bottom:none;}
+.meal-item{padding:5px 0;display:flex;gap:8px;align-items:flex-start;}
 .meal-item-dot{color:var(--fb-gold);font-size:14px;margin-top:1px;flex-shrink:0;}
 .meal-item-text{font-size:14px;line-height:1.5;color:var(--fb-dark);}
 .meal-item-sub{font-size:11.5px;color:var(--fb-muted);font-style:italic;margin-top:1px;}
-.station-header{font-family:'Playfair Display',serif;font-size:14px;color:var(--fb-black);margin:12px 0 7px;padding-bottom:4px;border-bottom:1px solid rgba(184,150,74,.25);}
-.station-header:first-child{margin-top:0;}
 
 /* PARTY */
 .party-hero{background:var(--fb-black);text-align:center;padding:52px 36px 44px;position:relative;overflow:hidden;}
-.party-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(184,150,74,.2) 0%,transparent 70%);}
+.party-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(214,54,139,.22) 0%,transparent 70%);}
 .party-eyebrow{position:relative;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--fb-gold);margin-bottom:18px;}
 .party-title{position:relative;font-family:'Playfair Display',serif;font-size:52px;font-weight:700;color:#fff;line-height:1.08;margin-bottom:10px;}
-.party-title em{font-style:italic;color:var(--fb-gold-l);}
+.party-title em{font-style:italic;color:#f18ec4;}
 .party-subtitle{position:relative;font-size:19px;font-weight:300;font-style:italic;color:rgba(255,255,255,.55);margin-bottom:32px;}
 .band-marquee{position:relative;display:inline-flex;align-items:center;gap:14px;background:var(--fb-gold);padding:10px 28px;margin-bottom:36px;}
 .band-marquee i{font-size:18px;color:var(--fb-black);}
@@ -164,28 +161,35 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#ddd5c8;padding:1
 .tease-body{font-size:15px;line-height:1.7;color:var(--fb-muted);font-weight:300;}
 .tease-body em{font-style:italic;color:var(--fb-dark);}
 
+/* GUEST INFO */
+.guest-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.guest-card{background:var(--fb-white);border:1px solid rgba(184,150,74,.3);padding:18px;}
+.guest-card i{font-size:20px;color:var(--fb-gold);margin-bottom:8px;display:block;}
+.guest-title{font-family:'Playfair Display',serif;font-size:16px;margin-bottom:5px;color:var(--fb-dark);}
+.guest-text{font-size:13.5px;color:var(--fb-muted);line-height:1.6;}
+
 /* HISTORY */
 .history-hero{background:var(--fb-black);padding:36px 40px;}
 .history-eyebrow{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--fb-gold);margin-bottom:10px;}
 .history-headline{font-family:'Playfair Display',serif;font-size:34px;color:#fff;line-height:1.2;margin-bottom:14px;}
-.history-headline em{font-style:italic;color:var(--fb-gold-l);}
+.history-headline em{font-style:italic;color:#f18ec4;}
 .history-body{font-size:15px;line-height:1.75;color:rgba(255,255,255,.6);font-weight:300;}
 .history-stat-row{display:grid;grid-template-columns:repeat(3,1fr);}
 .history-stat{border-right:1px solid rgba(184,150,74,.2);border-bottom:1px solid rgba(184,150,74,.2);padding:18px 14px;text-align:center;background:var(--fb-pale);}
 .history-stat:first-child{border-left:1px solid rgba(184,150,74,.2);}
 .history-stat-num{font-family:'Playfair Display',serif;font-size:28px;color:var(--fb-gold);}
 .history-stat-label{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--fb-muted);margin-top:4px;}
-.champ-banner{background:var(--fb-green);display:flex;align-items:center;gap:28px;padding:32px 40px;}
-.champ-icon-wrap{flex-shrink:0;width:80px;height:80px;background:rgba(255,255,255,.12);border:1.5px solid rgba(255,255,255,.28);border-radius:50%;display:flex;align-items:center;justify-content:center;}
-.champ-icon-wrap i{font-size:34px;color:#fff;}
+.champ-banner{background:var(--fb-pink);display:flex;align-items:center;gap:28px;padding:32px 40px;}
+.champ-icon-wrap{flex-shrink:0;width:90px;display:flex;align-items:center;justify-content:center;}
+.champ-icon-wrap img{width:100%;filter:drop-shadow(0 2px 8px rgba(0,0,0,.25));}
 .champ-text{flex:1;}
-.champ-eyebrow{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.6);margin-bottom:8px;}
+.champ-eyebrow{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.65);margin-bottom:8px;}
 .champ-headline{font-family:'Playfair Display',serif;font-size:28px;color:#fff;line-height:1.2;margin-bottom:8px;}
 .champ-headline em{font-style:italic;}
-.champ-body{font-size:15px;line-height:1.7;color:rgba(255,255,255,.72);font-weight:300;}
-.champ-badge{flex-shrink:0;background:rgba(255,255,255,.14);border:1.5px solid rgba(255,255,255,.3);padding:16px 18px;text-align:center;}
+.champ-body{font-size:15px;line-height:1.7;color:rgba(255,255,255,.8);font-weight:300;}
+.champ-badge{flex-shrink:0;background:rgba(255,255,255,.16);border:1.5px solid rgba(255,255,255,.35);padding:16px 18px;text-align:center;}
 .champ-badge-year{font-family:'Playfair Display',serif;font-size:26px;color:#fff;display:block;margin-bottom:2px;}
-.champ-badge-label{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.6);}
+.champ-badge-label{font-size:10px;letter-spacing:.13em;text-transform:uppercase;color:rgba(255,255,255,.65);}
 
 /* HOLE TABS — pure CSS radio buttons, zero JavaScript */
 .hole-radios input{display:none;}
@@ -199,7 +203,6 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#ddd5c8;padding:1
   user-select:none;
 }
 .hole-tab-label:last-of-type{border-right:none;}
-.hole-tab-label.so{font-weight:700;color:var(--fb-gold);}
 .hole-panel{display:none;border:1px solid rgba(184,150,74,.25);border-top:none;}
 .hole-video{width:100%;aspect-ratio:16/9;background:#000;}
 .hole-video iframe{width:100%;height:100%;border:none;display:block;}
@@ -209,7 +212,6 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#ddd5c8;padding:1
 .hole-stat-label{font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--fb-gold);margin-bottom:5px;}
 .hole-stat-value{font-family:'Playfair Display',serif;font-size:18px;color:var(--fb-dark);}
 .hole-stat-sub{font-size:11px;color:var(--fb-muted);font-style:italic;margin-top:2px;}
-.shootout-badge{background:var(--fb-black);color:var(--fb-gold-l);text-align:center;padding:8px;font-size:11px;letter-spacing:.16em;text-transform:uppercase;}
 
 /* Radio-driven active states — CSS only */
 #h1:checked~.hole-tabs label[for=h1],#h2:checked~.hole-tabs label[for=h2],#h3:checked~.hole-tabs label[for=h3],#h4:checked~.hole-tabs label[for=h4],#h5:checked~.hole-tabs label[for=h5],#h6:checked~.hole-tabs label[for=h6],#h7:checked~.hole-tabs label[for=h7],#h8:checked~.hole-tabs label[for=h8],#h9:checked~.hole-tabs label[for=h9],#h10:checked~.hole-tabs label[for=h10],#h11:checked~.hole-tabs label[for=h11],#h12:checked~.hole-tabs label[for=h12],#h13:checked~.hole-tabs label[for=h13],#h14:checked~.hole-tabs label[for=h14],#h15:checked~.hole-tabs label[for=h15],#h16:checked~.hole-tabs label[for=h16],#h17:checked~.hole-tabs label[for=h17],#h18:checked~.hole-tabs label[for=h18]{background:var(--fb-black);color:var(--fb-gold-l);}
@@ -223,8 +225,9 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#ddd5c8;padding:1
 .gg-banner-link:hover,.gg-banner-link:active{background:#3d8c3d;}
 
 /* FOOTER */
-.footer{background:var(--fb-black);color:rgba(255,255,255,.55);text-align:center;padding:28px 32px;font-size:12.5px;letter-spacing:.08em;border-top:3px solid var(--fb-gold);}
+.footer{background:var(--fb-black);color:rgba(255,255,255,.55);text-align:center;padding:28px 32px;font-size:12.5px;letter-spacing:.08em;border-top:3px solid var(--fb-gold);line-height:2;}
 .footer strong{color:var(--fb-gold-l);}
+.footer a{color:#f18ec4;text-decoration:none;}
 .crest{margin:0 auto 14px;width:48px;height:48px;border:1.5px solid var(--fb-gold);display:flex;align-items:center;justify-content:center;color:var(--fb-gold-l);font-size:18px;clip-path:polygon(50% 0%,100% 25%,100% 75%,50% 100%,0% 75%,0% 25%);background:rgba(184,150,74,.15);}
 
 /* MOBILE */
@@ -241,10 +244,10 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#ddd5c8;padding:1
   .sec,.sec-alt{padding:24px 16px;}
   .glance-grid{grid-template-columns:1fr 1fr;}
   .gifts-content{grid-template-columns:1fr;}
-  .tease-grid{grid-template-columns:1fr;}
+  .tease-grid,.guest-grid{grid-template-columns:1fr;}
   .format-grid{grid-template-columns:1fr 1fr;}
-  .prizes-grid,.meal-cols{grid-template-columns:1fr;}
-  .trophy-prize,.special-prize,.champ-banner{flex-direction:column;text-align:center;padding:24px 18px;gap:16px;}
+  .prizes-grid{grid-template-columns:1fr;}
+  .jacket-prize,.champ-banner,.reg-strip{flex-direction:column;text-align:center;padding:24px 18px;gap:16px;}
   .champ-badge{align-self:center;}
   .history-hero{padding:28px 18px;}
   .history-headline{font-size:26px;}
@@ -274,8 +277,8 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#ddd5c8;padding:1
 <body>
 <div class="brochure">
 
-<!-- DRAFT BANNER — remove when details are final -->
-<div class="draft-banner"><strong>Draft</strong> — dates, times, menus, formats &amp; prizes below are placeholders. Final details to come from the golf shop.</div>
+<!-- DRAFT BANNER — remove when all details are final -->
+<div class="draft-banner"><strong>Draft</strong> — dates, format, fees &amp; registration are confirmed from the club itinerary. Daily tee times, menus, party details &amp; history are still to come.</div>
 
 <!-- NAV: pure anchor links, no JavaScript -->
 <nav class="nav" aria-label="Brochure sections">
@@ -283,78 +286,90 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#ddd5c8;padding:1
   <a href="#sec-schedule">Schedule</a>
   <a href="#sec-format">Format</a>
   <a href="#sec-prizes">Prizes</a>
-  <a href="#sec-dining">Dining</a>
   <a href="#sec-party">Awards Party ✦</a>
   <a href="#sec-course">The Course</a>
+  <a href="#sec-guests">Guest Info</a>
   <a href="#sec-history">History</a>
+  <a href="https://www.golfgenius.com/pages/12326936842300562696" target="_blank" rel="noopener" style="color:var(--fb-gold);border-bottom-color:var(--fb-gold);">⛳ Golf Genius</a>
 </nav>
 
-<!-- GOLF GENIUS BANNER — swap href to the live portal when it exists -->
-<div class="gg-banner">
+<!-- GOLF GENIUS BANNER -->
+<a href="https://www.golfgenius.com/pages/12326936842300562696" target="_blank" rel="noopener" class="gg-banner" style="text-decoration:none;">
   <div>
     <span class="gg-banner-label">Official Tournament Portal — Live Scores, Tee Sheets &amp; Results</span>
-    <div class="gg-banner-text">Golf Genius Portal Coming Soon &nbsp;·&nbsp; Flights, Pairings &amp; Live Scoring</div>
+    <div class="gg-banner-text">Golf Genius is Live &nbsp;·&nbsp; Flights, Pairings &amp; Live Scoring</div>
   </div>
-</div>
+  <div class="gg-banner-link"><i class="ti ti-external-link"></i>Open Golf Genius</div>
+</a>
 
 <!-- WELCOME -->
 <div id="sec-welcome" class="section">
   <div class="hero">
-    <div class="hero-badge">Hillwood Country Club &nbsp;·&nbsp; Member Tournament</div>
+    <div class="hero-badge">Hillwood Country Club &nbsp;·&nbsp; Member-Guest Tournament</div>
     <div class="hero-title">The 2026<br><em>Flatbelly</em></div>
-    <div class="hero-subtitle">Two Days. One Trophy. No Mercy.</div>
+    <div class="hero-subtitle">Three Days. Five Matches. One Pink Jacket.</div>
     <div class="hero-divider"><span></span><i class="ti ti-golf"></i><span></span></div>
     <div class="hero-meta">
-      <div class="hero-meta-item"><span class="label">Date</span><span class="value">August 21–22, 2026</span></div>
-      <div class="hero-meta-item"><span class="label">Format</span><span class="value">2-Person Teams</span></div>
+      <div class="hero-meta-item"><span class="label">Date</span><span class="value">July 23–25, 2026</span></div>
+      <div class="hero-meta-item"><span class="label">Field</span><span class="value">60 Teams</span></div>
       <div class="hero-meta-item"><span class="label">Venue</span><span class="value">Hillwood Country Club</span></div>
       <div class="hero-meta-item"><span class="label">City</span><span class="value">Nashville, Tennessee</span></div>
     </div>
   </div>
   <div class="sec">
     <div class="sh"><div class="sh-line"></div><div class="sh-title">A Word from the Committee</div><div class="sh-line"></div></div>
-    <p style="font-size:18px;line-height:1.8;font-weight:300;max-width:660px;margin:0 auto;text-align:center;">Welcome to <strong style="font-weight:600;">The Flatbelly</strong> — Hillwood Country Club's fiercest weekend of the late summer. Two days of golf on the best greens in Nashville, a Friday night that runs long, a Saturday shootout that decides everything, and an awards party worth dressing up for. Bring your partner, bring your game, and leave the excuses at home.</p>
+    <p style="font-size:18px;line-height:1.8;font-weight:300;max-width:660px;margin:0 auto;text-align:center;">Welcome to <strong style="font-weight:600;">The Flatbelly</strong> — three days of team best ball on the best greens in Nashville. Five 9-hole matches decide ten flight winners, one wildcard sneaks in, and a Saturday shootout settles it in front of everyone. The last team standing wears pink. Bring your partner, bring your game, and leave the excuses at home.</p>
   </div>
   <div class="sec" style="padding-top:0;background:var(--fb-pale);">
     <div class="sh"><div class="sh-line"></div><div class="sh-title">At a Glance</div><div class="sh-line"></div></div>
     <div class="glance-grid">
-      <div class="glance-card"><i class="ti ti-calendar-event"></i><div class="glance-label">Dates</div><div class="glance-value">August 21–22</div><div class="glance-sub">Friday &amp; Saturday</div></div>
-      <div class="glance-card"><i class="ti ti-users"></i><div class="glance-label">Format</div><div class="glance-value">2-Person Best Ball</div><div class="glance-sub">36 holes · Flighted field</div></div>
-      <div class="glance-card"><i class="ti ti-target-arrow"></i><div class="glance-label">Saturday Finale</div><div class="glance-value">The Shootout</div><div class="glance-sub">Holes 10, 11, 12 &amp; 18</div></div>
-      <a href="#sec-prizes" class="glance-card" style="background:var(--fb-green);border-color:var(--fb-green);"><i class="ti ti-trophy" style="color:rgba(255,255,255,.85);"></i><div class="glance-label" style="color:rgba(255,255,255,.65);">Champions Receive</div><div class="glance-value" style="color:#fff;">The Flatbelly Trophy</div><div class="glance-sub" style="color:rgba(255,255,255,.55);">Your names on the board</div></a>
-      <a href="#sec-party" class="glance-card" style="background:var(--fb-black);border-color:var(--fb-gold);"><i class="ti ti-music" style="color:var(--fb-gold-l);"></i><div class="glance-label" style="color:var(--fb-gold-l);">Saturday Night</div><div class="glance-value" style="color:#fff;">Awards Party</div><div class="glance-sub" style="color:rgba(255,255,255,.5);">Live music · Dinner &amp; drinks</div></a>
-      <div class="glance-card"><i class="ti ti-device-laptop"></i><div class="glance-label">Official Scoring</div><div class="glance-value">Golf Genius</div><div class="glance-sub">Portal link coming soon</div></div>
+      <div class="glance-card"><i class="ti ti-calendar-event"></i><div class="glance-label">Dates</div><div class="glance-value">July 23–25</div><div class="glance-sub">Thursday – Saturday</div></div>
+      <div class="glance-card"><i class="ti ti-users"></i><div class="glance-label">Format</div><div class="glance-value">Team Best Ball</div><div class="glance-sub">Five 9-hole matches · Flighted</div></div>
+      <div class="glance-card"><i class="ti ti-coin"></i><div class="glance-label">Entry Fee</div><div class="glance-value">$1,500 / Team</div><div class="glance-sub">$500 deposit at lottery draw</div></div>
+      <a href="#sec-prizes" class="glance-card" style="background:var(--fb-pink);border-color:var(--fb-pink);"><i class="ti ti-shirt" style="color:rgba(255,255,255,.9);"></i><div class="glance-label" style="color:rgba(255,255,255,.7);">Champions Receive</div><div class="glance-value" style="color:#fff;">The Pink Jacket</div><div class="glance-sub" style="color:rgba(255,255,255,.6);">Last team standing wears pink</div></a>
+      <a href="#sec-format" class="glance-card" style="background:var(--fb-black);border-color:var(--fb-gold);"><i class="ti ti-target-arrow" style="color:var(--fb-gold-l);"></i><div class="glance-label" style="color:var(--fb-gold-l);">Saturday Finale</div><div class="glance-value" style="color:#fff;">The Shootout</div><div class="glance-sub" style="color:rgba(255,255,255,.5);">10 flight winners + 1 wildcard</div></a>
+      <a href="https://www.golfgenius.com/pages/12326936842300562696" target="_blank" rel="noopener" class="glance-card" style="background:#1f5c1f;border-color:#4a9a4a;"><i class="ti ti-device-laptop" style="color:rgba(255,255,255,.85);"></i><div class="glance-label" style="color:rgba(255,255,255,.65);">Official Scoring Portal</div><div class="glance-value" style="color:#fff;">Golf Genius</div><div class="glance-sub" style="color:rgba(255,255,255,.55);">Flights · Tee Sheets · Live Results</div></a>
+    </div>
+    <div class="reg-strip">
+      <i class="ti ti-clipboard-check reg-icon"></i>
+      <div>
+        <div class="reg-headline">Registration Closed — Field Set by Lottery</div>
+        <div class="reg-sub">The registration window ran March 1 (6&nbsp;AM) through March 15 (5&nbsp;PM), by team. With more than 60 teams signed up, entries were drawn by lottery — a $500 deposit was billed to each host member's account when drawn. Questions? Contact event manager <strong>Hayden Hartz</strong> at <a href="mailto:hayden.hartz@hillwoodcc.org" style="color:var(--fb-pink);">hayden.hartz@hillwoodcc.org</a>.</div>
+      </div>
     </div>
   </div>
 </div>
 
 <!-- SCHEDULE -->
 <div id="sec-schedule" class="section">
-  <div class="section-bar"><i class="ti ti-calendar-event"></i>Tournament Schedule — August 21–22, 2026</div>
+  <div class="section-bar"><i class="ti ti-calendar-event"></i>Tournament Schedule — July 23–25, 2026</div>
   <div class="sec">
     <div class="day-block">
-      <div class="day-header"><span class="day-name">Friday, August 21</span><span class="day-date">Round 1 &amp; Friday Night Social</span></div>
+      <div class="day-header"><span class="day-name">Thursday, July 23</span><span class="day-date">Arrival &amp; Practice</span></div>
       <div class="events-list">
-        <div class="event-row"><div class="event-time">11:00 AM</div><div class="event-dot"></div><div class="event-info"><div class="event-name">Registration Opens</div><div class="event-detail">Check-in at the Clubhouse · Lunch buffet service · Range open</div></div></div>
-        <div class="event-row"><div class="event-time">1:00 PM</div><div class="event-dot sp"></div><div class="event-info"><div class="event-name">Round 1 — Shotgun Start</div><div class="event-detail">2-person best ball · 18 holes · Flighted by combined handicap</div></div><div class="event-badge">Shotgun</div></div>
-        <div class="event-row"><div class="event-time">On Course</div><div class="event-dot"></div><div class="event-info"><div class="event-name">Comfort Station</div><div class="event-detail">Snacks, sandwiches &amp; cold drinks at the turn</div></div></div>
-        <div class="event-row"><div class="event-time">6:30 PM</div><div class="event-dot sp"></div><div class="event-info"><div class="event-name">Friday Night Social &amp; Calcutta</div><div class="event-detail">Dinner, drinks &amp; the auction — bid on your favorites after Round 1 intel</div></div><div class="event-badge">Social</div></div>
+        <div class="event-row"><div class="event-time">TBD</div><div class="event-dot"></div><div class="event-info"><div class="event-name">Registration &amp; Practice Round</div><div class="event-detail">Thursday details to be announced by the golf shop</div></div><div class="event-badge">TBD</div></div>
       </div>
     </div>
     <div class="day-block">
-      <div class="day-header"><span class="day-name">Saturday, August 22</span><span class="day-date">Round 2, Shootout &amp; Awards Party</span></div>
+      <div class="day-header"><span class="day-name">Friday, July 24</span><span class="day-date">Matches — All Day</span></div>
       <div class="events-list">
-        <div class="event-row"><div class="event-time">Early AM</div><div class="event-dot"></div><div class="event-info"><div class="event-name">Breakfast Buffet</div><div class="event-detail">Omelets to order · Biscuits &amp; gravy · Coffee that means business</div></div></div>
-        <div class="event-row"><div class="event-time">8:30 AM</div><div class="event-dot sp"></div><div class="event-info"><div class="event-name">Round 2 — Shotgun Start</div><div class="event-detail">2-person best ball · 18 holes · Final round of stroke play</div></div><div class="event-badge">Shotgun</div></div>
-        <div class="event-row"><div class="event-time">1:00 PM</div><div class="event-dot"></div><div class="event-info"><div class="event-name">Clubhouse Lunch</div><div class="event-detail">Scoring wraps up · Flight standings posted</div></div></div>
-        <div class="event-row"><div class="event-time">3:00 PM</div><div class="event-dot sp"></div><div class="event-info"><div class="event-name">The Flatbelly Shootout</div><div class="event-detail">Holes 10, 11, 12 &amp; 18 · 4-hole elimination · Flight winners advance · Gallery encouraged — carts, coolers &amp; heckling welcome</div></div><div class="event-badge">Shootout</div></div>
-        <div class="event-row" style="background:rgba(30,92,58,.05);">
-          <div class="event-time">6:30 PM</div><div class="event-dot sp"></div>
-          <div class="event-info"><div class="event-name" style="font-family:'Playfair Display',serif;">Awards Party &amp; Trophy Presentation</div><div class="event-detail">Dinner, live music, payouts settled &amp; the Flatbelly Trophy awarded</div></div>
-          <div class="event-badge" style="background:var(--fb-green);color:#fff;border-color:var(--fb-green);">Don't Miss</div>
+        <div class="event-row"><div class="event-time">All Day</div><div class="event-dot sp"></div><div class="event-info"><div class="event-name">9-Hole Team Best Ball Matches</div><div class="event-detail">Friday carries the bulk of the five-match schedule · Each hole worth 1 point, match winner earns 1 more · Exact tee times to be announced</div></div><div class="event-badge">Matches</div></div>
+        <div class="event-row"><div class="event-time">On Course</div><div class="event-dot"></div><div class="event-info"><div class="event-name">Food &amp; Beverage</div><div class="event-detail">Will be announced soon</div></div></div>
+      </div>
+    </div>
+    <div class="day-block">
+      <div class="day-header"><span class="day-name">Saturday, July 25</span><span class="day-date">Final Matches, Shootout &amp; Awards</span></div>
+      <div class="events-list">
+        <div class="event-row"><div class="event-time">Early AM</div><div class="event-dot sp"></div><div class="event-info"><div class="event-name">Final 9-Hole Matches</div><div class="event-detail">Early-morning matches complete the five-round schedule and decide the ten flight winners</div></div><div class="event-badge">Matches</div></div>
+        <div class="event-row"><div class="event-time">After Play</div><div class="event-dot sp"></div><div class="event-info"><div class="event-name">The Flatbelly Shootout</div><div class="event-detail">Ten flight winners plus one wildcard team · Elimination format · Last team remaining wins the Flatbelly · Gallery encouraged</div></div><div class="event-badge">Shootout</div></div>
+        <div class="event-row" style="background:rgba(214,54,139,.05);">
+          <div class="event-time">Evening</div><div class="event-dot sp"></div>
+          <div class="event-info"><div class="event-name" style="font-family:'Playfair Display',serif;">Awards &amp; Pink Jacket Presentation</div><div class="event-detail">Details to be announced · The champions go home in pink</div></div>
+          <div class="event-badge" style="background:var(--fb-pink);color:#fff;border-color:var(--fb-pink);">Don't Miss</div>
         </div>
       </div>
     </div>
+    <div style="border:1px solid rgba(184,150,74,.3);background:var(--fb-pale);padding:12px 16px;font-size:13.5px;color:var(--fb-muted);font-style:italic;display:flex;gap:10px;align-items:center;"><i class="ti ti-info-circle" style="color:var(--fb-gold);font-size:16px;flex-shrink:0;"></i>The course re-opens Sunday for regular play.</div>
   </div>
 </div>
 
@@ -363,46 +378,53 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#ddd5c8;padding:1
   <div class="section-bar"><i class="ti ti-clipboard-list"></i>Format</div>
   <div class="sec-alt">
     <div class="format-grid">
-      <div class="format-card"><div class="format-icon"><i class="ti ti-users"></i></div><div class="format-label">Format</div><div class="format-value">2-Person Best Ball</div><div class="format-sub">36 holes of stroke play across Friday &amp; Saturday</div></div>
-      <div class="format-card"><div class="format-icon"><i class="ti ti-percentage"></i></div><div class="format-label">Handicaps</div><div class="format-value">80% of Course Index</div><div class="format-sub">Maximum differential between partners TBD</div></div>
-      <div class="format-card"><div class="format-icon"><i class="ti ti-circle-dot"></i></div><div class="format-label">Tee Selection</div><div class="format-value">Blue Tees</div><div class="format-sub">Senior tee options with golf shop approval</div></div>
-      <div class="format-card"><div class="format-icon"><i class="ti ti-stack-2"></i></div><div class="format-label">Flights</div><div class="format-value">Flighted Field</div><div class="format-sub">Flighted by combined team handicap after registration closes</div></div>
-      <div class="format-card"><div class="format-icon"><i class="ti ti-target-arrow"></i></div><div class="format-label">Shootout Format</div><div class="format-value">4-Hole Elimination</div><div class="format-sub">Holes 10, 11, 12 &amp; 18 · Field narrows each hole · Winner takes the trophy</div></div>
-      <div class="format-card"><div class="format-icon"><i class="ti ti-route"></i></div><div class="format-label">Shootout Entry</div><div class="format-value">Flight Winners</div><div class="format-sub">Flight winners advance · Wild card paths TBD</div></div>
+      <div class="format-card"><div class="format-icon"><i class="ti ti-users"></i></div><div class="format-label">Format</div><div class="format-value">Team Best Ball<br>9-Hole Matches</div><div class="format-sub">Five 9-hole matches across Friday &amp; Saturday</div></div>
+      <div class="format-card"><div class="format-icon"><i class="ti ti-list-numbers"></i></div><div class="format-label">Scoring</div><div class="format-value">1 Point Per Hole</div><div class="format-sub">Match winner earns an extra point · Tied teams split the extra point</div></div>
+      <div class="format-card"><div class="format-icon"><i class="ti ti-percentage"></i></div><div class="format-label">Handicaps</div><div class="format-value">80% of Course Adjusted Handicap</div><div class="format-sub">Team index uses each player's lowest index of the last 6 months</div></div>
+      <div class="format-card"><div class="format-icon"><i class="ti ti-stack-2"></i></div><div class="format-label">Flights</div><div class="format-value">10 Flights</div><div class="format-sub">Flighted by team handicap index after the field is drawn</div></div>
+      <div class="format-card"><div class="format-icon"><i class="ti ti-target-arrow"></i></div><div class="format-label">The Shootout</div><div class="format-value">11 Teams, One Survivor</div><div class="format-sub">Ten flight winners + one wildcard · Elimination · Last team remaining is the champion</div></div>
+      <div class="format-card"><div class="format-icon"><i class="ti ti-ticket"></i></div><div class="format-label">Field</div><div class="format-value">60-Team Lottery</div><div class="format-sub">Team registration · Lottery held when sign-ups exceed 60 teams</div></div>
     </div>
   </div>
 </div>
 
 <!-- PRIZES -->
 <div id="sec-prizes" class="section">
-  <div class="section-bar"><i class="ti ti-trophy"></i>Awards, Prizes &amp; Pools</div>
+  <div class="section-bar"><i class="ti ti-trophy"></i>Awards &amp; Prizes</div>
   <div class="sec">
-    <div class="trophy-prize"><div class="trophy-prize-icon"><i class="ti ti-trophy"></i></div><div><div class="trophy-prize-label">The Ultimate Prize · Champions Only</div><div class="trophy-prize-name">The Flatbelly Trophy</div><div class="trophy-prize-desc">Survive two rounds, win your flight, and outlast the shootout — and your names go on the board with every Flatbelly champion before you. Bragging rights included, non-transferable, valid for exactly one year.</div><div class="trophy-prize-note">Presented at the Saturday night awards party</div></div></div>
-    <div class="special-prize"><div class="sp-icon"><i class="ti ti-golf"></i></div><div><div class="sp-label">On-Course Prizes — Both Rounds</div><div class="sp-name">Closest to the Pin &amp; Long Drive</div><div class="sp-desc">Par 3 proximity contests on 2, 5, 11 &amp; 14 · Long drive on 15 · Winners announced at the awards party</div></div></div>
+    <div class="jacket-prize">
+      <img class="jacket-prize-img" src="https://ddz5qbrxrbzp.cloudfront.net/uploads/asset/image/11269123788811279462/large_a0b10d56-3677-4d21-9462-6c84f1e4cee2.png" alt="The Pink Jacket">
+      <div>
+        <div class="jacket-prize-label">The Ultimate Prize · Champions Only</div>
+        <div class="jacket-prize-name">The Pink Jacket</div>
+        <div class="jacket-prize-desc">Survive five matches, win your flight, and outlast ten other teams in the shootout — and you leave in the most conspicuous blazer in Nashville golf. Nobody forgets who's wearing pink.</div>
+        <div class="jacket-prize-note">Presented Saturday after the shootout</div>
+      </div>
+    </div>
     <div class="prizes-grid">
-      <div class="prize-card"><div class="prize-rank">Flight Winners</div><div class="prize-name">Pro Shop Credit</div><div class="prize-desc">Each flight winner and runner-up takes home pro shop credit — amounts TBD</div></div>
-      <div class="prize-card" style="background:rgba(30,92,58,.06);border-color:var(--fb-green);"><div class="prize-rank" style="color:var(--fb-green);">Shootout Champion</div><div class="prize-name">The Trophy &amp; The Toast</div><div class="prize-desc">The shootout winner claims the Flatbelly Trophy — and the first round is on the committee</div></div>
+      <div class="prize-card"><div class="prize-rank">Flight Winners</div><div class="prize-name">A Ticket to the Shootout</div><div class="prize-desc">Win your flight over five matches and advance to Saturday's shootout · Flight prizes TBD</div></div>
+      <div class="prize-card"><div class="prize-rank">The Wildcard</div><div class="prize-name">One Last Chance</div><div class="prize-desc">One extra team makes the shootout without winning a flight · Selection criteria TBD</div></div>
+      <div class="prize-card" style="background:var(--fb-pink-pale);border-color:var(--fb-pink);"><div class="prize-rank" style="color:var(--fb-pink);">Shootout Champions</div><div class="prize-name">The Pink Jacket</div><div class="prize-desc">Last team remaining in the shootout wins the Flatbelly — and everything that comes with it</div></div>
     </div>
   </div>
-  <div class="section-bar" style="border-top:2px solid rgba(184,150,74,.2);"><i class="ti ti-coin"></i>Pools &amp; Calcutta</div>
+  <div class="section-bar" style="border-top:2px solid rgba(184,150,74,.2);"><i class="ti ti-coin"></i>Entry &amp; Pools</div>
   <div class="sec-alt">
     <div class="gifts-content">
       <div>
-        <p style="font-size:16px;line-height:1.75;font-weight:300;">The real action starts Friday night. After Round 1, the field gathers for dinner, drinks, and the <strong style="font-weight:600;">Calcutta auction</strong> — every team goes on the block, and Round 1 scores are the only intel you get. Bid with your head, not your heart.</p>
+        <p style="font-size:16px;line-height:1.75;font-weight:300;">Entry is <strong style="font-weight:600;">$1,500 per team</strong>. A $500 deposit was billed to each host member's account when the team was drawn in the lottery, with the balance due closer to the event.</p>
         <ul class="gifts-list">
-          <li><i class="ti ti-gavel"></i><span>Calcutta auction Friday night — every team sold to the highest bidder</span></li>
-          <li><i class="ti ti-chart-bar"></i><span>Round 1 results posted before bidding opens</span></li>
-          <li><i class="ti ti-cash"></i><span>Payouts to flight winners and overall champions — split TBD</span></li>
-          <li><i class="ti ti-shield-check"></i><span>Buy-back option for teams — keep a piece of your own action</span></li>
+          <li><i class="ti ti-ticket"></i><span>Team registration · Lottery if more than 60 teams sign up</span></li>
+          <li><i class="ti ti-receipt"></i><span>$500 deposit billed to the host member at the lottery draw</span></li>
+          <li><i class="ti ti-tools-kitchen-2"></i><span>Food &amp; beverage details will be announced soon</span></li>
+          <li><i class="ti ti-gavel"></i><span>Pools &amp; Calcutta — details TBD</span></li>
         </ul>
       </div>
       <div>
         <div class="pool-box">
           <div class="pool-title">Entry &amp; Pools</div>
-          <div class="pool-item"><span class="pool-item-label">Tournament Entry</span><span class="pool-item-value">$TBD</span></div>
-          <div style="font-size:12px;color:rgba(255,255,255,.45);padding:6px 0 10px;border-bottom:1px solid rgba(255,255,255,.1);line-height:1.7;">Covers golf, dining &amp; the awards party</div>
-          <div class="pool-item"><span class="pool-item-label">Player's Pool</span><span class="pool-item-value">$TBD</span></div>
-          <div class="pool-item"><span class="pool-item-label">Calcutta Buy-In</span><span class="pool-item-value">Open Bidding</span></div>
+          <div class="pool-item"><span class="pool-item-label">Tournament Entry</span><span class="pool-item-value">$1,500 / team</span></div>
+          <div style="font-size:12px;color:rgba(255,255,255,.45);padding:6px 0 10px;border-bottom:1px solid rgba(255,255,255,.1);line-height:1.7;">$500 deposit at lottery draw · Balance billed to the host member</div>
+          <div class="pool-item"><span class="pool-item-label">Pools &amp; Calcutta</span><span class="pool-item-value">TBD</span></div>
           <div style="margin-top:16px;padding-top:12px;border-top:1px solid rgba(255,255,255,.1);font-size:13px;color:rgba(255,255,255,.5);font-style:italic;line-height:1.6;">Bid wisely — the course has a way of surprising everyone.</div>
         </div>
       </div>
@@ -410,41 +432,26 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#ddd5c8;padding:1
   </div>
 </div>
 
-<!-- DINING -->
-<div id="sec-dining" class="section">
-  <div class="section-bar"><i class="ti ti-tools-kitchen-2"></i>Dining — Both Days</div>
-  <div class="sec">
-    <div class="sh"><div class="sh-line"></div><div class="sh-title">Friday, August 21</div><div class="sh-line"></div></div>
-    <div class="meal-block"><div class="meal-header"><i class="ti ti-soup"></i>Lunch Buffet — Registration</div><div class="meal-body"><div class="meal-cols"><div><div class="station-header">Mains</div><div class="meal-item"><span class="meal-item-dot"><i class="ti ti-point-filled"></i></span><div><div class="meal-item-text">Menu to be announced</div><div class="meal-item-sub">Placeholder — final menu from the clubhouse kitchen</div></div></div></div><div><div class="station-header">Sides &amp; Desserts</div><div class="meal-item"><span class="meal-item-dot"><i class="ti ti-point-filled"></i></span><div><div class="meal-item-text">Menu to be announced</div></div></div></div></div></div></div>
-    <div class="meal-block"><div class="meal-header"><i class="ti ti-moon"></i>Friday Night Social &amp; Calcutta Dinner</div><div class="meal-body"><div class="meal-cols"><div><div class="meal-item"><span class="meal-item-dot"><i class="ti ti-point-filled"></i></span><div><div class="meal-item-text">Dinner service during the auction</div><div class="meal-item-sub">Placeholder — menu to be announced</div></div></div></div><div><div class="meal-item"><span class="meal-item-dot"><i class="ti ti-point-filled"></i></span><div><div class="meal-item-text">Full bar</div></div></div></div></div></div></div>
-  </div>
-  <div class="sec" style="padding-top:0;">
-    <div class="sh"><div class="sh-line"></div><div class="sh-title">Saturday, August 22</div><div class="sh-line"></div></div>
-    <div class="meal-block"><div class="meal-header"><i class="ti ti-sun"></i>Breakfast Buffet</div><div class="meal-body"><div class="meal-cols"><div><div class="meal-item"><span class="meal-item-dot"><i class="ti ti-point-filled"></i></span><div><div class="meal-item-text">Omelets to order · Biscuits &amp; gravy</div><div class="meal-item-sub">Placeholder — final menu to come</div></div></div></div><div><div class="meal-item"><span class="meal-item-dot"><i class="ti ti-point-filled"></i></span><div><div class="meal-item-text">Fresh fruit · Pastries · Coffee</div></div></div></div></div></div></div>
-    <div class="meal-block"><div class="meal-header"><i class="ti ti-confetti"></i>Awards Party Dinner — 6:30 PM</div><div class="meal-body"><div class="meal-cols"><div><div class="station-header">Stations</div><div class="meal-item"><span class="meal-item-dot"><i class="ti ti-point-filled"></i></span><div><div class="meal-item-text">Menu to be announced</div><div class="meal-item-sub">Placeholder — expect the kitchen to show off</div></div></div></div><div><div class="station-header">Dessert</div><div class="meal-item"><span class="meal-item-dot"><i class="ti ti-point-filled"></i></span><div><div class="meal-item-text">Menu to be announced</div></div></div></div></div></div></div>
-  </div>
-</div>
-
 <!-- SATURDAY NIGHT -->
 <div id="sec-party" class="section">
   <div class="party-hero">
-    <div class="party-eyebrow">Saturday, August 22 &nbsp;·&nbsp; 6:30 PM</div>
+    <div class="party-eyebrow">Saturday, July 25 &nbsp;·&nbsp; After the Shootout</div>
     <div class="party-title">The Flatbelly<br><em>After Dark</em></div>
     <div class="party-subtitle">The tournament ends on the course. The stories get told right here.</div>
-    <div class="band-marquee"><i class="ti ti-music"></i><span class="band-name">Live Music — Band TBD</span><i class="ti ti-music"></i></div>
+    <div class="band-marquee"><i class="ti ti-music"></i><span class="band-name">Entertainment TBD</span><i class="ti ti-music"></i></div>
     <div class="party-meta">
       <div class="party-meta-item"><span class="label">Venue</span><span class="value">Hillwood Country Club</span></div>
-      <div class="party-meta-item"><span class="label">Dress</span><span class="value">Cocktail Attire</span></div>
-      <div class="party-meta-item"><span class="label">Doors Open</span><span class="value">6:30 PM</span></div>
+      <div class="party-meta-item"><span class="label">Dress</span><span class="value">TBD</span></div>
+      <div class="party-meta-item"><span class="label">Time</span><span class="value">TBD</span></div>
     </div>
   </div>
   <div class="sec">
-    <div class="sh"><div class="sh-line"></div><div class="sh-title">Four Reasons to Stay Saturday Night</div><div class="sh-line"></div></div>
+    <div class="sh"><div class="sh-line"></div><div class="sh-title">Why You Stay Saturday Night</div><div class="sh-line"></div></div>
     <div class="tease-grid">
-      <div class="tease-card"><div class="tease-icon"><i class="ti ti-music"></i></div><div class="tease-heading">Live Music That Earns Its Keep</div><div class="tease-body">Band announcement coming soon — but know this: it will <em>not</em> be a playlist on shuffle.</div></div>
-      <div class="tease-card"><div class="tease-icon"><i class="ti ti-tools-kitchen-2"></i></div><div class="tease-heading">A Dinner Worth Dressing Up For</div><div class="tease-body">The clubhouse kitchen saves its best for awards night. Menu to come — <em>expectations should be high</em>.</div></div>
-      <div class="tease-card" style="border-color:rgba(30,92,58,.35);"><div style="position:absolute;top:0;left:0;width:3px;height:100%;background:var(--fb-green);"></div><div class="tease-icon" style="color:var(--fb-green);"><i class="ti ti-trophy"></i></div><div class="tease-heading">Watch the Trophy Get Handed Over</div><div class="tease-body">Two names go on the board. <em>Be in the room when it happens</em> — not hearing about it Sunday morning.</div></div>
-      <div class="tease-card"><div class="tease-icon"><i class="ti ti-cash"></i></div><div class="tease-heading">Calcutta Payouts Settled Live</div><div class="tease-body">Winners get paid, losers get roasted, and everyone gets a story. <em>Settle up in person</em> — it's tradition.</div></div>
+      <div class="tease-card" style="border-color:rgba(214,54,139,.35);"><div style="position:absolute;top:0;left:0;width:3px;height:100%;background:var(--fb-pink);"></div><div class="tease-icon" style="color:var(--fb-pink);"><i class="ti ti-shirt"></i></div><div class="tease-heading">Watch the Pink Jacket Get Awarded</div><div class="tease-body">Two names go on the board and two champions slip into pink. <em>Be in the room when it happens</em> — not hearing about it Sunday morning.</div></div>
+      <div class="tease-card"><div class="tease-icon"><i class="ti ti-tools-kitchen-2"></i></div><div class="tease-heading">Food &amp; Beverage Worth the Wait</div><div class="tease-body">The club is keeping the menu under wraps for now — <em>details announced soon</em>, and expectations should be high.</div></div>
+      <div class="tease-card"><div class="tease-icon"><i class="ti ti-target-arrow"></i></div><div class="tease-heading">Shootout Stories, Retold Immediately</div><div class="tease-body">Eleven teams enter, one survives, and every hole gets relitigated at the bar <em>the same night</em>. It's tradition.</div></div>
+      <div class="tease-card"><div class="tease-icon"><i class="ti ti-confetti"></i></div><div class="tease-heading">A Proper Send-Off</div><div class="tease-body">Three days of golf deserve a real finish. Wind down the 2026 Flatbelly <em>the right way</em> before the course reopens Sunday.</div></div>
     </div>
   </div>
 </div>
@@ -453,10 +460,10 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#ddd5c8;padding:1
 <div id="sec-course" class="section">
   <div class="section-bar"><i class="ti ti-golf"></i>The Course — Hillwood Country Club</div>
   <div class="sec">
-    <p style="font-size:16px;line-height:1.75;font-weight:300;margin-bottom:20px;text-align:center;max-width:600px;margin-left:auto;margin-right:auto;">Originally designed by <strong style="font-weight:600;">Dick Wilson</strong> and opened in 1957, Hillwood's par 72 stretches over 7,000 yards. Renovated by Bruce Hepner of Renaissance Golf in 2003 and 2011 — home to the <em>best greens in Nashville</em>.</p>
+    <p style="font-size:16px;line-height:1.75;font-weight:300;margin-bottom:20px;text-align:center;max-width:620px;margin-left:auto;margin-right:auto;">A <strong style="font-weight:600;">Dick Wilson</strong> design playing <strong style="font-weight:600;">7,059 yards</strong> from the back tees, refined through the club's ongoing partnership with <strong style="font-weight:600;">Bruce Hepner</strong> of Renaissance Golf Design — home to the <em>best greens in Nashville</em>.</p>
     <div style="background:var(--fb-pale);border:1px solid rgba(184,150,74,.3);padding:13px 16px;margin-bottom:20px;display:flex;align-items:center;gap:12px;">
-      <i class="ti ti-star" style="font-size:17px;color:var(--fb-gold);flex-shrink:0;"></i>
-      <div style="font-size:14px;line-height:1.5;">Holes <strong>10, 11, 12, and 18</strong> are the <strong>Saturday Shootout holes</strong>. The Flatbelly is decided right here.</div>
+      <i class="ti ti-trophy" style="font-size:17px;color:var(--fb-gold);flex-shrink:0;"></i>
+      <div style="font-size:14px;line-height:1.6;">Hillwood has hosted the <strong>Tennessee State Open</strong> (1963, '66, '71), the <strong>Tennessee State Amateur</strong> (1975, '82, 2004, 2020), the <strong>Tennessee Mid-Am</strong> (1998), the <strong>Tennessee Senior Amateur</strong> (1986, 2001, 2013) and the <strong>2015 U.S. Women's Senior Amateur</strong>.</div>
     </div>
 
     <!-- Pure CSS radio-driven hole tabs — no JavaScript whatsoever -->
@@ -481,7 +488,7 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#ddd5c8;padding:1
       <input type="radio" name="hole" id="h18">
 
       <div class="hole-tabs">
-        <label class="hole-tab-label" for="h1">1</label><label class="hole-tab-label" for="h2">2</label><label class="hole-tab-label" for="h3">3</label><label class="hole-tab-label" for="h4">4</label><label class="hole-tab-label" for="h5">5</label><label class="hole-tab-label" for="h6">6</label><label class="hole-tab-label" for="h7">7</label><label class="hole-tab-label" for="h8">8</label><label class="hole-tab-label" for="h9">9</label><label class="hole-tab-label so" for="h10">10★</label><label class="hole-tab-label so" for="h11">11★</label><label class="hole-tab-label so" for="h12">12★</label><label class="hole-tab-label" for="h13">13</label><label class="hole-tab-label" for="h14">14</label><label class="hole-tab-label" for="h15">15</label><label class="hole-tab-label" for="h16">16</label><label class="hole-tab-label" for="h17">17</label><label class="hole-tab-label so" for="h18">18★</label>
+        <label class="hole-tab-label" for="h1">1</label><label class="hole-tab-label" for="h2">2</label><label class="hole-tab-label" for="h3">3</label><label class="hole-tab-label" for="h4">4</label><label class="hole-tab-label" for="h5">5</label><label class="hole-tab-label" for="h6">6</label><label class="hole-tab-label" for="h7">7</label><label class="hole-tab-label" for="h8">8</label><label class="hole-tab-label" for="h9">9</label><label class="hole-tab-label" for="h10">10</label><label class="hole-tab-label" for="h11">11</label><label class="hole-tab-label" for="h12">12</label><label class="hole-tab-label" for="h13">13</label><label class="hole-tab-label" for="h14">14</label><label class="hole-tab-label" for="h15">15</label><label class="hole-tab-label" for="h16">16</label><label class="hole-tab-label" for="h17">17</label><label class="hole-tab-label" for="h18">18</label>
       </div>
 
       <div class="hole-panel" id="hp1"><div class="hole-video"><iframe src="https://www.youtube.com/embed/XbqZJ6R38Fw?rel=0" title="Hole 1" allowfullscreen loading="lazy"></iframe></div><div class="hole-stats-bar"><div class="hole-stat"><div class="hole-stat-label">Hole</div><div class="hole-stat-value">1</div></div><div class="hole-stat"><div class="hole-stat-label">Par</div><div class="hole-stat-value">4</div></div><div class="hole-stat"><div class="hole-stat-label">Blue</div><div class="hole-stat-value">380</div><div class="hole-stat-sub">yds</div></div><div class="hole-stat"><div class="hole-stat-label">White</div><div class="hole-stat-value">333</div><div class="hole-stat-sub">yds</div></div></div></div>
@@ -493,16 +500,34 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#ddd5c8;padding:1
       <div class="hole-panel" id="hp7"><div class="hole-video"><iframe src="https://www.youtube.com/embed/t-lI5xhsH7g?rel=0" title="Hole 7" allowfullscreen loading="lazy"></iframe></div><div class="hole-stats-bar"><div class="hole-stat"><div class="hole-stat-label">Hole</div><div class="hole-stat-value">7</div></div><div class="hole-stat"><div class="hole-stat-label">Par</div><div class="hole-stat-value">4</div></div><div class="hole-stat"><div class="hole-stat-label">Blue</div><div class="hole-stat-value">394</div><div class="hole-stat-sub">yds</div></div><div class="hole-stat"><div class="hole-stat-label">White</div><div class="hole-stat-value">333</div><div class="hole-stat-sub">yds</div></div></div></div>
       <div class="hole-panel" id="hp8"><div class="hole-video"><iframe src="https://www.youtube.com/embed/xa8PYfwvbCw?rel=0" title="Hole 8" allowfullscreen loading="lazy"></iframe></div><div class="hole-stats-bar"><div class="hole-stat"><div class="hole-stat-label">Hole</div><div class="hole-stat-value">8</div></div><div class="hole-stat"><div class="hole-stat-label">Par</div><div class="hole-stat-value">4</div></div><div class="hole-stat"><div class="hole-stat-label">Blue</div><div class="hole-stat-value">425</div><div class="hole-stat-sub">yds</div></div><div class="hole-stat"><div class="hole-stat-label">White</div><div class="hole-stat-value">394</div><div class="hole-stat-sub">yds</div></div></div></div>
       <div class="hole-panel" id="hp9"><div class="hole-video"><iframe src="https://www.youtube.com/embed/sivEQsc_xFc?rel=0" title="Hole 9" allowfullscreen loading="lazy"></iframe></div><div class="hole-stats-bar"><div class="hole-stat"><div class="hole-stat-label">Hole</div><div class="hole-stat-value">9</div></div><div class="hole-stat"><div class="hole-stat-label">Par</div><div class="hole-stat-value">4</div></div><div class="hole-stat"><div class="hole-stat-label">Blue</div><div class="hole-stat-value">358</div><div class="hole-stat-sub">yds</div></div><div class="hole-stat"><div class="hole-stat-label">White</div><div class="hole-stat-value">325</div><div class="hole-stat-sub">yds</div></div></div></div>
-      <div class="hole-panel" id="hp10"><div class="hole-video"><iframe src="https://www.youtube.com/embed/WdrXTY8dhsI?rel=0" title="Hole 10" allowfullscreen loading="lazy"></iframe></div><div class="hole-stats-bar"><div class="hole-stat"><div class="hole-stat-label">Hole</div><div class="hole-stat-value">10</div></div><div class="hole-stat"><div class="hole-stat-label">Par</div><div class="hole-stat-value">4</div></div><div class="hole-stat"><div class="hole-stat-label">Blue</div><div class="hole-stat-value">309</div><div class="hole-stat-sub">yds</div></div><div class="hole-stat"><div class="hole-stat-label">White</div><div class="hole-stat-value">291</div><div class="hole-stat-sub">yds</div></div></div><div class="shootout-badge">★ Saturday Shootout Hole ★</div></div>
-      <div class="hole-panel" id="hp11"><div class="hole-video"><iframe src="https://www.youtube.com/embed/-2edgw0yGTY?rel=0" title="Hole 11" allowfullscreen loading="lazy"></iframe></div><div class="hole-stats-bar"><div class="hole-stat"><div class="hole-stat-label">Hole</div><div class="hole-stat-value">11</div></div><div class="hole-stat"><div class="hole-stat-label">Par</div><div class="hole-stat-value">3</div></div><div class="hole-stat"><div class="hole-stat-label">Blue</div><div class="hole-stat-value">176</div><div class="hole-stat-sub">yds</div></div><div class="hole-stat"><div class="hole-stat-label">White</div><div class="hole-stat-value">156</div><div class="hole-stat-sub">yds</div></div></div><div class="shootout-badge">★ Saturday Shootout Hole ★</div></div>
-      <div class="hole-panel" id="hp12"><div class="hole-video"><iframe src="https://www.youtube.com/embed/5kEnuX_nqqI?rel=0" title="Hole 12" allowfullscreen loading="lazy"></iframe></div><div class="hole-stats-bar"><div class="hole-stat"><div class="hole-stat-label">Hole</div><div class="hole-stat-value">12</div></div><div class="hole-stat"><div class="hole-stat-label">Par</div><div class="hole-stat-value">5</div></div><div class="hole-stat"><div class="hole-stat-label">Blue</div><div class="hole-stat-value">512</div><div class="hole-stat-sub">yds</div></div><div class="hole-stat"><div class="hole-stat-label">White</div><div class="hole-stat-value">438</div><div class="hole-stat-sub">yds</div></div></div><div class="shootout-badge">★ Saturday Shootout Hole ★</div></div>
+      <div class="hole-panel" id="hp10"><div class="hole-video"><iframe src="https://www.youtube.com/embed/WdrXTY8dhsI?rel=0" title="Hole 10" allowfullscreen loading="lazy"></iframe></div><div class="hole-stats-bar"><div class="hole-stat"><div class="hole-stat-label">Hole</div><div class="hole-stat-value">10</div></div><div class="hole-stat"><div class="hole-stat-label">Par</div><div class="hole-stat-value">4</div></div><div class="hole-stat"><div class="hole-stat-label">Blue</div><div class="hole-stat-value">309</div><div class="hole-stat-sub">yds</div></div><div class="hole-stat"><div class="hole-stat-label">White</div><div class="hole-stat-value">291</div><div class="hole-stat-sub">yds</div></div></div></div>
+      <div class="hole-panel" id="hp11"><div class="hole-video"><iframe src="https://www.youtube.com/embed/-2edgw0yGTY?rel=0" title="Hole 11" allowfullscreen loading="lazy"></iframe></div><div class="hole-stats-bar"><div class="hole-stat"><div class="hole-stat-label">Hole</div><div class="hole-stat-value">11</div></div><div class="hole-stat"><div class="hole-stat-label">Par</div><div class="hole-stat-value">3</div></div><div class="hole-stat"><div class="hole-stat-label">Blue</div><div class="hole-stat-value">176</div><div class="hole-stat-sub">yds</div></div><div class="hole-stat"><div class="hole-stat-label">White</div><div class="hole-stat-value">156</div><div class="hole-stat-sub">yds</div></div></div></div>
+      <div class="hole-panel" id="hp12"><div class="hole-video"><iframe src="https://www.youtube.com/embed/5kEnuX_nqqI?rel=0" title="Hole 12" allowfullscreen loading="lazy"></iframe></div><div class="hole-stats-bar"><div class="hole-stat"><div class="hole-stat-label">Hole</div><div class="hole-stat-value">12</div></div><div class="hole-stat"><div class="hole-stat-label">Par</div><div class="hole-stat-value">5</div></div><div class="hole-stat"><div class="hole-stat-label">Blue</div><div class="hole-stat-value">512</div><div class="hole-stat-sub">yds</div></div><div class="hole-stat"><div class="hole-stat-label">White</div><div class="hole-stat-value">438</div><div class="hole-stat-sub">yds</div></div></div></div>
       <div class="hole-panel" id="hp13"><div class="hole-video"><iframe src="https://www.youtube.com/embed/fczW3csNNCk?rel=0" title="Hole 13" allowfullscreen loading="lazy"></iframe></div><div class="hole-stats-bar"><div class="hole-stat"><div class="hole-stat-label">Hole</div><div class="hole-stat-value">13</div></div><div class="hole-stat"><div class="hole-stat-label">Par</div><div class="hole-stat-value">4</div></div><div class="hole-stat"><div class="hole-stat-label">Blue</div><div class="hole-stat-value">382</div><div class="hole-stat-sub">yds</div></div><div class="hole-stat"><div class="hole-stat-label">White</div><div class="hole-stat-value">332</div><div class="hole-stat-sub">yds</div></div></div></div>
       <div class="hole-panel" id="hp14"><div class="hole-video"><iframe src="https://www.youtube.com/embed/MvTDzDXp6Dk?rel=0" title="Hole 14" allowfullscreen loading="lazy"></iframe></div><div class="hole-stats-bar"><div class="hole-stat"><div class="hole-stat-label">Hole</div><div class="hole-stat-value">14</div></div><div class="hole-stat"><div class="hole-stat-label">Par</div><div class="hole-stat-value">3</div></div><div class="hole-stat"><div class="hole-stat-label">Blue</div><div class="hole-stat-value">147</div><div class="hole-stat-sub">yds</div></div><div class="hole-stat"><div class="hole-stat-label">White</div><div class="hole-stat-value">127</div><div class="hole-stat-sub">yds</div></div></div></div>
       <div class="hole-panel" id="hp15"><div class="hole-video"><iframe src="https://www.youtube.com/embed/uk9TfyGiRI0?rel=0" title="Hole 15" allowfullscreen loading="lazy"></iframe></div><div class="hole-stats-bar"><div class="hole-stat"><div class="hole-stat-label">Hole</div><div class="hole-stat-value">15</div></div><div class="hole-stat"><div class="hole-stat-label">Par</div><div class="hole-stat-value">5</div></div><div class="hole-stat"><div class="hole-stat-label">Blue</div><div class="hole-stat-value">564</div><div class="hole-stat-sub">yds</div></div><div class="hole-stat"><div class="hole-stat-label">White</div><div class="hole-stat-value">491</div><div class="hole-stat-sub">yds</div></div></div></div>
       <div class="hole-panel" id="hp16"><div class="hole-video"><iframe src="https://www.youtube.com/embed/REz6Up1fgIs?rel=0" title="Hole 16" allowfullscreen loading="lazy"></iframe></div><div class="hole-stats-bar"><div class="hole-stat"><div class="hole-stat-label">Hole</div><div class="hole-stat-value">16</div></div><div class="hole-stat"><div class="hole-stat-label">Par</div><div class="hole-stat-value">3</div></div><div class="hole-stat"><div class="hole-stat-label">Blue</div><div class="hole-stat-value">152</div><div class="hole-stat-sub">yds</div></div><div class="hole-stat"><div class="hole-stat-label">White</div><div class="hole-stat-value">132</div><div class="hole-stat-sub">yds</div></div></div></div>
       <div class="hole-panel" id="hp17"><div class="hole-video"><iframe src="https://www.youtube.com/embed/1O6V4eUuqKg?rel=0" title="Hole 17" allowfullscreen loading="lazy"></iframe></div><div class="hole-stats-bar"><div class="hole-stat"><div class="hole-stat-label">Hole</div><div class="hole-stat-value">17</div></div><div class="hole-stat"><div class="hole-stat-label">Par</div><div class="hole-stat-value">5</div></div><div class="hole-stat"><div class="hole-stat-label">Blue</div><div class="hole-stat-value">513</div><div class="hole-stat-sub">yds</div></div><div class="hole-stat"><div class="hole-stat-label">White</div><div class="hole-stat-value">435</div><div class="hole-stat-sub">yds</div></div></div></div>
-      <div class="hole-panel" id="hp18"><div class="hole-video"><iframe src="https://www.youtube.com/embed/c5PpR3OU0A8?rel=0" title="Hole 18" allowfullscreen loading="lazy"></iframe></div><div class="shootout-badge">★ Saturday Shootout Finale Hole ★</div><div class="hole-stats-bar"><div class="hole-stat"><div class="hole-stat-label">Hole</div><div class="hole-stat-value">18</div></div><div class="hole-stat"><div class="hole-stat-label">Par</div><div class="hole-stat-value">4</div></div><div class="hole-stat"><div class="hole-stat-label">Blue</div><div class="hole-stat-value">411</div><div class="hole-stat-sub">yds</div></div><div class="hole-stat"><div class="hole-stat-label">White</div><div class="hole-stat-value">384</div><div class="hole-stat-sub">yds</div></div></div></div>
+      <div class="hole-panel" id="hp18"><div class="hole-video"><iframe src="https://www.youtube.com/embed/c5PpR3OU0A8?rel=0" title="Hole 18" allowfullscreen loading="lazy"></iframe></div><div class="hole-stats-bar"><div class="hole-stat"><div class="hole-stat-label">Hole</div><div class="hole-stat-value">18</div></div><div class="hole-stat"><div class="hole-stat-label">Par</div><div class="hole-stat-value">4</div></div><div class="hole-stat"><div class="hole-stat-label">Blue</div><div class="hole-stat-value">411</div><div class="hole-stat-sub">yds</div></div><div class="hole-stat"><div class="hole-stat-label">White</div><div class="hole-stat-value">384</div><div class="hole-stat-sub">yds</div></div></div></div>
     </div><!-- end .hole-radios -->
+  </div>
+</div>
+
+<!-- GUEST INFO -->
+<div id="sec-guests" class="section">
+  <div class="section-bar"><i class="ti ti-id-badge-2"></i>Information Important to Guests</div>
+  <div class="sec-alt">
+    <p style="font-size:16px;line-height:1.75;font-weight:300;margin-bottom:20px;text-align:center;max-width:620px;margin-left:auto;margin-right:auto;">Welcome to Hillwood! A few guidelines to make your visit smooth — your host and our staff will handle the rest.</p>
+    <div class="guest-grid">
+      <div class="guest-card"><i class="ti ti-luggage"></i><div class="guest-title">Bag Drop</div><div class="guest-text">Follow the signs to the bag drop — staff will handle your clubs and shoes and escort you to the Golf Shop and your guest locker.</div></div>
+      <div class="guest-card"><i class="ti ti-lock"></i><div class="guest-title">Locker Room</div><div class="guest-text">A guest locker is provided for your daily use. Please change your shoes in the locker room; attendants are ready to help.</div></div>
+      <div class="guest-card"><i class="ti ti-golf"></i><div class="guest-title">Course Care</div><div class="guest-text">Return to the path before the cedar posts in the fairways; cart path only on all par 3s. Fill divots with sand, rake bunkers, repair pitch marks.</div></div>
+      <div class="guest-card"><i class="ti ti-clock"></i><div class="guest-title">Pace of Play</div><div class="guest-text">First groups should play in 4 hours or less; stay in contact with the group ahead. Ready golf is encouraged.</div></div>
+      <div class="guest-card"><i class="ti ti-device-mobile-off"></i><div class="guest-title">Cell Phones</div><div class="guest-text">Phone calls are strongly discouraged anywhere on property. Silent use — texting and email — is permissible.</div></div>
+      <div class="guest-card"><i class="ti ti-shirt"></i><div class="guest-title">Attire</div><div class="guest-text">Collared or mock-neck golf shirts (tucked in), golf slacks or Bermuda-length shorts. No tee shirts, denim, cargo or gym shorts. Hats forward.</div></div>
+      <div class="guest-card"><i class="ti ti-smoking-no"></i><div class="guest-title">Smoking</div><div class="guest-text">Prohibited inside the clubhouse. Permitted in designated outdoor areas, and in the Men's Grill after 5:30 PM.</div></div>
+      <div class="guest-card"><i class="ti ti-coin"></i><div class="guest-title">Tipping</div><div class="guest-text">Discretionary tipping is permitted for golf staff and locker room attendants.</div></div>
+    </div>
   </div>
 </div>
 
@@ -512,19 +537,19 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#ddd5c8;padding:1
   <div class="history-hero">
     <div class="history-eyebrow">Hillwood Country Club · Nashville, Tennessee</div>
     <div class="history-headline">The <em>Flatbelly</em> Tradition</div>
-    <div class="history-body">Every club has a tournament where the trash talk starts weeks early and the results get argued about for months after. At Hillwood, that's the Flatbelly. This section is a placeholder — past champions, founding year, and the stories worth retelling go here once the committee digs them out of the archives.</div>
+    <div class="history-body">Every club has a tournament where the trash talk starts weeks early and the results get argued about for months after. At Hillwood, that's the Flatbelly. Past champions, founding year, and the stories worth retelling go here once the committee digs them out of the archives.</div>
   </div>
   <div class="history-stat-row">
     <div class="history-stat"><div class="history-stat-num">TBD</div><div class="history-stat-label">Years of Competition</div></div>
     <div class="history-stat"><div class="history-stat-num">TBD</div><div class="history-stat-label">Inaugural Tournament</div></div>
-    <div class="history-stat"><div class="history-stat-num">TBD</div><div class="history-stat-label">Teams in the Field</div></div>
+    <div class="history-stat"><div class="history-stat-num">60</div><div class="history-stat-label">Teams in the Field</div></div>
   </div>
   <div class="champ-banner">
-    <div class="champ-icon-wrap"><i class="ti ti-trophy"></i></div>
+    <div class="champ-icon-wrap"><img src="https://ddz5qbrxrbzp.cloudfront.net/uploads/asset/image/11269123788811279462/large_a0b10d56-3677-4d21-9462-6c84f1e4cee2.png" alt="The Pink Jacket"></div>
     <div class="champ-text">
       <div class="champ-eyebrow">The Names on the Board</div>
-      <div class="champ-headline">The <em>Flatbelly Trophy</em></div>
-      <div class="champ-body">Win the Flatbelly and your names join every champion before you — permanently. In 2026, two more names go on the board. The only question is whose.</div>
+      <div class="champ-headline">The <em>Pink Jacket</em></div>
+      <div class="champ-body">Win the Flatbelly and you join every champion before you — permanently, and conspicuously. In 2026, two more names go on the board. The only question is whose.</div>
     </div>
     <div class="champ-badge"><span class="champ-badge-year">2025</span><span class="champ-badge-label">Defending Champions<br>TBD</span></div>
   </div>
@@ -533,8 +558,10 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#ddd5c8;padding:1
 <!-- FOOTER -->
 <div class="footer">
   <div class="crest"><i class="ti ti-golf"></i></div>
-  <strong>The 2026 Flatbelly</strong> · Hillwood Country Club · Nashville, Tennessee<br>
-  Questions? See the golf shop.
+  <strong>The 2026 Flatbelly</strong> · Hillwood Country Club<br>
+  6201 Hickory Valley Rd · Nashville, TN 37205<br>
+  Golf Shop: 615-352-5600 · Event Manager: <a href="mailto:hayden.hartz@hillwoodcc.org">Hayden Hartz</a><br>
+  <a href="https://www.golfgenius.com/pages/12326936842300562696" target="_blank" rel="noopener">Golf Genius Portal</a> &nbsp;·&nbsp; <a href="https://online.fliphtml5.com/qqwew/pbth/" target="_blank" rel="noopener">Digital Booklet</a> &nbsp;·&nbsp; <a href="https://www.hillwoodcc.org" target="_blank" rel="noopener">hillwoodcc.org</a>
 </div>
 
 </div><!-- end .brochure -->
