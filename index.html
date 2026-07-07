@@ -104,6 +104,27 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#ddd5c8;padding:1
 .format-value{font-family:'Playfair Display',serif;font-size:17px;line-height:1.3;color:var(--fb-dark);}
 .format-sub{font-size:12.5px;color:var(--fb-muted);margin-top:4px;line-height:1.5;font-style:italic;}
 
+/* FIELD */
+.field-stats-grid{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid rgba(184,150,74,.3);margin-bottom:24px;}
+.fs-cell{padding:18px 12px;text-align:center;border-right:1px solid rgba(184,150,74,.2);background:var(--fb-white);}
+.fs-cell:last-child{border-right:none;}
+.fs-num{font-family:'Playfair Display',serif;font-size:30px;color:var(--fb-gold);line-height:1;}
+.fs-label{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--fb-muted);margin-top:6px;}
+.fs-sub{font-size:11.5px;color:var(--fb-dark);font-style:italic;margin-top:3px;line-height:1.3;}
+.pairings-table{width:100%;border-collapse:collapse;font-size:13px;border:1px solid rgba(184,150,74,.25);}
+.pairings-table thead{background:var(--fb-black);}
+.pairings-table th{color:var(--fb-gold-l);font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:9px 10px;text-align:left;font-weight:400;}
+.pairings-table th.hcp-col{text-align:center;width:50px;}
+.pairings-table td{padding:8px 10px;border-bottom:1px solid rgba(184,150,74,.1);vertical-align:middle;color:var(--fb-dark);}
+.pairings-table tr:last-child td{border-bottom:none;}
+.pairings-table tr:nth-child(even) td{background:rgba(184,150,74,.04);}
+.team-id{font-family:'Playfair Display',serif;color:var(--fb-gold);font-size:14px;font-weight:700;width:38px;}
+.player-cell .player-name{font-size:13.5px;}
+.player-cell .player-club{font-size:11px;color:var(--fb-muted);font-style:italic;margin-top:1px;}
+.hcp-cell{text-align:center;font-family:'Playfair Display',serif;font-size:14px;color:var(--fb-dark);}
+.hcp-cell.plus{color:var(--fb-pink);font-weight:700;}
+.hcp-cell.tbd{color:rgba(0,0,0,.25);font-style:italic;font-size:11px;}
+
 /* PRIZES */
 .jacket-prize{background:var(--fb-pink);color:#fff;padding:28px 32px;display:flex;align-items:center;gap:24px;margin-bottom:20px;}
 .jacket-prize-img{width:110px;flex-shrink:0;filter:drop-shadow(0 2px 8px rgba(0,0,0,.25));}
@@ -247,6 +268,14 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#ddd5c8;padding:1
   .tease-grid,.guest-grid{grid-template-columns:1fr;}
   .format-grid{grid-template-columns:1fr 1fr;}
   .prizes-grid{grid-template-columns:1fr;}
+  .field-stats-grid{grid-template-columns:1fr 1fr;}
+  .fs-cell{border-bottom:1px solid rgba(184,150,74,.2);}
+  .fs-cell:nth-child(2n){border-right:none;}
+  .fs-cell:nth-last-child(-n+2){border-bottom:none;}
+  .pairings-table{font-size:12px;}
+  .pairings-table th,.pairings-table td{padding:7px 6px;}
+  .pairings-table th.hcp-col{width:40px;}
+  .player-cell .player-club{font-size:10.5px;}
   .jacket-prize,.champ-banner,.reg-strip{flex-direction:column;text-align:center;padding:24px 18px;gap:16px;}
   .champ-badge{align-self:center;}
   .history-hero{padding:28px 18px;}
@@ -285,6 +314,7 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#ddd5c8;padding:1
   <a href="#sec-welcome">Home</a>
   <a href="#sec-schedule">Schedule</a>
   <a href="#sec-format">Format</a>
+  <a href="#sec-field">The Field</a>
   <a href="#sec-prizes">Prizes</a>
   <a href="#sec-party">Awards Party ✦</a>
   <a href="#sec-course">The Course</a>
@@ -311,7 +341,7 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#ddd5c8;padding:1
     <div class="hero-divider"><span></span><i class="ti ti-golf"></i><span></span></div>
     <div class="hero-meta">
       <div class="hero-meta-item"><span class="label">Date</span><span class="value">July 23–25, 2026</span></div>
-      <div class="hero-meta-item"><span class="label">Field</span><span class="value">60 Teams</span></div>
+      <div class="hero-meta-item"><span class="label">Field</span><span class="value">66 Teams</span></div>
       <div class="hero-meta-item"><span class="label">Venue</span><span class="value">Hillwood Country Club</span></div>
       <div class="hero-meta-item"><span class="label">City</span><span class="value">Nashville, Tennessee</span></div>
     </div>
@@ -384,6 +414,93 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#ddd5c8;padding:1
       <div class="format-card"><div class="format-icon"><i class="ti ti-stack-2"></i></div><div class="format-label">Flights</div><div class="format-value">10 Flights</div><div class="format-sub">Flighted by team handicap index after the field is drawn</div></div>
       <div class="format-card"><div class="format-icon"><i class="ti ti-target-arrow"></i></div><div class="format-label">The Shootout</div><div class="format-value">11 Teams, One Survivor</div><div class="format-sub">Ten flight winners + one wildcard · Elimination · Last team remaining is the champion</div></div>
       <div class="format-card"><div class="format-icon"><i class="ti ti-ticket"></i></div><div class="format-label">Field</div><div class="format-value">60-Team Lottery</div><div class="format-sub">Team registration · Lottery held when sign-ups exceed 60 teams</div></div>
+    </div>
+  </div>
+</div>
+
+<!-- THE FIELD -->
+<div id="sec-field" class="section">
+  <div class="section-bar"><i class="ti ti-users-group"></i>The Field — Preliminary Roster</div>
+  <div class="sec">
+    <div class="field-stats-grid">
+      <div class="fs-cell"><div class="fs-num">66</div><div class="fs-label">Teams</div><div class="fs-sub">Ten flights + shootout</div></div>
+      <div class="fs-cell"><div class="fs-num">132</div><div class="fs-label">Players</div><div class="fs-sub">Members &amp; guests</div></div>
+      <div class="fs-cell"><div class="fs-num">5</div><div class="fs-label">Plus Handicaps</div><div class="fs-sub">Scratch is the floor</div></div>
+      <div class="fs-cell"><div class="fs-num">+2.9</div><div class="fs-label">Low Index</div><div class="fs-sub">Field runs +2.9 to 35.0</div></div>
+    </div>
+    <p style="font-size:13.5px;color:var(--fb-muted);font-style:italic;margin-bottom:14px;text-align:center;">Preliminary roster — handicap indexes and affiliations are still being finalized. Flights will be set from team handicap index.</p>
+    <div style="overflow-x:auto;">
+    <table class="pairings-table">
+      <thead><tr><th>Team</th><th>Player</th><th class="hcp-col">H.I.</th><th>Player</th><th class="hcp-col">H.I.</th></tr></thead>
+      <tbody>
+        <tr><td class="team-id">1</td><td class="player-cell"><div class="player-name">David Hutzel</div></td><td class="hcp-cell">22.1</td><td class="player-cell"><div class="player-name">Jeremy Hutzel</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell tbd">—</td></tr>
+        <tr><td class="team-id">2</td><td class="player-cell"><div class="player-name">Russell Riebeling</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">14.1</td><td class="player-cell"><div class="player-name">Daniel Terrel</div></td><td class="hcp-cell">8.9</td></tr>
+        <tr><td class="team-id">4</td><td class="player-cell"><div class="player-name">Matt McGill</div></td><td class="hcp-cell tbd">—</td><td class="player-cell"><div class="player-name">Jonathan Williams</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">2.0</td></tr>
+        <tr><td class="team-id">5</td><td class="player-cell"><div class="player-name">Cochrane Jamison</div></td><td class="hcp-cell">10.4</td><td class="player-cell"><div class="player-name">Greg Schiefer</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell tbd">—</td></tr>
+        <tr><td class="team-id">6</td><td class="player-cell"><div class="player-name">Brandon Bannock</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">10.1</td><td class="player-cell"><div class="player-name">William Mayfield</div></td><td class="hcp-cell">12.9</td></tr>
+        <tr><td class="team-id">7</td><td class="player-cell"><div class="player-name">Clay Goddard</div></td><td class="hcp-cell">1.7</td><td class="player-cell"><div class="player-name">Cris Goddard</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">3.3</td></tr>
+        <tr><td class="team-id">8</td><td class="player-cell"><div class="player-name">Walker Cox</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">11.0</td><td class="player-cell"><div class="player-name">Jody Glover</div></td><td class="hcp-cell tbd">—</td></tr>
+        <tr><td class="team-id">9</td><td class="player-cell"><div class="player-name">Roe Moore</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">11.8</td><td class="player-cell"><div class="player-name">Will Robson</div></td><td class="hcp-cell">7.0</td></tr>
+        <tr><td class="team-id">10</td><td class="player-cell"><div class="player-name">Nate Fend</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell tbd">—</td><td class="player-cell"><div class="player-name">Hunter Hagenbach</div></td><td class="hcp-cell">12.0</td></tr>
+        <tr><td class="team-id">11</td><td class="player-cell"><div class="player-name">Will David Coleman</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">5.4</td><td class="player-cell"><div class="player-name">Caleb Morris</div></td><td class="hcp-cell plus">+1.5</td></tr>
+        <tr><td class="team-id">12</td><td class="player-cell"><div class="player-name">Chris Fowler</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell tbd">—</td><td class="player-cell"><div class="player-name">Clay Fowler</div></td><td class="hcp-cell tbd">—</td></tr>
+        <tr><td class="team-id">13</td><td class="player-cell"><div class="player-name">Grant Fee</div></td><td class="hcp-cell tbd">—</td><td class="player-cell"><div class="player-name">Jim Hughes</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">0.3</td></tr>
+        <tr><td class="team-id">14</td><td class="player-cell"><div class="player-name">Luke Fredrickson</div></td><td class="hcp-cell">14.8</td><td class="player-cell"><div class="player-name">Josh Robinson</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">2.1</td></tr>
+        <tr><td class="team-id">15</td><td class="player-cell"><div class="player-name">Will Carpenter</div></td><td class="hcp-cell">8.0</td><td class="player-cell"><div class="player-name">Peter Casey</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">11.7</td></tr>
+        <tr><td class="team-id">16</td><td class="player-cell"><div class="player-name">Eric Hassberger</div></td><td class="hcp-cell">3.2</td><td class="player-cell"><div class="player-name">David Thompson</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">12.1</td></tr>
+        <tr><td class="team-id">17</td><td class="player-cell"><div class="player-name">Chase Miller</div></td><td class="hcp-cell">14.3</td><td class="player-cell"><div class="player-name">Raoul Richardson</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">13.1</td></tr>
+        <tr><td class="team-id">18</td><td class="player-cell"><div class="player-name">Cole Blassey</div></td><td class="hcp-cell">10.1</td><td class="player-cell"><div class="player-name">Ryan Youngerman</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell plus">+2.9</td></tr>
+        <tr><td class="team-id">19</td><td class="player-cell"><div class="player-name">Dan Martin</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">8.0</td><td class="player-cell"><div class="player-name">Thomas Pilcher</div></td><td class="hcp-cell">7.1</td></tr>
+        <tr><td class="team-id">20</td><td class="player-cell"><div class="player-name">Morgan Anderson</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">6.3</td><td class="player-cell"><div class="player-name">Justin Hill</div></td><td class="hcp-cell">14.1</td></tr>
+        <tr><td class="team-id">22</td><td class="player-cell"><div class="player-name">Pete Arsenault</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell tbd">—</td><td class="player-cell"><div class="player-name">David Taylor</div></td><td class="hcp-cell">7.0</td></tr>
+        <tr><td class="team-id">24</td><td class="player-cell"><div class="player-name">Brian Fox</div></td><td class="hcp-cell tbd">—</td><td class="player-cell"><div class="player-name">Cary Leaman</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">3.1</td></tr>
+        <tr><td class="team-id">25</td><td class="player-cell"><div class="player-name">Adam Burke</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell plus">+1.1</td><td class="player-cell"><div class="player-name">Brandon Johnson</div></td><td class="hcp-cell tbd">—</td></tr>
+        <tr><td class="team-id">26</td><td class="player-cell"><div class="player-name">Lee Lewis</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">13.9</td><td class="player-cell"><div class="player-name">Will Peffen</div></td><td class="hcp-cell">14.9</td></tr>
+        <tr><td class="team-id">27</td><td class="player-cell"><div class="player-name">Zachary Hall</div></td><td class="hcp-cell">8.1</td><td class="player-cell"><div class="player-name">Landon Meier</div></td><td class="hcp-cell">9.9</td></tr>
+        <tr><td class="team-id">28</td><td class="player-cell"><div class="player-name">Ben Flick</div></td><td class="hcp-cell tbd">—</td><td class="player-cell"><div class="player-name">Travis Hollett</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">6.2</td></tr>
+        <tr><td class="team-id">29</td><td class="player-cell"><div class="player-name">Colin Anthony</div></td><td class="hcp-cell tbd">—</td><td class="player-cell"><div class="player-name">Evan Malone</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">9.5</td></tr>
+        <tr><td class="team-id">30</td><td class="player-cell"><div class="player-name">Eddie Ryan</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell tbd">—</td><td class="player-cell"><div class="player-name">Kevin Ryan</div></td><td class="hcp-cell">20.7</td></tr>
+        <tr><td class="team-id">31</td><td class="player-cell"><div class="player-name">Reece Lovell</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">35.0</td><td class="player-cell"><div class="player-name">Jake Ogle</div></td><td class="hcp-cell">8.6</td></tr>
+        <tr><td class="team-id">32</td><td class="player-cell"><div class="player-name">Davis Bond</div></td><td class="hcp-cell">14.6</td><td class="player-cell"><div class="player-name">Lee White</div></td><td class="hcp-cell">8.2</td></tr>
+        <tr><td class="team-id">33</td><td class="player-cell"><div class="player-name">Clint Ing</div></td><td class="hcp-cell">10.2</td><td class="player-cell"><div class="player-name">Kellen Moore</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell plus">+0.1</td></tr>
+        <tr><td class="team-id">34</td><td class="player-cell"><div class="player-name">Colin Crosby</div></td><td class="hcp-cell tbd">—</td><td class="player-cell"><div class="player-name">Brian Tolbert</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">2.2</td></tr>
+        <tr><td class="team-id">35</td><td class="player-cell"><div class="player-name">Kevin Mattice</div></td><td class="hcp-cell">6.9</td><td class="player-cell"><div class="player-name">Colby Paxton</div></td><td class="hcp-cell">6.0</td></tr>
+        <tr><td class="team-id">36</td><td class="player-cell"><div class="player-name">Danny Amundson</div></td><td class="hcp-cell">9.2</td><td class="player-cell"><div class="player-name">Ben Wagonfield</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">19.3</td></tr>
+        <tr><td class="team-id">37</td><td class="player-cell"><div class="player-name">Curt Casali</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">9.6</td><td class="player-cell"><div class="player-name">Kevin Wilson</div></td><td class="hcp-cell tbd">—</td></tr>
+        <tr><td class="team-id">38</td><td class="player-cell"><div class="player-name">Jay Fulmer</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">11.7</td><td class="player-cell"><div class="player-name">David Tudor</div></td><td class="hcp-cell tbd">—</td></tr>
+        <tr><td class="team-id">39</td><td class="player-cell"><div class="player-name">Andrew Quinn</div></td><td class="hcp-cell">12.6</td><td class="player-cell"><div class="player-name">Richard Howell</div></td><td class="hcp-cell">18.6</td></tr>
+        <tr><td class="team-id">40</td><td class="player-cell"><div class="player-name">David Pemberton</div></td><td class="hcp-cell">15.0</td><td class="player-cell"><div class="player-name">Jason Roberson</div></td><td class="hcp-cell plus">+0.4</td></tr>
+        <tr><td class="team-id">41</td><td class="player-cell"><div class="player-name">Clint Cady</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">3.0</td><td class="player-cell"><div class="player-name">Nick Nicholson</div></td><td class="hcp-cell">16.3</td></tr>
+        <tr><td class="team-id">42</td><td class="player-cell"><div class="player-name">Jeremy Lyons</div></td><td class="hcp-cell">12.9</td><td class="player-cell"><div class="player-name">Nathan Lyons</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">11.7</td></tr>
+        <tr><td class="team-id">43</td><td class="player-cell"><div class="player-name">Cam Arnold</div></td><td class="hcp-cell">9.0</td><td class="player-cell"><div class="player-name">Tyler Pinson</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">4.9</td></tr>
+        <tr><td class="team-id">44</td><td class="player-cell"><div class="player-name">Kevin Galligan</div></td><td class="hcp-cell">8.6</td><td class="player-cell"><div class="player-name">Frederick Grace</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">16.4</td></tr>
+        <tr><td class="team-id">45</td><td class="player-cell"><div class="player-name">Edward Poirier</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">8.5</td><td class="player-cell"><div class="player-name">Julian Scruggs</div></td><td class="hcp-cell">13.7</td></tr>
+        <tr><td class="team-id">46</td><td class="player-cell"><div class="player-name">Sean Buck</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">30.4</td><td class="player-cell"><div class="player-name">Warren Goodrich</div></td><td class="hcp-cell">24.9</td></tr>
+        <tr><td class="team-id">47</td><td class="player-cell"><div class="player-name">Nick Harb</div></td><td class="hcp-cell tbd">—</td><td class="player-cell"><div class="player-name">Andrew Moreton</div></td><td class="hcp-cell tbd">—</td></tr>
+        <tr><td class="team-id">48</td><td class="player-cell"><div class="player-name">Daniel Bryd</div></td><td class="hcp-cell tbd">—</td><td class="player-cell"><div class="player-name">Clark Malloy</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">6.7</td></tr>
+        <tr><td class="team-id">49</td><td class="player-cell"><div class="player-name">Shaun Bivens</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell tbd">—</td><td class="player-cell"><div class="player-name">Michael Brumm</div></td><td class="hcp-cell">17.1</td></tr>
+        <tr><td class="team-id">51</td><td class="player-cell"><div class="player-name">Mark Butrico</div></td><td class="hcp-cell">11.1</td><td class="player-cell"><div class="player-name">Will Hatfield</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">1.1</td></tr>
+        <tr><td class="team-id">52</td><td class="player-cell"><div class="player-name">Tyler Augusty</div></td><td class="hcp-cell">9.3</td><td class="player-cell"><div class="player-name">Bryan Schivera</div></td><td class="hcp-cell">13.1</td></tr>
+        <tr><td class="team-id">53</td><td class="player-cell"><div class="player-name">Gray Hunter</div></td><td class="hcp-cell tbd">—</td><td class="player-cell"><div class="player-name">Chris Morris</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">11.7</td></tr>
+        <tr><td class="team-id">54</td><td class="player-cell"><div class="player-name">Brent Blackburn</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">3.5</td><td class="player-cell"><div class="player-name">David Schadel</div></td><td class="hcp-cell">13.0</td></tr>
+        <tr><td class="team-id">55</td><td class="player-cell"><div class="player-name">Alan Kirby</div></td><td class="hcp-cell">11.6</td><td class="player-cell"><div class="player-name">Billy May</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">1.5</td></tr>
+        <tr><td class="team-id">56</td><td class="player-cell"><div class="player-name">Jim Jacobs</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">10.2</td><td class="player-cell"><div class="player-name">Mike Jacobs</div></td><td class="hcp-cell">15.0</td></tr>
+        <tr><td class="team-id">57</td><td class="player-cell"><div class="player-name">Rob Leathers</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">10.2</td><td class="player-cell"><div class="player-name">Kerry Oakley</div></td><td class="hcp-cell">11.8</td></tr>
+        <tr><td class="team-id">58</td><td class="player-cell"><div class="player-name">Justin Smith</div></td><td class="hcp-cell tbd">—</td><td class="player-cell"><div class="player-name">Matthew VanArsdale</div></td><td class="hcp-cell">14.8</td></tr>
+        <tr><td class="team-id">59</td><td class="player-cell"><div class="player-name">Donn Parsons</div></td><td class="hcp-cell tbd">—</td><td class="player-cell"><div class="player-name">Jordan Sekulow</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">16.1</td></tr>
+        <tr><td class="team-id">60</td><td class="player-cell"><div class="player-name">Steven Ludlam</div></td><td class="hcp-cell">9.8</td><td class="player-cell"><div class="player-name">Thomas Sinowski</div></td><td class="hcp-cell">6.5</td></tr>
+        <tr><td class="team-id">61</td><td class="player-cell"><div class="player-name">Michael Bash</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">9.5</td><td class="player-cell"><div class="player-name">Brad Price</div></td><td class="hcp-cell">21.2</td></tr>
+        <tr><td class="team-id">62</td><td class="player-cell"><div class="player-name">Zack Samples</div></td><td class="hcp-cell">15.8</td><td class="player-cell"><div class="player-name">Andrew Walker</div></td><td class="hcp-cell">2.7</td></tr>
+        <tr><td class="team-id">63</td><td class="player-cell"><div class="player-name">Kyle Strongin</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">11.1</td><td class="player-cell"><div class="player-name">Logan Young</div></td><td class="hcp-cell tbd">—</td></tr>
+        <tr><td class="team-id">64</td><td class="player-cell"><div class="player-name">Richard Jacques</div></td><td class="hcp-cell tbd">—</td><td class="player-cell"><div class="player-name">Blake Wilson</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">0.2</td></tr>
+        <tr><td class="team-id">65</td><td class="player-cell"><div class="player-name">William Prins</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">13.0</td><td class="player-cell"><div class="player-name">Robert Turk</div></td><td class="hcp-cell">9.9</td></tr>
+        <tr><td class="team-id">66</td><td class="player-cell"><div class="player-name">Cody Eaton</div></td><td class="hcp-cell">9.7</td><td class="player-cell"><div class="player-name">Andrew Kelly</div></td><td class="hcp-cell">7.4</td></tr>
+        <tr><td class="team-id">67</td><td class="player-cell"><div class="player-name">Kevin Murphy</div></td><td class="hcp-cell">20.2</td><td class="player-cell"><div class="player-name">Brian Urness</div></td><td class="hcp-cell">8.2</td></tr>
+        <tr><td class="team-id">68</td><td class="player-cell"><div class="player-name">Sam Baber</div></td><td class="hcp-cell">7.1</td><td class="player-cell"><div class="player-name">Mitch Carrington</div></td><td class="hcp-cell">7.7</td></tr>
+        <tr><td class="team-id">69</td><td class="player-cell"><div class="player-name">Brett Carr</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">6.8</td><td class="player-cell"><div class="player-name">Stevie Keller</div></td><td class="hcp-cell">14.4</td></tr>
+        <tr><td class="team-id">70</td><td class="player-cell"><div class="player-name">Matt Cooper</div><div class="player-club">TGA</div></td><td class="hcp-cell tbd">—</td><td class="player-cell"><div class="player-name">Michael Ribas</div><div class="player-club">Hillwood CC</div></td><td class="hcp-cell">5.4</td></tr>
+      </tbody>
+    </table>
     </div>
   </div>
 </div>
@@ -542,7 +659,7 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#ddd5c8;padding:1
   <div class="history-stat-row">
     <div class="history-stat"><div class="history-stat-num">TBD</div><div class="history-stat-label">Years of Competition</div></div>
     <div class="history-stat"><div class="history-stat-num">TBD</div><div class="history-stat-label">Inaugural Tournament</div></div>
-    <div class="history-stat"><div class="history-stat-num">60</div><div class="history-stat-label">Teams in the Field</div></div>
+    <div class="history-stat"><div class="history-stat-num">66</div><div class="history-stat-label">Teams in the Field</div></div>
   </div>
   <div class="champ-banner">
     <div class="champ-icon-wrap"><img src="https://ddz5qbrxrbzp.cloudfront.net/uploads/asset/image/11269123788811279462/large_a0b10d56-3677-4d21-9462-6c84f1e4cee2.png" alt="The Pink Jacket"></div>
