@@ -177,22 +177,7 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#e9d5e2;padding:1
 .party-meta{position:relative;display:flex;justify-content:center;gap:40px;flex-wrap:wrap;}
 .party-meta-item .label{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--fb-denim-l);display:block;margin-bottom:4px;}
 .party-meta-item .value{font-size:16px;color:#fff;}
-/* Flyer-style invitation card */
-.invite-card{max-width:440px;margin:0 auto 28px;background:var(--fb-denim-pale);border:1.5px solid var(--fb-denim-l);padding:36px 30px 32px;text-align:center;color:var(--fb-denim);position:relative;}
-.invite-card::before{content:'◆';position:absolute;top:12px;left:14px;font-size:11px;color:var(--fb-denim-l);}
-.invite-card::after{content:'◆';position:absolute;bottom:12px;right:14px;font-size:11px;color:var(--fb-denim-l);}
-.invite-eyebrow{font-size:13px;letter-spacing:.34em;text-transform:uppercase;font-weight:600;}
-.invite-script{font-family:'Great Vibes',cursive;font-size:62px;line-height:1;margin:2px 0 18px;}
-.invite-sub{font-size:11px;letter-spacing:.3em;text-transform:uppercase;margin-bottom:14px;}
-.invite-title{font-family:'Playfair Display',serif;font-size:24px;letter-spacing:.18em;font-weight:700;margin-bottom:10px;}
-.invite-year{font-size:16px;letter-spacing:.4em;border-top:1px solid var(--fb-denim-l);display:inline-block;padding-top:10px;margin-bottom:22px;}
-.invite-datebar{display:flex;justify-content:center;align-items:center;gap:18px;}
-.invite-date{text-align:center;line-height:1;}
-.invite-date .d-day,.invite-date .d-mo{display:block;font-size:12px;letter-spacing:.22em;}
-.invite-date .d-num{display:block;font-family:'Playfair Display',serif;font-size:46px;font-weight:700;margin:3px 0;}
-.invite-divider{width:1.5px;height:64px;background:var(--fb-denim);}
-.invite-loc{text-align:left;font-size:13px;letter-spacing:.2em;line-height:1.7;font-weight:600;}
-.invite-loc span{display:block;font-weight:400;margin-top:4px;letter-spacing:.16em;}
+/* Party flyer image is used in place of a rebuilt invitation card */
 .tease-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px;}
 .tease-card{border:1px solid rgba(214,54,139,.3);padding:24px 22px;position:relative;overflow:hidden;background:var(--fb-white);}
 .tease-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--fb-gold);}
@@ -583,17 +568,10 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#e9d5e2;padding:1
     </div>
   </div>
   <div class="sec" style="background:var(--fb-denim-pale);">
-    <div class="invite-card">
-      <div class="invite-eyebrow">Denim &amp;</div>
-      <div class="invite-script">diamonds</div>
-      <div class="invite-sub">Saddle Up &amp; Join Us For</div>
-      <div class="invite-title">FLATBELLY PARTY</div>
-      <div class="invite-year">2026</div>
-      <div class="invite-datebar">
-        <div class="invite-date"><span class="d-day">SAT</span><span class="d-num">25</span><span class="d-mo">JULY</span></div>
-        <div class="invite-divider"></div>
-        <div class="invite-loc">HILLWOOD<br>COUNTRY CLUB<span>6 PM – 11 PM</span></div>
-      </div>
+    <div style="max-width:440px;margin:0 auto 28px;">
+      <img src="party-flyer.png" alt="Denim &amp; Diamonds — Flatbelly Party 2026 · Saturday, July 25 · Hillwood Country Club · 6–11 PM"
+        style="width:100%;display:block;border:1.5px solid var(--fb-denim-l);box-shadow:0 4px 24px rgba(29,43,80,.18);"
+        onerror="this.parentElement.style.display='none'">
     </div>
     <p style="font-size:16.5px;line-height:1.8;font-weight:300;max-width:620px;margin:0 auto;text-align:center;color:var(--fb-denim-d);">Flatbelly participants &amp; spouses — you are cordially invited to the <strong style="font-weight:600;">Saturday Night Couples Party</strong>, following the conclusion of the Flatbelly shootout. Join us for a night of denim, diamonds, drinks, dinner, and live music. Break out your best denim, add a little sparkle, and get ready for a great night celebrating Flatbelly.</p>
   </div>
