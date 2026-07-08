@@ -25,21 +25,19 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#e9d5e2;padding:1
 .draft-banner{background:#fff8e7;border-bottom:2px solid #e6a817;padding:10px 20px;text-align:center;font-size:12px;letter-spacing:.06em;color:#7a5000;}
 .draft-banner strong{font-weight:700;text-transform:uppercase;}
 
-/* NAV: anchor links only — no JS needed, works everywhere */
+/* NAV: anchor links only — wraps instead of clipping, no JS needed */
 .nav{
-  display:flex;flex-wrap:nowrap;overflow-x:auto;overflow-y:hidden;
-  -webkit-overflow-scrolling:touch;scrollbar-width:none;
+  display:flex;flex-wrap:wrap;justify-content:center;
   background:var(--fb-white);border-bottom:2px solid var(--fb-gold);
   position:-webkit-sticky;position:sticky;top:0;z-index:9999;
   box-shadow:0 2px 8px rgba(0,0,0,.1);
 }
-.nav::-webkit-scrollbar{display:none;}
 .nav a{
   display:inline-flex;align-items:center;flex-shrink:0;
   text-decoration:none;color:var(--fb-black);
   font-family:'Cormorant Garamond',serif;font-size:11px;font-weight:700;
-  letter-spacing:.11em;text-transform:uppercase;
-  padding:0 14px;height:48px;white-space:nowrap;
+  letter-spacing:.1em;text-transform:uppercase;
+  padding:0 12px;height:46px;white-space:nowrap;
   border-bottom:3px solid transparent;
   -webkit-tap-highlight-color:rgba(214,54,139,.2);
 }
@@ -260,7 +258,8 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#e9d5e2;padding:1
   body{padding:0;}
   .brochure{border:none;box-shadow:none;}
   .draft-banner{font-size:11px;padding:8px 12px;}
-  .nav a{font-size:10px;padding:0 11px;height:46px;letter-spacing:.07em;}
+  .nav a{font-size:10px;padding:0 9px;height:38px;letter-spacing:.06em;}
+  .section{scroll-margin-top:82px;}
   .hero{padding:36px 18px 30px;}
   .hero-title{font-size:40px;}
   .hero-subtitle{font-size:15px;}
@@ -303,7 +302,7 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#e9d5e2;padding:1
 @media(max-width:380px){
   .glance-grid{grid-template-columns:1fr;}
   .hero-title{font-size:34px;}
-  .nav a{font-size:9px;padding:0 9px;}
+  .nav a{font-size:9px;padding:0 7px;height:36px;}
 }
 </style>
 </head>
@@ -318,11 +317,11 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#e9d5e2;padding:1
   <a href="#sec-welcome">Home</a>
   <a href="#sec-schedule">Schedule</a>
   <a href="#sec-format">Format</a>
-  <a href="#sec-field">The Field</a>
+  <a href="#sec-field">Field</a>
   <a href="#sec-prizes">Prizes</a>
-  <a href="#sec-party">Couples Party ✦</a>
-  <a href="#sec-course">The Course</a>
-  <a href="#sec-guests">Guest Info</a>
+  <a href="#sec-party">Party ✦</a>
+  <a href="#sec-course">Course</a>
+  <a href="#sec-guests">Guests</a>
   <a href="#sec-history">History</a>
   <a href="https://www.golfgenius.com/pages/12326936842300562696" target="_blank" rel="noopener" style="color:var(--fb-gold);border-bottom-color:var(--fb-gold);">⛳ Golf Genius</a>
 </nav>
