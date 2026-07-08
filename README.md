@@ -7,7 +7,7 @@ Everything lives in `index.html` — no build step. Deploy by dropping the folde
 ## Confirmed content (from the club's Golf Genius itinerary & guest letter)
 
 - Dates July 23–25, 2026 · registration window Mar 1–15 · 60-team lottery
-- Format: team best ball, five 9-hole matches, 1 pt/hole + 1 pt match win (ties split), 80% handicaps, team index = each player's lowest of last 6 months, 11 flights (66 teams, six per flight); 11 flight winners + 1 wildcard → shootout, last team standing wins
+- Format: team best ball, five 9-hole matches, 1 pt/hole + 1 pt match win (ties split), 80% handicaps, team index = each player's lowest of last 6 months, 11 flights (66 teams, six per flight); 11 flight winners + 2 wildcards → 13-team shootout, last team standing wins. Wildcards: most points by a 2nd-place team overall, and most Saturday points by a non-flight winner
 - Entry $1,500/team, $500 deposit billed to host member at lottery draw
 - Pink Jacket branding (jacket image hotlinked from the club's Golf Genius CDN)
 - Contacts: Hayden Hartz (hayden.hartz@hillwoodcc.org), Golf Shop 615-352-5600, 6201 Hickory Valley Rd
@@ -19,7 +19,7 @@ Everything lives in `index.html` — no build step. Deploy by dropping the folde
 - Thursday schedule, daily tee times, shootout holes
 - Food & beverage / menus ("announced soon" per itinerary)
 - Couples Party: confirmed Sat July 25, 6–11 PM, Denim & Diamonds theme, drinks/dinner/live music (band name still TBD; menu TBD)
-- Flight prizes, wildcard criteria, pools/Calcutta
+- Flight prizes, pools/Calcutta
 - History stats & defending champions
 - **Draft banner** — remove the `.draft-banner` div when content is final
 
