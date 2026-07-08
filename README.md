@@ -18,7 +18,7 @@ Everything lives in `index.html` — no build step. Deploy by dropping the folde
 
 - Thursday schedule, daily tee times, shootout holes
 - Food & beverage / menus ("announced soon" per itinerary)
-- Awards party details (band, dress, time)
+- Couples Party: confirmed Sat July 25, 6–11 PM, Denim & Diamonds theme, drinks/dinner/live music (band name still TBD; menu TBD)
 - Flight prizes, wildcard criteria, pools/Calcutta
 - History stats & defending champions
 - **Draft banner** — remove the `.draft-banner` div when content is final

@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>The 2026 Flatbelly — Hillwood Country Club · July 23–25</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <style>
 :root{
@@ -13,6 +13,8 @@
   --fb-black:#1f161c;--fb-gold:#d6368b;--fb-gold-l:#f18ec4;
   --fb-gold-bg:#e87ab8;--fb-pale:#fbeff6;--fb-white:#ffffff;
   --fb-pink:#b7226f;--fb-pink-pale:#f7dcea;--fb-muted:#6f5964;--fb-dark:#181117;
+  /* Denim & Diamonds — Couples Party theme, from the party flyer */
+  --fb-denim:#4a68b0;--fb-denim-d:#1d2b50;--fb-denim-l:#a9c3e8;--fb-denim-pale:#e5f3f6;
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
@@ -162,19 +164,35 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#e9d5e2;padding:1
 .meal-item-text{font-size:14px;line-height:1.5;color:var(--fb-dark);}
 .meal-item-sub{font-size:11.5px;color:var(--fb-muted);font-style:italic;margin-top:1px;}
 
-/* PARTY */
-.party-hero{background:var(--fb-black);text-align:center;padding:52px 36px 44px;position:relative;overflow:hidden;}
-.party-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(214,54,139,.22) 0%,transparent 70%);}
-.party-eyebrow{position:relative;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--fb-gold);margin-bottom:18px;}
-.party-title{position:relative;font-family:'Playfair Display',serif;font-size:52px;font-weight:700;color:#fff;line-height:1.08;margin-bottom:10px;}
-.party-title em{font-style:italic;color:#f18ec4;}
-.party-subtitle{position:relative;font-size:19px;font-weight:300;font-style:italic;color:rgba(255,255,255,.55);margin-bottom:32px;}
-.band-marquee{position:relative;display:inline-flex;align-items:center;gap:14px;background:var(--fb-gold);padding:10px 28px;margin-bottom:36px;}
-.band-marquee i{font-size:18px;color:var(--fb-black);}
-.band-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--fb-black);}
+/* PARTY — Denim & Diamonds theme */
+.party-hero{background:var(--fb-denim-d);text-align:center;padding:52px 36px 44px;position:relative;overflow:hidden;}
+.party-hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 50% at 50% 0%,rgba(169,195,232,.25) 0%,transparent 70%);}
+.party-eyebrow{position:relative;font-size:11px;letter-spacing:.28em;text-transform:uppercase;color:var(--fb-denim-l);margin-bottom:18px;}
+.party-title{position:relative;font-family:'Playfair Display',serif;font-size:52px;font-weight:700;color:#fff;line-height:1.08;margin-bottom:6px;}
+.party-title em{font-family:'Great Vibes',cursive;font-style:normal;font-weight:400;font-size:66px;color:var(--fb-denim-l);}
+.party-subtitle{position:relative;font-size:19px;font-weight:300;font-style:italic;color:rgba(255,255,255,.6);margin-bottom:32px;}
+.band-marquee{position:relative;display:inline-flex;align-items:center;gap:14px;background:var(--fb-denim-l);padding:10px 28px;margin-bottom:36px;}
+.band-marquee i{font-size:18px;color:var(--fb-denim-d);}
+.band-name{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;color:var(--fb-denim-d);}
 .party-meta{position:relative;display:flex;justify-content:center;gap:40px;flex-wrap:wrap;}
-.party-meta-item .label{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--fb-gold);display:block;margin-bottom:4px;}
+.party-meta-item .label{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--fb-denim-l);display:block;margin-bottom:4px;}
 .party-meta-item .value{font-size:16px;color:#fff;}
+/* Flyer-style invitation card */
+.invite-card{max-width:440px;margin:0 auto 28px;background:var(--fb-denim-pale);border:1.5px solid var(--fb-denim-l);padding:36px 30px 32px;text-align:center;color:var(--fb-denim);position:relative;}
+.invite-card::before{content:'◆';position:absolute;top:12px;left:14px;font-size:11px;color:var(--fb-denim-l);}
+.invite-card::after{content:'◆';position:absolute;bottom:12px;right:14px;font-size:11px;color:var(--fb-denim-l);}
+.invite-eyebrow{font-size:13px;letter-spacing:.34em;text-transform:uppercase;font-weight:600;}
+.invite-script{font-family:'Great Vibes',cursive;font-size:62px;line-height:1;margin:2px 0 18px;}
+.invite-sub{font-size:11px;letter-spacing:.3em;text-transform:uppercase;margin-bottom:14px;}
+.invite-title{font-family:'Playfair Display',serif;font-size:24px;letter-spacing:.18em;font-weight:700;margin-bottom:10px;}
+.invite-year{font-size:16px;letter-spacing:.4em;border-top:1px solid var(--fb-denim-l);display:inline-block;padding-top:10px;margin-bottom:22px;}
+.invite-datebar{display:flex;justify-content:center;align-items:center;gap:18px;}
+.invite-date{text-align:center;line-height:1;}
+.invite-date .d-day,.invite-date .d-mo{display:block;font-size:12px;letter-spacing:.22em;}
+.invite-date .d-num{display:block;font-family:'Playfair Display',serif;font-size:46px;font-weight:700;margin:3px 0;}
+.invite-divider{width:1.5px;height:64px;background:var(--fb-denim);}
+.invite-loc{text-align:left;font-size:13px;letter-spacing:.2em;line-height:1.7;font-weight:600;}
+.invite-loc span{display:block;font-weight:400;margin-top:4px;letter-spacing:.16em;}
 .tease-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px;}
 .tease-card{border:1px solid rgba(214,54,139,.3);padding:24px 22px;position:relative;overflow:hidden;background:var(--fb-white);}
 .tease-card::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--fb-gold);}
@@ -317,7 +335,7 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#e9d5e2;padding:1
   <a href="#sec-format">Format</a>
   <a href="#sec-field">The Field</a>
   <a href="#sec-prizes">Prizes</a>
-  <a href="#sec-party">Awards Party ✦</a>
+  <a href="#sec-party">Couples Party ✦</a>
   <a href="#sec-course">The Course</a>
   <a href="#sec-guests">Guest Info</a>
   <a href="#sec-history">History</a>
@@ -359,6 +377,7 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#e9d5e2;padding:1
       <div class="glance-card"><i class="ti ti-coin"></i><div class="glance-label">Entry Fee</div><div class="glance-value">$1,500 / Team</div><div class="glance-sub">$500 deposit at lottery draw</div></div>
       <a href="#sec-prizes" class="glance-card" style="background:var(--fb-pink);border-color:var(--fb-pink);"><i class="ti ti-shirt" style="color:rgba(255,255,255,.9);"></i><div class="glance-label" style="color:rgba(255,255,255,.7);">Champions Receive</div><div class="glance-value" style="color:#fff;">The Pink Jacket</div><div class="glance-sub" style="color:rgba(255,255,255,.6);">Last team standing wears pink</div></a>
       <a href="#sec-format" class="glance-card" style="background:var(--fb-black);border-color:var(--fb-gold);"><i class="ti ti-target-arrow" style="color:var(--fb-gold-l);"></i><div class="glance-label" style="color:var(--fb-gold-l);">Saturday Finale</div><div class="glance-value" style="color:#fff;">The Shootout</div><div class="glance-sub" style="color:rgba(255,255,255,.5);">11 flight winners + 1 wildcard</div></a>
+      <a href="#sec-party" class="glance-card" style="background:var(--fb-denim-d);border-color:var(--fb-denim-l);"><i class="ti ti-diamond" style="color:var(--fb-denim-l);"></i><div class="glance-label" style="color:var(--fb-denim-l);">Saturday Night</div><div class="glance-value" style="color:#fff;">Couples Party</div><div class="glance-sub" style="color:rgba(255,255,255,.6);">Denim &amp; Diamonds · 6–11 PM</div></a>
       <a href="https://www.golfgenius.com/pages/12326936842300562696" target="_blank" rel="noopener" class="glance-card" style="background:#1f5c1f;border-color:#4a9a4a;"><i class="ti ti-device-laptop" style="color:rgba(255,255,255,.85);"></i><div class="glance-label" style="color:rgba(255,255,255,.65);">Official Scoring Portal</div><div class="glance-value" style="color:#fff;">Golf Genius</div><div class="glance-sub" style="color:rgba(255,255,255,.55);">Flights · Tee Sheets · Live Results</div></a>
     </div>
     <div class="reg-strip">
@@ -389,14 +408,14 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#e9d5e2;padding:1
       </div>
     </div>
     <div class="day-block">
-      <div class="day-header"><span class="day-name">Saturday, July 25</span><span class="day-date">Final Matches, Shootout &amp; Awards</span></div>
+      <div class="day-header"><span class="day-name">Saturday, July 25</span><span class="day-date">Final Matches, Shootout &amp; Couples Party</span></div>
       <div class="events-list">
         <div class="event-row"><div class="event-time">Early AM</div><div class="event-dot sp"></div><div class="event-info"><div class="event-name">Final 9-Hole Matches</div><div class="event-detail">Early-morning matches complete the five-round schedule and decide the eleven flight winners</div></div><div class="event-badge">Matches</div></div>
         <div class="event-row"><div class="event-time">After Play</div><div class="event-dot sp"></div><div class="event-info"><div class="event-name">The Flatbelly Shootout</div><div class="event-detail">Eleven flight winners plus one wildcard team · Elimination format · Last team remaining wins the Flatbelly · Gallery encouraged</div></div><div class="event-badge">Shootout</div></div>
-        <div class="event-row" style="background:rgba(214,54,139,.05);">
-          <div class="event-time">Evening</div><div class="event-dot sp"></div>
-          <div class="event-info"><div class="event-name" style="font-family:'Playfair Display',serif;">Awards &amp; Pink Jacket Presentation</div><div class="event-detail">Details to be announced · The champions go home in pink</div></div>
-          <div class="event-badge" style="background:var(--fb-pink);color:#fff;border-color:var(--fb-pink);">Don't Miss</div>
+        <div class="event-row" style="background:rgba(74,104,176,.06);">
+          <div class="event-time">6:00 PM</div><div class="event-dot sp"></div>
+          <div class="event-info"><div class="event-name" style="font-family:'Playfair Display',serif;">Saturday Night Couples Party — Denim &amp; Diamonds</div><div class="event-detail">Participants &amp; spouses · Drinks, dinner &amp; live music until 11 PM · The champions go home in pink</div></div>
+          <div class="event-badge" style="background:var(--fb-denim);color:#fff;border-color:var(--fb-denim);">Don't Miss</div>
         </div>
       </div>
     </div>
@@ -550,26 +569,41 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#e9d5e2;padding:1
   </div>
 </div>
 
-<!-- SATURDAY NIGHT -->
+<!-- SATURDAY NIGHT COUPLES PARTY -->
 <div id="sec-party" class="section">
   <div class="party-hero">
-    <div class="party-eyebrow">Saturday, July 25 &nbsp;·&nbsp; After the Shootout</div>
-    <div class="party-title">The Flatbelly<br><em>After Dark</em></div>
-    <div class="party-subtitle">The tournament ends on the course. The stories get told right here.</div>
-    <div class="band-marquee"><i class="ti ti-music"></i><span class="band-name">Entertainment TBD</span><i class="ti ti-music"></i></div>
+    <div class="party-eyebrow">Saturday Night Couples Party &nbsp;·&nbsp; July 25 &nbsp;·&nbsp; 6–11 PM</div>
+    <div class="party-title">Denim &amp;<br><em>Diamonds</em></div>
+    <div class="party-subtitle">Saddle up — the shootout ends, and the celebration begins.</div>
+    <div class="band-marquee"><i class="ti ti-music"></i><span class="band-name">Drinks · Dinner · Live Music</span><i class="ti ti-music"></i></div>
     <div class="party-meta">
       <div class="party-meta-item"><span class="label">Venue</span><span class="value">Hillwood Country Club</span></div>
-      <div class="party-meta-item"><span class="label">Dress</span><span class="value">TBD</span></div>
-      <div class="party-meta-item"><span class="label">Time</span><span class="value">TBD</span></div>
+      <div class="party-meta-item"><span class="label">Attire</span><span class="value">Denim &amp; Diamonds</span></div>
+      <div class="party-meta-item"><span class="label">Time</span><span class="value">6:00 – 11:00 PM</span></div>
     </div>
+  </div>
+  <div class="sec" style="background:var(--fb-denim-pale);">
+    <div class="invite-card">
+      <div class="invite-eyebrow">Denim &amp;</div>
+      <div class="invite-script">diamonds</div>
+      <div class="invite-sub">Saddle Up &amp; Join Us For</div>
+      <div class="invite-title">FLATBELLY PARTY</div>
+      <div class="invite-year">2026</div>
+      <div class="invite-datebar">
+        <div class="invite-date"><span class="d-day">SAT</span><span class="d-num">25</span><span class="d-mo">JULY</span></div>
+        <div class="invite-divider"></div>
+        <div class="invite-loc">HILLWOOD<br>COUNTRY CLUB<span>6 PM – 11 PM</span></div>
+      </div>
+    </div>
+    <p style="font-size:16.5px;line-height:1.8;font-weight:300;max-width:620px;margin:0 auto;text-align:center;color:var(--fb-denim-d);">Flatbelly participants &amp; spouses — you are cordially invited to the <strong style="font-weight:600;">Saturday Night Couples Party</strong>, following the conclusion of the Flatbelly shootout. Join us for a night of denim, diamonds, drinks, dinner, and live music. Break out your best denim, add a little sparkle, and get ready for a great night celebrating Flatbelly.</p>
   </div>
   <div class="sec">
     <div class="sh"><div class="sh-line"></div><div class="sh-title">Why You Stay Saturday Night</div><div class="sh-line"></div></div>
     <div class="tease-grid">
-      <div class="tease-card" style="border-color:rgba(214,54,139,.35);"><div style="position:absolute;top:0;left:0;width:3px;height:100%;background:var(--fb-pink);"></div><div class="tease-icon" style="color:var(--fb-pink);"><i class="ti ti-shirt"></i></div><div class="tease-heading">Watch the Pink Jacket Get Awarded</div><div class="tease-body">Two names go on the board and two champions slip into pink. <em>Be in the room when it happens</em> — not hearing about it Sunday morning.</div></div>
-      <div class="tease-card"><div class="tease-icon"><i class="ti ti-tools-kitchen-2"></i></div><div class="tease-heading">Food &amp; Beverage Worth the Wait</div><div class="tease-body">The club is keeping the menu under wraps for now — <em>details announced soon</em>, and expectations should be high.</div></div>
-      <div class="tease-card"><div class="tease-icon"><i class="ti ti-target-arrow"></i></div><div class="tease-heading">Shootout Stories, Retold Immediately</div><div class="tease-body">Twelve teams enter, one survives, and every hole gets relitigated at the bar <em>the same night</em>. It's tradition.</div></div>
-      <div class="tease-card"><div class="tease-icon"><i class="ti ti-confetti"></i></div><div class="tease-heading">A Proper Send-Off</div><div class="tease-body">Three days of golf deserve a real finish. Wind down the 2026 Flatbelly <em>the right way</em> before the course reopens Sunday.</div></div>
+      <div class="tease-card" style="border-color:rgba(74,104,176,.4);"><div style="position:absolute;top:0;left:0;width:3px;height:100%;background:var(--fb-denim);"></div><div class="tease-icon" style="color:var(--fb-denim);"><i class="ti ti-diamond"></i></div><div class="tease-heading">Break Out the Denim, Bring the Sparkle</div><div class="tease-body">The theme is <em>Denim &amp; Diamonds</em> — your best denim, a little shine, and boots strictly encouraged. Come dressed for the occasion.</div></div>
+      <div class="tease-card" style="border-color:rgba(214,54,139,.35);"><div style="position:absolute;top:0;left:0;width:3px;height:100%;background:var(--fb-pink);"></div><div class="tease-icon" style="color:var(--fb-pink);"><i class="ti ti-shirt"></i></div><div class="tease-heading">Toast the Pink Jacket Winners</div><div class="tease-body">The shootout wraps, the party starts, and the new champions celebrate in pink. <em>Be in the room</em> — not hearing about it Sunday morning.</div></div>
+      <div class="tease-card"><div class="tease-icon"><i class="ti ti-music"></i></div><div class="tease-heading">Drinks, Dinner &amp; Live Music</div><div class="tease-body">All three, all night — from 6 to 11. The club is saving its best for Saturday, and the dance floor won't fill itself.</div></div>
+      <div class="tease-card"><div class="tease-icon"><i class="ti ti-heart"></i></div><div class="tease-heading">A Night for Two</div><div class="tease-body">Participants <em>and spouses</em> are cordially invited. Three days of golf deserve a proper finish — share it with your favorite plus-one.</div></div>
     </div>
   </div>
 </div>
