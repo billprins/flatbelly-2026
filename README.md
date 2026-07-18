@@ -4,22 +4,21 @@ Single-page event site for Hillwood Country Club's 2026 Flatbelly tournament, mo
 
 Everything lives in `index.html` — no build step. Deploy by dropping the folder on Netlify or connecting the repo.
 
-## Confirmed content (from the club's Golf Genius itinerary & guest letter)
+## Confirmed content (from "Flatbelly Update 2026.docx" participant letter, July 2026)
 
-- Dates July 23–25, 2026 · registration window Mar 1–15 · 60-team lottery
-- Format: team best ball, five 9-hole matches, 1 pt/hole + 1 pt match win (ties split), 80% handicaps, team index = each player's lowest of last 6 months, 11 flights (66 teams, six per flight); 11 flight winners + 2 wildcards → 13-team shootout, last team standing wins. Wildcards: most points by a 2nd-place team overall, and most Saturday points by a non-flight winner
-- Entry $1,500/team, $500 deposit billed to host member at lottery draw
-- Pink Jacket branding (jacket image hotlinked from the club's Golf Genius CDN)
-- Contacts: Hayden Hartz (hayden.hartz@hillwoodcc.org), Golf Shop 615-352-5600, 6201 Hickory Valley Rd
-- Guest Info section from the Accompanied Guest Letter
-- Golf Genius portal: https://www.golfgenius.com/pages/12326936842300562696
+- Dates July 23–25 · full schedule with times (practice round 12:30 Thu, matches 8:30/11:30/2:30 Fri + 8:30/11:30 Sat, Championship Shootout ~3:00 Sat)
+- Format: 2-man team **match play**, five 9-hole matches (round robin within flight), 10 pts/match (1 per hole, ½ tie; 1 match win, ½ tie), 80% handicaps, low player to scratch, no ½ shots, 10-stroke max differential, index window Feb 1–Jul 12
+- Championship Shootout: 11 flight winners + **3 wildcards** = 14 teams, alternate shot sudden death
+- Practice Round Shootout (new): 8 teams, alt shot on 10/11/12, 8→5→2, Championship Belt
+- Player's Pool $400/team mandatory cash (10% champs / 60% flight winners / 30% runners-up); Live Calcutta Thursday 6:30 Men's Grill, cash only, ½ buy-back right
+- Greyson Clothiers tee gift; CTP $25 gift cards all par 3s Fri/Sat
+- Roster: 65 teams / 130 players with tournament indexes + home clubs (doc says "66 teams" — one short in its own list; flag)
+- Contact: Chris Zumpano (chris.zumpano@hillwoodcc.org), Golf Shop 615-352-5600
+- Couples Party kept as **Denim & Diamonds** per the emailed invitation (the docx says "Animal House/Toga" — believed stale 2025 copy; confirm)
 
-## Still TBD (search `TBD` in index.html)
+## Still TBD
 
-- Thursday schedule, daily tee times, shootout holes
-- Food & beverage / menus ("announced soon" per itinerary)
-- Couples Party: confirmed Sat July 25, 6–11 PM, Denim & Diamonds theme, drinks/dinner/live music (band name still TBD; menu TBD)
-- Flight prizes, pools/Calcutta
+- Band name, party menu specifics, flight assignments
 - History stats & defending champions
 - **Draft banner** — remove the `.draft-banner` div when content is final
 
