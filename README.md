@@ -2,7 +2,7 @@
 
 Single-page event site for Hillwood Country Club's 2026 Flatbelly tournament, modeled on the Summer Hummer 2026 site (same brochure design system: Playfair Display / Cormorant Garamond, black & gold, sticky anchor nav, zero-JS CSS interactivity).
 
-Everything lives in `index.html` — no build step. Deploy by dropping the folder on Netlify or connecting the repo.
+Nine static pages — `index`, `schedule`, `format`, `field`, `prizes`, `party`, `course`, `guests`, `history` (.html) — sharing `styles.css`. No build step; each nav tab is its own page with an active-tab highlight. Deploy by connecting the repo to Netlify.
 
 ## Confirmed content (from "Flatbelly Update 2026.docx" participant letter, July 2026)
 
