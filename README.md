@@ -19,7 +19,8 @@ Everything lives in `index.html` — no build step. Deploy by dropping the folde
 ## Still TBD
 
 - Band name, party menu specifics
-- Home clubs for Palmer Sadlowski and Scott Houdek
+
+Later corrections applied from the July "Flatbelly_Update_2026.pdf": Holderness & Bourne tee gift (was Greyson), practice round 12:00 shotgun with shootout on holes 10/11/9 (scorecards by 5:15), registration 10–12, Calcutta 7–9 PM, stag dinner 7:30, Saturday lunch on course 11–1:30, Golf Genius portal hcc-2026flatbelly.golfgenius.com, IV vendor menu/hours (Better For You, Elisha 270-791-0812), Sadlowski = TGA, Houdek = Glenview Park GC. Denim & Diamonds attire confirmed in this letter.
 - History stats & defending champions
 - **Draft banner** — remove the `.draft-banner` div when content is final
 
