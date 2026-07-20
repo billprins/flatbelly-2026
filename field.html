@@ -64,7 +64,7 @@
       </div>
       <p style="font-size:11.5px;color:var(--fb-muted);font-style:italic;margin:8px 0 0;">Counts are away clubs &amp; associations per state — 40 from the United States, 1 from Canada.</p>
     </div>
-    <p style="font-size:13.5px;color:var(--fb-muted);font-style:italic;margin-bottom:14px;text-align:center;">Official flight assignments — teams listed by combined team handicap index (right column) · Tournament handicaps are each player's low index Feb 1 – Jul 12 · 80% applied in play · Win your flight and you're in Saturday's shootout · Solid chip: the team won its 2025 flight together · Outlined chip: the member won his 2025 flight with a different partner</p>
+    <p style="font-size:13.5px;color:var(--fb-muted);font-style:italic;margin-bottom:14px;text-align:center;">Official flight assignments — teams listed by combined team handicap index (right column) · Tournament handicaps are each player's low index Feb 1 – Jul 12 · 80% applied in play · Win your flight and you're in Saturday's shootout · Solid chip: the team won its 2025 flight together · Outlined chip: the member won his 2025 flight with a different partner · <strong>Tap any team to see its five matchups in order</strong></p>
     <div style="overflow-x:auto;">
     <table class="pairings-table">
       <thead><tr><th>Player</th><th class="hcp-col">H.I.</th><th>Player</th><th class="hcp-col">H.I.</th><th class="hcp-col" style="width:56px;">Team</th></tr></thead>
@@ -283,6 +283,40 @@
       });
       map.addLayer(cluster);
       map.fitBounds(cluster.getBounds().pad(0.08), { maxZoom: 6 });
+      var MATCH_OPP = { A: ['B','C','D','E','F'], B: ['A','F','E','C','D'], C: ['D','A','F','B','E'], D: ['C','E','A','F','B'], E: ['F','D','B','A','C'], F: ['E','B','C','D','A'] };
+      var MATCH_META = ['Match 1 · Fri 8:30 AM', 'Match 2 · Fri 11:30 AM', 'Match 3 · Fri 2:30 PM', 'Match 4 · Sat 8:30 AM', 'Match 5 · Sat 11:30 AM'];
+      var LETTERS = ['A', 'B', 'C', 'D', 'E', 'F'];
+      var flights = [];
+      var curTeams = null;
+      document.querySelectorAll('.pairings-table tbody tr').forEach(function (tr) {
+        if (tr.querySelector('td.flight-hdr')) { curTeams = []; flights.push(curTeams); return; }
+        var names = [].map.call(tr.querySelectorAll('.player-name'), function (n) {
+          var parts = n.textContent.trim().split(' ');
+          return parts[parts.length - 1];
+        });
+        curTeams.push({ tr: tr, label: names.join(' / ') });
+      });
+      flights.forEach(function (teams) {
+        teams.forEach(function (team, i) {
+          team.tr.classList.add('clickable');
+          team.tr.title = 'Tap to see all five matchups';
+          team.tr.addEventListener('click', function () {
+            var next = team.tr.nextElementSibling;
+            if (next && next.classList.contains('match-detail')) { next.remove(); return; }
+            document.querySelectorAll('.match-detail').forEach(function (d) { d.remove(); });
+            var html = MATCH_META.map(function (meta, mi) {
+              var oppIdx = LETTERS.indexOf(MATCH_OPP[LETTERS[i]][mi]);
+              var opp = teams[oppIdx] ? teams[oppIdx].label : 'TBD';
+              return '<div class="md-row"><span class="md-meta">' + meta + '</span><span class="md-opp">vs. ' + opp + '</span></div>';
+            }).join('');
+            html += '<div class="md-note">' + team.label + "'s round robin · Assumes teams play as A–F in the order listed — confirm exact pairings in your player packet</div>";
+            var detail = document.createElement('tr');
+            detail.className = 'match-detail';
+            detail.innerHTML = '<td colspan="5">' + html + '</td>';
+            team.tr.parentNode.insertBefore(detail, team.tr.nextSibling);
+          });
+        });
+      });
       document.querySelectorAll('.club-cell').forEach(function (cell) {
         cell.addEventListener('click', function () {
           var span = cell.querySelector('span');

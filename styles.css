@@ -339,4 +339,12 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#e9d5e2;padding:1
 .board-chip{font-size:9px;letter-spacing:.1em;text-transform:uppercase;background:var(--fb-pink);color:#fff;padding:2px 7px;white-space:nowrap;flex-shrink:0;align-self:center;}
 .board-chip.outline{background:transparent;color:var(--fb-pink);border:1px solid var(--fb-pink);padding:1px 6px;}
 .pairings-table tr.champ-row td{background:rgba(183,34,111,.09);}
+.pairings-table tr.clickable{cursor:pointer;}
+.pairings-table tr.clickable:hover td{background:rgba(214,54,139,.07);}
+.pairings-table tr.match-detail td{background:var(--fb-pale);padding:10px 16px;border-bottom:2px solid rgba(214,54,139,.25);}
+.md-row{display:flex;gap:14px;padding:3px 0;font-size:13.5px;align-items:baseline;}
+.md-meta{color:var(--fb-pink);font-weight:600;min-width:158px;font-size:12px;letter-spacing:.04em;flex-shrink:0;}
+.md-opp{color:var(--fb-dark);}
+.md-note{font-size:11px;font-style:italic;color:var(--fb-muted);margin-top:7px;}
+@media(max-width:640px){.md-row{flex-direction:column;gap:1px;padding:5px 0;border-bottom:1px solid rgba(214,54,139,.1);}.md-meta{min-width:auto;}}
 @media(max-width:640px){.board-grid{grid-template-columns:1fr;padding:14px 16px;}}
