@@ -314,6 +314,15 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#e9d5e2;padding:1
 .geo-chip.intl{background:var(--fb-denim-pale);border-color:var(--fb-denim);color:var(--fb-denim-d);}
 .geo-chip.intl b{color:var(--fb-denim);}
 
+/* CLUB MAP */
+.club-map{height:460px;border:1px solid rgba(214,54,139,.3);margin-bottom:24px;z-index:0;}
+.map-logo{background:var(--fb-white);border:1px solid rgba(214,54,139,.45);border-radius:4px;box-shadow:0 1px 4px rgba(60,20,45,.3);display:flex;align-items:center;justify-content:center;width:46px;height:34px;}
+.map-logo img{max-width:40px;max-height:28px;object-fit:contain;display:block;}
+.map-logo.txt{font-family:'Playfair Display',serif;font-size:11px;font-weight:700;color:var(--fb-pink);letter-spacing:.04em;}
+.map-cluster{background:var(--fb-pink);color:#fff;border:2px solid #fff;border-radius:50%;width:40px;height:40px;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:15px;font-weight:700;box-shadow:0 1px 5px rgba(60,20,45,.4);}
+.leaflet-popup-content{font-family:'Cormorant Garamond',Georgia,serif;font-size:14px;}
+@media(max-width:640px){.club-map{height:340px;}}
+
 /* CLUB LOGO WALL */
 .club-wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:10px;}
 .club-cell{background:var(--fb-white);border:1px solid rgba(214,54,139,.22);padding:12px 8px 9px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:7px;}

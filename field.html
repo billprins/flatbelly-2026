@@ -8,6 +8,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css">
 </head>
 <body>
 <div class="brochure">
@@ -62,6 +64,77 @@
       </div>
       <p style="font-size:11.5px;color:var(--fb-muted);font-style:italic;margin:8px 0 0;">Counts are away clubs &amp; associations per state — 40 from the United States, 1 from Canada.</p>
     </div>
+    <div class="sh"><div class="sh-line"></div><div class="sh-title">Where They Come From</div><div class="sh-line"></div></div>
+    <div id="club-map" class="club-map"></div>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+    <script>
+    (function () {
+      var clubs = [
+        ['Belle Meade CC', 'Nashville, TN', 36.103, -86.858, 'belle-meade.png'],
+        ['Richland CC', 'Nashville, TN', 36.068, -86.828, 'richland.png'],
+        ['McCabe GC', 'Nashville, TN', 36.128, -86.845, 'mccabe.png'],
+        ['Ted Rhodes', 'Nashville, TN', 36.172, -86.842, 'ted-rhodes.png'],
+        ['Gaylord Springs', 'Nashville, TN', 36.222, -86.702, 'gaylord-springs.png'],
+        ['Brentwood CC', 'Brentwood, TN', 36.017, -86.768, 'brentwood.png'],
+        ['Old Natchez', 'Franklin, TN', 35.951, -86.900, 'old-natchez.png'],
+        ['Westhaven GC', 'Franklin, TN', 35.918, -86.925, 'westhaven.png'],
+        ['Temple Hills Club', 'Franklin, TN', 35.903, -86.965, 'temple-hills.png'],
+        ['Vanderbilt Legends Club', 'Franklin, TN', 35.900, -86.858, 'vanderbilt-legends.png'],
+        ['TGA', 'Franklin, TN', 35.932, -86.868, 'tga.png'],
+        ['Legacy Golf Club', 'Springfield, TN', 36.528, -86.878, 'legacy.png'],
+        ['The Grove', 'College Grove, TN', 35.780, -86.678, 'the-grove.png'],
+        ['Grasslands Club', 'Gallatin, TN', 36.422, -86.422, 'grasslands.jpg'],
+        ['Golf Club of TN', 'Kingston Springs, TN', 36.082, -87.102, 'golf-club-of-tn.png'],
+        ['Spring Hill GC', 'Spring Hill, TN', 35.742, -86.912, 'spring-hill.png'],
+        ['Towhee Club', 'Tennessee', 35.512, -84.792, 'towhee.png'],
+        ['Masters Club', 'Tennessee', 36.002, -86.702, 'masters-club.png'],
+        ['Indian Hills CC', 'Murfreesboro, TN', 35.902, -86.352, 'indian-hills.png'],
+        ['Lakewood GC', 'Tennessee', 36.172, -86.622, 'lakewood.png'],
+        ['Meadow Brook Club', 'Tennessee', 36.102, -86.602, 'meadow-brook.png'],
+        ['Jackson CC', 'Jackson, TN', 35.652, -88.828, 'jackson.png'],
+        ['Cherokee CC', 'Knoxville, TN', 35.932, -84.062, 'cherokee.png'],
+        ['Golden Eagle GC', 'Cookeville, TN', 36.162, -85.502, 'golden-eagle.jpg'],
+        ['The Club at Olde Stone', 'Bowling Green, KY', 36.932, -86.422, 'olde-stone.png'],
+        ['Lexington CC', 'Lexington, KY', 38.022, -84.512, 'lexington.png'],
+        ['Coldstream CC', 'Cincinnati, OH', 39.072, -84.332, 'coldstream.png'],
+        ['GAP GC', 'Philadelphia, PA', 40.072, -75.292, 'gap.png'],
+        ['Hedingham GC', 'Raleigh, NC', 35.812, -78.542, 'hedingham.png'],
+        ['Links at Stono Ferry', 'Hollywood, SC', 32.752, -80.232, 'stono-ferry.png'],
+        ['Savannah GC', 'Savannah, GA', 32.032, -81.122, 'savannah.png'],
+        ['GSGA', 'Atlanta, GA', 33.752, -84.392, 'gsga.jpg'],
+        ['Horseshoe Bend CC', 'Roswell, GA', 34.002, -84.322, 'horseshoe-bend.png'],
+        ['Belleair CC', 'Belleair, FL', 27.932, -82.802, 'belleair.png'],
+        ['FSGA', 'Tampa, FL', 27.962, -82.452, 'fsga.png'],
+        ['Greystone G&CC', 'Birmingham, AL', 33.412, -86.672, 'greystone.png'],
+        ['CC of Little Rock', 'Little Rock, AR', 34.762, -92.352, 'cc-little-rock.png'],
+        ['Tucson CC', 'Tucson, AZ', 32.252, -110.922, 'tucson.png'],
+        ['NCGA', 'Pebble Beach, CA', 36.572, -121.942, null],
+        ['Glenview Park GC', 'Glenview, IL', 42.072, -87.812, null],
+        ['Brampton GC', 'Brampton, Ontario', 43.682, -79.762, 'brampton.png']
+      ];
+      var map = L.map('club-map', { scrollWheelZoom: false });
+      L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        maxZoom: 12,
+        attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
+      }).addTo(map);
+      var cluster = L.markerClusterGroup({
+        maxClusterRadius: 42,
+        iconCreateFunction: function (c) {
+          return L.divIcon({ html: '<div class="map-cluster">' + c.getChildCount() + '</div>', className: '', iconSize: [40, 40] });
+        }
+      });
+      clubs.forEach(function (c) {
+        var html = c[4]
+          ? '<div class="map-logo"><img src="logos/' + c[4] + '" alt="' + c[0] + '"></div>'
+          : '<div class="map-logo txt">' + c[0].split(' ').map(function (w) { return w[0]; }).join('').slice(0, 3) + '</div>';
+        var icon = L.divIcon({ html: html, className: '', iconSize: [46, 34], iconAnchor: [23, 17] });
+        cluster.addLayer(L.marker([c[2], c[3]], { icon: icon }).bindPopup('<strong>' + c[0] + '</strong><br>' + c[1]));
+      });
+      map.addLayer(cluster);
+      map.fitBounds(cluster.getBounds().pad(0.08), { maxZoom: 6 });
+    })();
+    </script>
     <p style="font-size:13.5px;color:var(--fb-muted);font-style:italic;margin-bottom:14px;text-align:center;">Official flight assignments — teams listed by combined team handicap index (right column) · Tournament handicaps are each player's low index Feb 1 – Jul 12 · 80% applied in play · Win your flight and you're in Saturday's shootout · Solid chip: the team won its 2025 flight together · Outlined chip: the member won his 2025 flight with a different partner</p>
     <div style="overflow-x:auto;">
     <table class="pairings-table">
