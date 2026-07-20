@@ -316,4 +316,6 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#e9d5e2;padding:1
 .board-row.gap .board-names{color:var(--fb-muted);font-style:italic;}
 .board-row.gap .board-year{color:rgba(214,54,139,.4);}
 .board-chip{font-size:9px;letter-spacing:.1em;text-transform:uppercase;background:var(--fb-pink);color:#fff;padding:2px 7px;white-space:nowrap;flex-shrink:0;align-self:center;}
+.board-chip.outline{background:transparent;color:var(--fb-pink);border:1px solid var(--fb-pink);padding:1px 6px;}
+.pairings-table tr.champ-row td{background:rgba(183,34,111,.09);}
 @media(max-width:640px){.board-grid{grid-template-columns:1fr;padding:14px 16px;}}
