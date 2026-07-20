@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>2025 Photos — The 2026 Flatbelly</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="brochure">
+<!-- DRAFT BANNER — remove when all details are final -->
+<div class="draft-banner"><strong>Draft</strong> — dates, format, fees &amp; registration are confirmed from the club itinerary. Band name &amp; party menu still to come from the club.</div>
+
+
+<nav class="nav" aria-label="Site pages">
+  <a href="index.html">Home</a>
+  <a href="schedule.html">Schedule</a>
+  <a href="format.html">Format</a>
+  <a href="field.html">Field</a>
+  <a href="prizes.html">Prizes</a>
+  <a href="party.html">Party ✦</a>
+  <a href="course.html">Course</a>
+  <a href="guests.html">Guests</a>
+  <a href="history.html">History</a>
+  <a href="photos.html" class="active">Photos</a>
+  <a href="https://hcc-2026flatbelly.golfgenius.com" target="_blank" rel="noopener" style="color:var(--fb-gold);border-bottom-color:var(--fb-gold);">⛳ Golf Genius</a>
+</nav>
+
+<!-- 2025 PHOTOS -->
+<div id="sec-photos" class="section">
+  <div class="section-bar"><i class="ti ti-camera"></i>2025 Flatbelly — Photo Gallery</div>
+  <div class="sec">
+    <p style="font-size:16px;line-height:1.75;font-weight:300;margin-bottom:20px;text-align:center;max-width:620px;margin-left:auto;margin-right:auto;">Twenty-five favorites from 2025 — the shootout, the pink jackets finding their owners, and a toga party that Hillwood will be talking about for years. Tap any photo to view it full size.</p>
+    <div class="pgal" id="pgal">
+      <img src="photos/2025/gallery/g01.jpg" alt="2025 champions in pink jackets with the trophy" loading="lazy">
+      <img src="photos/2025/gallery/g02.jpg" alt="Champions embrace with the trophy" loading="lazy">
+      <img src="photos/2025/gallery/g03.jpg" alt="Champion celebrates with trophy and pink jacket" loading="lazy">
+      <img src="photos/2025/gallery/g04.jpg" alt="Champion with the belt, jacket, and trophy" loading="lazy">
+      <img src="photos/2025/gallery/g05.jpg" alt="The shootout field and caddies with the champions board" loading="lazy">
+      <img src="photos/2025/gallery/g06.jpg" alt="Toga party couples" loading="lazy">
+      <img src="photos/2025/gallery/g07.jpg" alt="Toga party group" loading="lazy">
+      <img src="photos/2025/gallery/g08.jpg" alt="Costumes at the toga party" loading="lazy">
+      <img src="photos/2025/gallery/g09.jpg" alt="Couple with pink balloons" loading="lazy">
+      <img src="photos/2025/gallery/g10.jpg" alt="Laurel wreaths at the party" loading="lazy">
+      <img src="photos/2025/gallery/g11.jpg" alt="Toga couple" loading="lazy">
+      <img src="photos/2025/gallery/g12.jpg" alt="Toga trio" loading="lazy">
+      <img src="photos/2025/gallery/g13.jpg" alt="Party foursome" loading="lazy">
+      <img src="photos/2025/gallery/g14.jpg" alt="Guests by the marquee lights" loading="lazy">
+      <img src="photos/2025/gallery/g15.jpg" alt="The patio crowd" loading="lazy">
+      <img src="photos/2025/gallery/g16.jpg" alt="Outdoor party scene" loading="lazy">
+      <img src="photos/2025/gallery/g17.jpg" alt="The TOGA stage" loading="lazy">
+      <img src="photos/2025/gallery/g18.jpg" alt="Champions at the party" loading="lazy">
+      <img src="photos/2025/gallery/g19.jpg" alt="Party antics" loading="lazy">
+      <img src="photos/2025/gallery/g20.jpg" alt="The dance floor" loading="lazy">
+      <img src="photos/2025/gallery/g21.jpg" alt="Dancing in togas" loading="lazy">
+      <img src="photos/2025/gallery/g22.jpg" alt="The Eat Me cake" loading="lazy">
+      <img src="photos/2025/gallery/g23.jpg" alt="The band under the TOGA lights" loading="lazy">
+      <img src="photos/2025/gallery/g24.jpg" alt="Friends on the patio" loading="lazy">
+      <img src="photos/2025/gallery/g25.jpg" alt="The ballroom ready for the night" loading="lazy">
+    </div>
+  </div>
+</div>
+
+<div class="plb" id="plb">
+  <span class="plb-close" id="plb-close">&times;</span>
+  <img id="plb-img" src="" alt="Full size photo">
+  <div class="plb-nav">
+    <button id="plb-prev">&larr; Prev</button>
+    <span class="plb-count" id="plb-count"></span>
+    <button id="plb-next">Next &rarr;</button>
+  </div>
+</div>
+<script>
+(function () {
+  var imgs = [].slice.call(document.querySelectorAll('#pgal img'));
+  var plb = document.getElementById('plb');
+  var plbImg = document.getElementById('plb-img');
+  var count = document.getElementById('plb-count');
+  var cur = 0;
+  function show(i) {
+    cur = (i + imgs.length) % imgs.length;
+    plbImg.src = imgs[cur].src;
+    plbImg.alt = imgs[cur].alt;
+    count.textContent = (cur + 1) + ' / ' + imgs.length;
+    plb.classList.add('open');
+  }
+  imgs.forEach(function (img, i) { img.addEventListener('click', function () { show(i); }); });
+  document.getElementById('plb-close').addEventListener('click', function () { plb.classList.remove('open'); });
+  document.getElementById('plb-prev').addEventListener('click', function (e) { e.stopPropagation(); show(cur - 1); });
+  document.getElementById('plb-next').addEventListener('click', function (e) { e.stopPropagation(); show(cur + 1); });
+  plb.addEventListener('click', function (e) { if (e.target === plb) plb.classList.remove('open'); });
+  document.addEventListener('keydown', function (e) {
+    if (!plb.classList.contains('open')) return;
+    if (e.key === 'Escape') plb.classList.remove('open');
+    if (e.key === 'ArrowLeft') show(cur - 1);
+    if (e.key === 'ArrowRight') show(cur + 1);
+  });
+})();
+</script>
+
+
+<!-- FOOTER -->
+<div class="footer">
+  <img class="crest" src="hillwood-crest.png" alt="Hillwood Country Club">
+  <strong>The 2026 Flatbelly</strong> · Hillwood Country Club<br>
+  6201 Hickory Valley Rd · Nashville, TN 37205<br>
+  Golf Shop: 615-352-5600 · Questions: <a href="mailto:chris.zumpano@hillwoodcc.org">Chris Zumpano</a><br>
+  <a href="https://hcc-2026flatbelly.golfgenius.com" target="_blank" rel="noopener">Golf Genius Portal</a> &nbsp;·&nbsp; <a href="https://online.fliphtml5.com/qqwew/pbth/" target="_blank" rel="noopener">Digital Booklet</a> &nbsp;·&nbsp; <a href="https://www.hillwoodcc.org" target="_blank" rel="noopener">hillwoodcc.org</a>
+</div>
+
+</div><!-- end .brochure -->
+</body>
+</html>

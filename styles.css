@@ -27,7 +27,7 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#e9d5e2;padding:1
   text-decoration:none;color:var(--fb-black);
   font-family:'Cormorant Garamond',serif;font-size:11px;font-weight:700;
   letter-spacing:.1em;text-transform:uppercase;
-  padding:0 12px;height:46px;white-space:nowrap;
+  padding:0 10px;height:46px;white-space:nowrap;
   border-bottom:3px solid transparent;
   -webkit-tap-highlight-color:rgba(214,54,139,.2);
 }
@@ -297,6 +297,20 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#e9d5e2;padding:1
   .hero-title{font-size:34px;}
   .nav a{font-size:9px;padding:0 7px;height:36px;}
 }
+
+/* PHOTO GALLERY */
+.pgal{columns:3;column-gap:10px;}
+.pgal img{width:100%;display:block;margin-bottom:10px;break-inside:avoid;border:1px solid rgba(214,54,139,.25);cursor:pointer;transition:opacity .15s;}
+.pgal img:hover{opacity:.88;}
+@media(max-width:640px){.pgal{columns:2;column-gap:8px;}.pgal img{margin-bottom:8px;}}
+.plb{display:none;position:fixed;inset:0;background:rgba(24,17,23,.94);z-index:99999;flex-direction:column;align-items:center;justify-content:center;}
+.plb.open{display:flex;}
+.plb img{max-width:92vw;max-height:80vh;object-fit:contain;box-shadow:0 4px 40px rgba(0,0,0,.6);}
+.plb-close{position:fixed;top:14px;right:22px;color:#fff;font-size:34px;cursor:pointer;line-height:1;font-family:Georgia,serif;}
+.plb-nav{display:flex;gap:28px;margin-top:14px;align-items:center;}
+.plb-nav button{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.3);color:#fff;padding:8px 22px;font-family:'Cormorant Garamond',serif;font-size:14px;letter-spacing:.1em;cursor:pointer;}
+.plb-nav button:hover{background:rgba(214,54,139,.5);border-color:var(--fb-gold);}
+.plb-count{color:rgba(255,255,255,.55);font-size:13px;letter-spacing:.1em;}
 
 /* Active nav tab */
 .nav a.active{color:var(--fb-gold);border-bottom-color:var(--fb-gold);}
