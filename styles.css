@@ -308,8 +308,11 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#e9d5e2;padding:1
 .geo-stat span{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--fb-muted);}
 .geo-chips{display:flex;flex-wrap:wrap;gap:7px;margin-top:10px;}
 .geo-chip{background:rgba(214,54,139,.09);border:1px solid rgba(214,54,139,.3);padding:4px 11px;font-size:12px;letter-spacing:.05em;color:var(--fb-dark);}
+.geo-chip b{font-family:'Playfair Display',serif;font-weight:700;color:var(--fb-gold);margin-left:6px;}
 .geo-chip.home{background:var(--fb-pink);border-color:var(--fb-pink);color:#fff;}
+.geo-chip.home b{color:#fff;}
 .geo-chip.intl{background:var(--fb-denim-pale);border-color:var(--fb-denim);color:var(--fb-denim-d);}
+.geo-chip.intl b{color:var(--fb-denim);}
 
 /* CLUB LOGO WALL */
 .club-wall{display:grid;grid-template-columns:repeat(auto-fill,minmax(112px,1fr));gap:10px;}
