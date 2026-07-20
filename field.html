@@ -269,11 +269,9 @@
         });
       });
       var markerByClub = {};
+      var dotIcon = L.divIcon({ html: '<div class="map-dot"></div>', className: '', iconSize: [13, 13], iconAnchor: [7, 7] });
       clubs.forEach(function (c) {
-        var html = c[4]
-          ? '<div class="map-logo"><img src="logos/' + c[4] + '" alt="' + c[0] + '"></div>'
-          : '<div class="map-logo txt">' + c[0].split(' ').map(function (w) { return w[0]; }).join('').slice(0, 3) + '</div>';
-        var icon = L.divIcon({ html: html, className: '', iconSize: [46, 34], iconAnchor: [23, 17] });
+        var icon = dotIcon;
         var guests = guestIndex[c[0]] || [];
         var popup = '<strong>' + c[0] + '</strong><br>' + c[1];
         if (guests.length) {
