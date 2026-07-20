@@ -155,7 +155,7 @@
     <div class="club-wall">
       <div class="club-cell"><img src="logos/belle-meade.png" alt="Belle Meade Country Club" loading="lazy"><span>Belle Meade CC</span></div>
       <div class="club-cell"><img src="logos/belleair.png" alt="Belleair Country Club" loading="lazy"><span>Belleair CC</span></div>
-      <div class="club-cell"><img src="logos/brampton.png" alt="Brampton Golf Club" loading="lazy"><span>Brampton GC</span></div>
+      <div class="club-cell" data-club="Brampton CC"><img src="logos/brampton.png" alt="Brampton Golf Club" loading="lazy"><span>Brampton GC</span></div>
       <div class="club-cell"><img src="logos/brentwood.png" alt="Brentwood Country Club" loading="lazy"><span>Brentwood CC</span></div>
       <div class="club-cell"><img src="logos/cc-little-rock.png" alt="Country Club of Little Rock" loading="lazy"><span>CC of Little Rock</span></div>
       <div class="club-cell"><img src="logos/cherokee.png" alt="Cherokee Country Club" loading="lazy"><span>Cherokee CC</span></div>
@@ -241,7 +241,7 @@
         ['Tucson CC', 'Tucson, AZ', 32.252, -110.922, 'tucson.png'],
         ['NCGA', 'Pebble Beach, CA', 36.572, -121.942, null],
         ['Glenview Park GC', 'Glenview, IL', 42.072, -87.812, null],
-        ['Brampton GC', 'Brampton, Ontario', 43.682, -79.762, 'brampton.png']
+        ['Brampton CC', 'Brampton, Ontario', 43.682, -79.762, 'brampton.png']
       ];
       var map = L.map('club-map', { scrollWheelZoom: false });
       L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
@@ -254,15 +254,52 @@
           return L.divIcon({ html: '<div class="map-cluster">' + c.getChildCount() + '</div>', className: '', iconSize: [40, 40] });
         }
       });
+      var guestIndex = {};
+      var curFlight = '';
+      document.querySelectorAll('.pairings-table tbody tr').forEach(function (tr) {
+        var hdr = tr.querySelector('td.flight-hdr');
+        if (hdr) { curFlight = hdr.childNodes[0].textContent.trim(); return; }
+        tr.querySelectorAll('.player-cell').forEach(function (cell) {
+          var clubEl = cell.querySelector('.player-club');
+          var nameEl = cell.querySelector('.player-name');
+          if (!clubEl || !nameEl) return;
+          var club = clubEl.textContent.trim();
+          if (club === 'Hillwood CC') return;
+          (guestIndex[club] = guestIndex[club] || []).push(nameEl.textContent.trim() + ' (' + curFlight.replace('Flight ', 'F') + ')');
+        });
+      });
+      var markerByClub = {};
       clubs.forEach(function (c) {
         var html = c[4]
           ? '<div class="map-logo"><img src="logos/' + c[4] + '" alt="' + c[0] + '"></div>'
           : '<div class="map-logo txt">' + c[0].split(' ').map(function (w) { return w[0]; }).join('').slice(0, 3) + '</div>';
         var icon = L.divIcon({ html: html, className: '', iconSize: [46, 34], iconAnchor: [23, 17] });
-        cluster.addLayer(L.marker([c[2], c[3]], { icon: icon }).bindPopup('<strong>' + c[0] + '</strong><br>' + c[1]));
+        var guests = guestIndex[c[0]] || [];
+        var popup = '<strong>' + c[0] + '</strong><br>' + c[1];
+        if (guests.length) {
+          popup += '<br><em>In the 2026 field: ' + guests.join(' · ') + '</em>';
+        }
+        var m = L.marker([c[2], c[3]], { icon: icon }).bindPopup(popup);
+        markerByClub[c[0]] = m;
+        cluster.addLayer(m);
       });
       map.addLayer(cluster);
       map.fitBounds(cluster.getBounds().pad(0.08), { maxZoom: 6 });
+      document.querySelectorAll('.club-cell').forEach(function (cell) {
+        cell.addEventListener('click', function () {
+          var span = cell.querySelector('span');
+          var name = cell.getAttribute('data-club') || (span ? span.textContent.trim() : '');
+          var m = markerByClub[name];
+          if (!m) return;
+          map.closePopup();
+          map.stop();
+          document.getElementById('club-map').scrollIntoView({ behavior: 'smooth', block: 'center' });
+          setTimeout(function () {
+            map.stop();
+            cluster.zoomToShowLayer(m, function () { m.openPopup(); });
+          }, 500);
+        });
+      });
     })();
     </script>
   </div>
