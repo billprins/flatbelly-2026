@@ -298,7 +298,27 @@
         });
         curTeams.push({ tr: tr, label: names.join(' / ') });
       });
-      flights.forEach(function (teams) {
+      var PAIRS_BY_MATCH = [
+        [[0,1],[2,3],[4,5]],
+        [[3,4],[0,2],[1,5]],
+        [[1,4],[2,5],[0,3]],
+        [[0,4],[1,2],[3,5]],
+        [[2,4],[0,5],[1,3]]
+      ];
+      var HOLES = [
+        [['1A','1B','2A'],['10A','10B','11A'],['8B','9A','9B'],['17','18A','18B'],['2B','3','4A']],
+        [['2B','3A','3B'],['11B','12A','12B'],['7A','7B','8A'],['13B','14A','14B'],['8','9A','9B']],
+        [['4A','4B','5A'],['13A','13B','14A'],['5B','6A','6B'],['15','16A','16B'],['1A','1B','2A']],
+        [['5B','6A','6B'],['14B','15A','15B'],['4A','4B','5A'],['11B','12','13A'],['4B','5A','5B']],
+        [['7A','7B','8A'],['16A','16B','17A'],['2B','3A','3B'],['10A','10B','11A'],['6','7A','7B']],
+        [['8B','9A','9B'],['17B','18A','18B'],['1A','1B','2A'],['5B','6A','6B'],['13A','13B','14A']],
+        [['10A','10B','11A'],['1A','1B','2A'],['17','18A','18B'],['8B','9A','9B'],['11B','12A','12B']],
+        [['11B','12','13A'],['2B','3','4A'],['15','16A','16B'],['7A','7B','8A'],['16A','16B','17A']],
+        [['13B','14A','14B'],['4B','5A','5B'],['11B','12','13A'],['2B','3A','3B'],['10A','10B','11A']],
+        [['15','16A','16B'],['6','7A','7B'],['13B','14A','14B'],['4A','4B','5A'],['17B','18A','18B']],
+        [['17','18A','18B'],['8','9A','9B'],['10A','10B','11A'],['1A','1B','2A'],['14B','15A','15B']]
+      ];
+      flights.forEach(function (teams, f) {
         teams.forEach(function (team, i) {
           team.tr.classList.add('clickable');
           team.tr.title = 'Tap to see all five matchups';
@@ -307,11 +327,16 @@
             if (next && next.classList.contains('match-detail')) { next.remove(); return; }
             document.querySelectorAll('.match-detail').forEach(function (d) { d.remove(); });
             var html = MATCH_META.map(function (meta, mi) {
-              var oppIdx = LETTERS.indexOf(MATCH_OPP[LETTERS[i]][mi]);
+              var oppIdx = i, hole = '';
+              PAIRS_BY_MATCH[mi].forEach(function (pair, pi) {
+                if (pair[0] === i) { oppIdx = pair[1]; hole = (HOLES[f] && HOLES[f][mi]) ? HOLES[f][mi][pi] : ''; }
+                if (pair[1] === i) { oppIdx = pair[0]; hole = (HOLES[f] && HOLES[f][mi]) ? HOLES[f][mi][pi] : ''; }
+              });
               var opp = teams[oppIdx] ? teams[oppIdx].label : 'TBD';
-              return '<div class="md-row"><span class="md-meta">' + meta + '</span><span class="md-opp">vs. ' + opp + '</span></div>';
+              var holeTxt = hole ? '<span style="color:var(--fb-muted);font-size:12px;margin-left:10px;white-space:nowrap;">· Starts Hole ' + hole + '</span>' : '';
+              return '<div class="md-row"><span class="md-meta">' + meta + '</span><span class="md-opp">vs. ' + opp + holeTxt + '</span></div>';
             }).join('');
-            html += '<div class="md-note">' + team.label + "'s round robin · Assumes teams play as A–F in the order listed — confirm exact pairings in your player packet</div>";
+            html += '<div class="md-note">' + team.label + "'s round robin · Official pairings &amp; starting holes from the club tee sheet · All matches are shotgun starts</div>";
             var detail = document.createElement('tr');
             detail.className = 'match-detail';
             detail.innerHTML = '<td colspan="5">' + html + '</td>';
