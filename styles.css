@@ -177,6 +177,17 @@ body{font-family:'Cormorant Garamond',Georgia,serif;background:#e9d5e2;padding:1
 .tease-body{font-size:15px;line-height:1.7;color:var(--fb-muted);font-weight:300;}
 .tease-body em{font-style:italic;color:var(--fb-dark);}
 
+/* BAND STORY */
+.band-story{background:var(--fb-denim-d);padding:34px 40px;display:grid;grid-template-columns:1fr 1fr;gap:30px;align-items:center;}
+.band-story-eyebrow{font-size:10px;letter-spacing:.22em;text-transform:uppercase;color:var(--fb-denim-l);margin-bottom:10px;}
+.band-story-name{font-family:'Playfair Display',serif;font-size:34px;color:#fff;line-height:1.15;margin-bottom:12px;}
+.band-story-name em{color:var(--fb-denim-l);font-style:italic;}
+.band-story-text{font-size:15px;line-height:1.75;color:rgba(255,255,255,.65);font-weight:300;}
+.band-vibe{border-left:2px solid var(--fb-denim-l);padding:9px 16px;margin-bottom:11px;}
+.band-vibe-label{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--fb-denim-l);margin-bottom:3px;}
+.band-vibe-text{font-size:14.5px;color:rgba(255,255,255,.8);font-style:italic;}
+@media(max-width:640px){.band-story{grid-template-columns:1fr;padding:24px 16px;}}
+
 /* GUEST INFO */
 .guest-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
 .guest-card{background:var(--fb-white);border:1px solid rgba(214,54,139,.3);padding:18px;}
