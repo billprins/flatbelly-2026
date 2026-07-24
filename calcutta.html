@@ -56,6 +56,12 @@
     .s-edit .se-buyer { flex: 1; }
     .s-edit button { font-size: 12px; padding: 4px 9px; border-radius: 6px; border: 1px solid var(--gold); background: rgba(201,168,76,0.15); color: var(--gold); cursor: pointer; }
     .stream-empty { padding: 1rem; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 12px; color: var(--dim); text-align: center; }
+    .flight-totals { border-top: 1px solid var(--line); background: rgba(0,0,0,0.25); padding: 7px 10px; display: grid; grid-template-columns: 1fr 1fr; gap: 3px 14px; font-family: 'Helvetica Neue', Arial, sans-serif; flex-shrink: 0; }
+    .ftl-row { display: flex; justify-content: space-between; align-items: center; font-size: clamp(10px, 1.25vh, 13px); }
+    .ftl-name { color: var(--dim); display: flex; align-items: center; gap: 6px; }
+    .ftl-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--fc); flex-shrink: 0; }
+    .ftl-amt { color: var(--gold); font-weight: 600; }
+    .ftl-amt.zero { color: var(--dim); font-weight: 400; }
 
     /* ---------- center ---------- */
     .center { display: flex; flex-direction: column; align-items: center; gap: 0.8rem; min-width: 0; max-height: 100%; }
@@ -179,6 +185,7 @@
     <div class="stream">
       <div class="stream-head"><span>Sold — Auction Order</span><span class="stream-count" id="streamCount"></span></div>
       <div class="stream-list" id="streamList"><div class="stream-empty">No teams sold yet.</div></div>
+      <div class="flight-totals" id="flightTotals"></div>
     </div>
 
     <!-- center: current team + wheel -->
@@ -831,6 +838,20 @@ function render(){
     }
     list.scrollTop = 0;
   }
+
+  // ---- per-flight totals under the sold stream ----
+  const flTotals = {};
+  state.picks.forEach(p => {
+    const fk = T(p.num).flight;
+    flTotals[fk] = (flTotals[fk] || 0) + (p.amount || 0);
+  });
+  document.getElementById('flightTotals').innerHTML = FLIGHT_DEFS.map(f => {
+    const amt = flTotals[f.key] || 0;
+    return `<div class="ftl-row" style="--fc:${f.color}">
+      <span class="ftl-name"><span class="ftl-dot"></span>Fl ${f.key}</span>
+      <span class="ftl-amt${amt ? '' : ' zero'}">${amt ? '$' + amt.toLocaleString() : '—'}</span>
+    </div>`;
+  }).join('');
 
   // ---- counts + controls ----
   document.getElementById('pickN').textContent = `${state.picks.length} / ${TEAMS.length}`;
