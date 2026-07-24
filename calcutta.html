@@ -44,6 +44,8 @@
     .s-sub { font-size: clamp(8px, 1vh, 11px); color: var(--dim); margin-top: 1px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
     .s-body { min-width: 0; flex: 1; }
     .s-amt { font-size: clamp(12px, 1.5vh, 16px); font-weight: 600; color: var(--gold); flex-shrink: 0; }
+    .s-buyer { color: #e8eef8; font-weight: 600; }
+    .s-nobuyer { color: var(--dim); font-style: italic; }
     .s-item { cursor: pointer; }
     .s-item:hover { background: rgba(255,255,255,0.08); }
     .s-item.editing { cursor: default; flex-wrap: wrap; }
@@ -788,12 +790,13 @@ function render(){
       const item = document.createElement('div');
       item.className = 's-item';
       item.style.setProperty('--fc', color);
-      const subBits = [flightByKey[t.flight].name];
-      if(p.buyer) subBits.push(p.buyer);
+      const buyerHtml = p.buyer
+        ? `<b class="s-buyer">${p.buyer}</b> · ${flightByKey[t.flight].name}`
+        : `<span class="s-nobuyer">no purchaser yet</span> · ${flightByKey[t.flight].name}`;
       const amtHtml = p.amount != null ? `<span class="s-amt">$${p.amount.toLocaleString()}</span>` : '';
       item.innerHTML = `<span class="s-no">${i+1}</span>
         <span class="s-body"><span class="s-name">${shortLabel(t)}${wild ? ' ★' : ''}</span>
-        <div class="s-sub">${subBits.join(' · ')}</div></span>${amtHtml}`;
+        <div class="s-sub">${buyerHtml}</div></span>${amtHtml}`;
       if(editingIdx === i){
         item.classList.add('editing');
         const ed = document.createElement('div');
