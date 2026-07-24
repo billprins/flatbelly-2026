@@ -1023,6 +1023,27 @@ new ResizeObserver(()=> drawWheel(rot)).observe(canvas);
 
 /* ---------------- boot ---------------- */
 load();
+// One-shot fix via URL: ?rebid=malloy (or ?unsell=malloy / a team number).
+// Un-sells the matched team if it was sold; rebid also puts it straight back
+// on the block. The param is stripped so a refresh doesn't repeat the fix.
+(function(){
+  const qp = new URLSearchParams(location.search);
+  const needle = (qp.get('rebid') || qp.get('unsell') || '').trim().toLowerCase();
+  if(!needle) return;
+  const team = allTeams().find(t => String(t.num) === needle ||
+    t.member.toLowerCase().includes(needle) || t.guest.toLowerCase().includes(needle));
+  if(team){
+    const idx = state.picks.findIndex(p => p.num === team.num);
+    if(idx !== -1){
+      snapshot();
+      state.picks.splice(idx, 1);
+      if(state.phase === 'done') state.phase = 'idle';
+      save();
+    }
+    if(qp.has('rebid') && !pickedSet().has(team.num)) activateFlight(team.flight, team.num);
+  }
+  history.replaceState(null, '', location.pathname);
+})();
 render();
 drawWheel(rot);
 </script>
