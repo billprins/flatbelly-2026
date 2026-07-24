@@ -120,6 +120,9 @@
     .team.pickable .tleader { color: #fff; }
     .team.wildable { cursor: pointer; border-color: var(--wc); box-shadow: 0 0 8px -3px var(--wc); }
     .team.wildable:hover { background: rgba(176,122,232,0.15); }
+    .team.grabbable { cursor: pointer; }
+    .team.grabbable:hover { background: rgba(255,255,255,0.09); border-color: var(--fc); }
+    .team.picked { cursor: pointer; }
     .team.current { background: var(--fc); }
     .team.current .tleader { color: var(--navy); font-weight: 600; }
     .team.picked { opacity: 0.4; }
@@ -135,6 +138,15 @@
     .result-name { font-size: clamp(40px, 9vh, 92px); color: var(--rc, var(--gold)); line-height: 1.05; }
     .result-sub { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: clamp(12px, 1.6vh, 17px); color: var(--mut); margin-top: 0.9rem; }
     #confetti { position: fixed; inset: 0; pointer-events: none; z-index: 60; }
+
+    /* ---------- team edit modal ---------- */
+    .edit-card { text-align: left; cursor: default; padding: 1.8rem 2.2rem; min-width: min(420px, 92vw); animation: pop 0.25s ease; }
+    .ed-grid label { display: block; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--dim); margin-bottom: 12px; }
+    .ed-grid input, .ed-grid select { display: block; width: 100%; margin-top: 5px; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 16px; padding: 8px 10px; border-radius: 8px; border: 1px solid var(--line); background: var(--navy3); color: #fff; outline: none; }
+    .ed-grid input:focus, .ed-grid select:focus { border-color: var(--gold); }
+    .ed-btns { display: flex; justify-content: flex-end; gap: 8px; margin-top: 6px; }
+    .cbtn.ed-save { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.12); }
+    .cbtn.ed-save:hover { background: rgba(201,168,76,0.25); color: var(--gold); }
 
     .done-card { width: 100%; text-align: center; border: 1px solid var(--gold); border-radius: 16px; background: rgba(201,168,76,0.1); padding: 2.2rem 1rem; font-size: clamp(20px, 3.6vh, 40px); color: var(--gold); display: none; }
     body.done .done-card { display: block; }
@@ -201,6 +213,23 @@
       <div class="result-eyebrow">The wheel says</div>
       <div class="result-name" id="resultName"></div>
       <div class="result-sub" id="resultSub"></div>
+    </div>
+  </div>
+
+  <div class="overlay" id="editModal">
+    <div class="result-card edit-card">
+      <div class="result-eyebrow">Edit Team <span id="edNum"></span></div>
+      <div class="ed-grid">
+        <label>Member (Hillwood)<input id="edMember" autocomplete="off"></label>
+        <label>Guest<input id="edGuest" autocomplete="off"></label>
+        <label>Guest Club<input id="edClub" autocomplete="off"></label>
+        <label>Team Index<input id="edHcp" autocomplete="off"></label>
+        <label>Flight<select id="edFlight"></select></label>
+      </div>
+      <div class="ed-btns">
+        <button class="cbtn" id="edCancel">Cancel</button>
+        <button class="cbtn ed-save" id="edSave">Save</button>
+      </div>
     </div>
   </div>
   <canvas id="confetti"></canvas>
@@ -316,6 +345,13 @@ const flightByKey = {}; FLIGHT_DEFS.forEach(f => flightByKey[f.key] = f);
 const teamByNum = {}; TEAMS.forEach(t => teamByNum[t.num] = t);
 function lastName(n){ return n.trim().split(' ').pop(); }
 function shortLabel(t){ return `${lastName(t.member)} / ${lastName(t.guest)}`; }
+// Effective team data: the config above merged with any live edits
+// (double-click a team on the board to change names/club/index/flight).
+function T(num){
+  const o = state.overrides && state.overrides[num];
+  return o ? { ...teamByNum[num], ...o } : teamByNum[num];
+}
+function allTeams(){ return TEAMS.map(t => T(t.num)); }
 
 /* ---------------- state ---------------- */
 // phase: 'idle' | 'flight' | 'wild' | 'done'
@@ -326,10 +362,10 @@ let spinning = false;
 let soundOn = true;
 
 function freshState(){
-  return { phase:'idle', activeFlight:null, spunFlights:[], wildUsed:0, picks:[], current:null };
+  return { phase:'idle', activeFlight:null, spunFlights:[], wildUsed:0, picks:[], current:null, overrides:{} };
 }
 function pickedSet(){ return new Set(state.picks.map(p => p.num)); }
-function unpickedIn(fk){ const ps = pickedSet(); return TEAMS.filter(t => t.flight===fk && !ps.has(t.num)); }
+function unpickedIn(fk){ const ps = pickedSet(); return allTeams().filter(t => t.flight===fk && !ps.has(t.num)); }
 function wheelOptions(){
   const opts = FLIGHT_DEFS.filter(f => !state.spunFlights.includes(f.key))
     .map(f => ({ key:f.key, label:f.name.toUpperCase(), color:f.color }));
@@ -347,6 +383,7 @@ function load(){
     if(!raw) return;
     const d = JSON.parse(raw);
     if(d && d.state && Array.isArray(d.state.picks)) { state = d.state; history = d.history || []; }
+    if(!state.overrides) state.overrides = {}; // states saved before team editing existed
     if(d && typeof d.soundOn === 'boolean') soundOn = d.soundOn;
   } catch(e){}
 }
@@ -522,21 +559,25 @@ function finishSpin(opt){
 
 /* ---------------- auction actions ---------------- */
 // Click a team on the board: puts it up on the block (doesn't sell it).
+// Works on ANY unsold team — clicking outside the active flight switches the
+// auction to that team's flight (manual override; the wheel stays consistent).
 function putUp(num){
-  const t = teamByNum[num];
-  if(!t || spinning || pickedSet().has(num)) return;
-  if(state.phase === 'flight' && t.flight !== state.activeFlight) return;
-  if(state.phase !== 'flight' && state.phase !== 'wild') return;
-  snapshot();
-  state.current = num;
-  save(); render();
+  const t = T(num);
+  if(!t || spinning || pickedSet().has(num) || state.phase === 'done') return;
+  if(state.phase === 'wild' || (state.phase === 'flight' && t.flight === state.activeFlight)){
+    snapshot();
+    state.current = num;
+    save(); render();
+    return;
+  }
+  activateFlight(t.flight, num);
 }
 // SPACE / ENTER: winning bid — sell the team on the block with whatever amount
 // and purchaser are typed in, then bring up the next one.
 function sellCurrent(){
   if(spinning || state.current === null) return;
   if(state.phase !== 'flight' && state.phase !== 'wild') return;
-  const t = teamByNum[state.current];
+  const t = T(state.current);
   if(!t || pickedSet().has(t.num)) return;
   const amtRaw = document.getElementById('amtInput').value;
   const amount = amtRaw === '' ? null : Math.max(0, Math.round(parseFloat(amtRaw)) || 0);
@@ -568,14 +609,14 @@ function advancePhase(){
 }
 // Click a flight header: put that flight on the block manually (host override,
 // no spin needed — also lets you switch flights mid-auction).
-function activateFlight(fk){
+function activateFlight(fk, teamNum){
   if(spinning || state.phase === 'done') return;
-  if(state.phase === 'flight' && state.activeFlight === fk) return;
+  if(state.phase === 'flight' && state.activeFlight === fk && teamNum == null) return;
   const q = unpickedIn(fk);
   if(!q.length) return; // nothing left to sell in that flight
   snapshot();
   // leaving a half-finished flight puts it back on the wheel
-  if(state.phase === 'flight' && state.activeFlight && unpickedIn(state.activeFlight).length){
+  if(state.phase === 'flight' && state.activeFlight !== fk && state.activeFlight && unpickedIn(state.activeFlight).length){
     state.spunFlights = state.spunFlights.filter(k => k !== state.activeFlight);
   }
   // walking away from an unused wild card puts the WILD slice back on the wheel
@@ -583,7 +624,7 @@ function activateFlight(fk){
   if(!state.spunFlights.includes(fk)) state.spunFlights.push(fk);
   state.phase = 'flight';
   state.activeFlight = fk;
-  state.current = q[0].num;
+  state.current = (teamNum != null && q.some(x => x.num === teamNum)) ? teamNum : q[0].num;
   save(); render(); drawWheel(rot);
 }
 function maybeDone(){
@@ -619,7 +660,7 @@ function render(){
   if(auctioning){
     bc.classList.add('show');
     if(state.current !== null){
-      const t = teamByNum[state.current];
+      const t = T(state.current);
       const wild = state.phase === 'wild';
       const color = wild ? WC_COLOR : flightByKey[t.flight].color;
       bc.style.setProperty('--fc', color);
@@ -655,7 +696,7 @@ function render(){
   // ---- board ----
   boardEl.innerHTML = '';
   FLIGHT_DEFS.forEach(f=>{
-    const teams = TEAMS.filter(t => t.flight === f.key);
+    const teams = allTeams().filter(t => t.flight === f.key);
     const remaining = teams.filter(t => !ps.has(t.num)).length;
     const div = document.createElement('div');
     div.className = 'flight';
@@ -685,11 +726,24 @@ function render(){
         el.classList.add(t.num === state.current ? 'current' : 'pickable');
       } else if(!spinning && state.phase === 'wild'){
         el.classList.add(t.num === state.current ? 'current' : 'wildable');
+      } else if(!spinning && state.phase !== 'done'){
+        el.classList.add('grabbable'); // any unsold team can be put up manually
       }
       el.innerHTML = `<span class="tinfo"><span class="tleader">${shortLabel(t)}</span></span>
         <span class="pickno">${picked ? pickNoByNum[t.num] : ''}</span>`;
-      el.title = `${t.member} & ${t.guest} — ${t.club} — team index ${t.hcp}`;
-      el.addEventListener('click', ()=> putUp(t.num));
+      el.title = `${t.member} & ${t.guest} — ${t.club} — index ${t.hcp} · click = on the block · double-click = edit team`;
+      // single click puts the team up; double click edits it. Delay the click
+      // action briefly so a double-click doesn't also fire it.
+      let clickTimer = null;
+      el.addEventListener('click', ()=>{
+        if(clickTimer) clearTimeout(clickTimer);
+        clickTimer = setTimeout(()=>{ clickTimer = null; putUp(t.num); }, 260);
+      });
+      el.addEventListener('dblclick', ev=>{
+        ev.preventDefault();
+        if(clickTimer){ clearTimeout(clickTimer); clickTimer = null; }
+        openEdit(t.num);
+      });
       wrap.appendChild(el);
     });
     boardEl.appendChild(div);
@@ -703,7 +757,7 @@ function render(){
   } else {
     list.innerHTML = '';
     for(let i = state.picks.length - 1; i >= 0; i--){
-      const p = state.picks[i], t = teamByNum[p.num];
+      const p = state.picks[i], t = T(p.num);
       const wild = p.via === 'wild';
       const color = wild ? WC_COLOR : flightByKey[t.flight].color;
       const item = document.createElement('div');
@@ -773,6 +827,65 @@ function render(){
     sub.textContent = n ? `Ready — ${n} slice${n===1?'':'s'} on the wheel. Spin, or click a flight name to start it manually.` : '';
   }
 }
+
+/* ---------------- team edit modal (double-click a team) ---------------- */
+const editModal = document.getElementById('editModal');
+let editTeamNum = null;
+document.getElementById('edFlight').innerHTML =
+  FLIGHT_DEFS.map(f => `<option value="${f.key}">${f.name}</option>`).join('');
+
+function openEdit(num){
+  if(spinning) return;
+  editTeamNum = num;
+  const t = T(num);
+  document.getElementById('edNum').textContent = '#' + num;
+  document.getElementById('edMember').value = t.member;
+  document.getElementById('edGuest').value = t.guest;
+  document.getElementById('edClub').value = t.club;
+  document.getElementById('edHcp').value = t.hcp;
+  document.getElementById('edFlight').value = t.flight;
+  editModal.classList.add('show');
+  document.getElementById('edMember').focus();
+}
+function closeEdit(){ editTeamNum = null; editModal.classList.remove('show'); }
+function saveEdit(){
+  if(editTeamNum === null) return;
+  const base = teamByNum[editTeamNum];
+  const gv = id => document.getElementById(id).value.trim();
+  const vals = {
+    member: gv('edMember') || base.member,
+    guest:  gv('edGuest')  || base.guest,
+    club:   gv('edClub'),
+    hcp:    gv('edHcp'),
+    flight: document.getElementById('edFlight').value,
+  };
+  const o = {};
+  Object.keys(vals).forEach(k => { if(vals[k] !== base[k]) o[k] = vals[k]; });
+  snapshot();
+  if(Object.keys(o).length) state.overrides[editTeamNum] = o;
+  else delete state.overrides[editTeamNum];
+  // keep the auction consistent if the team on the block changed flights
+  if(state.phase === 'flight'){
+    const cur = state.current !== null ? T(state.current) : null;
+    if(cur && cur.flight !== state.activeFlight){
+      const q = unpickedIn(state.activeFlight);
+      state.current = q.length ? q[0].num : null;
+    }
+    if(!unpickedIn(state.activeFlight).length) advancePhase();
+  }
+  closeEdit();
+  save(); render(); drawWheel(rot);
+}
+editModal.addEventListener('click', e => { if(e.target === editModal) closeEdit(); });
+document.getElementById('edCancel').addEventListener('click', closeEdit);
+document.getElementById('edSave').addEventListener('click', saveEdit);
+editModal.querySelectorAll('input, select').forEach(el => {
+  el.addEventListener('keydown', e => {
+    e.stopPropagation();
+    if(e.key === 'Enter') saveEdit();
+    if(e.key === 'Escape') closeEdit();
+  });
+});
 
 /* ---------------- result overlay + confetti ---------------- */
 const overlay = document.getElementById('overlay');
