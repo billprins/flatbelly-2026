@@ -189,6 +189,7 @@
       <div class="ctl">
         <a class="cbtn" href="index.html" style="text-decoration:none;display:inline-flex;align-items:center;">⌂ Flatbelly Home</a>
         <button class="cbtn" id="ownersBtn">💰 Owners</button>
+        <button class="cbtn" id="exportBtn">⬇ Export</button>
         <button class="cbtn" id="soundBtn">🔊 Sound</button>
         <button class="cbtn" id="undoBtn">↩ Undo</button>
         <button class="cbtn" id="fsBtn">⛶ Fullscreen</button>
@@ -1037,6 +1038,26 @@ canvas.addEventListener('click', spin);
 document.getElementById('undoBtn').addEventListener('click', e=>{ undo(); e.currentTarget.blur(); });
 document.getElementById('soundBtn').addEventListener('click', e=>{ soundOn = !soundOn; save(); render(); e.currentTarget.blur(); });
 document.getElementById('ownersBtn').addEventListener('click', e=>{ showOwners = !showOwners; render(); e.currentTarget.blur(); });
+// Export the full auction result (copies to clipboard + downloads a JSON file)
+// so the ownership board can be rebuilt as a shareable page.
+document.getElementById('exportBtn').addEventListener('click', e=>{
+  e.currentTarget.blur();
+  const rows = state.picks.map((p,i)=>{
+    const t = T(p.num);
+    return { pick:i+1, team:p.num, flight:t.flight, member:t.member, guest:t.guest,
+             club:t.club, index:t.hcp, buyer:p.buyer || '', amount:p.amount != null ? p.amount : null };
+  });
+  const text = JSON.stringify({ event:'2026 Flatbelly Calcutta', pot: potTotal(),
+    teamsSold: state.picks.length, results: rows, overrides: state.overrides }, null, 1);
+  try { navigator.clipboard.writeText(text); } catch(err){}
+  try {
+    const blob = new Blob([text], {type:'application/json'});
+    const a = document.createElement('a');
+    a.href = URL.createObjectURL(blob); a.download = 'flatbelly-calcutta-results.json';
+    a.click(); URL.revokeObjectURL(a.href);
+  } catch(err){}
+  alert('Auction results copied to the clipboard (and downloaded as flatbelly-calcutta-results.json).\n\nPaste them into the Claude chat to build the ownership board.');
+});
 document.getElementById('resetBtn').addEventListener('click', e=>{
   e.currentTarget.blur();
   if(!confirm('Reset the whole auction board? This clears every pick and spin.')) return;
