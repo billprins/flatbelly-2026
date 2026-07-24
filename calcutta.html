@@ -607,6 +607,24 @@ function advancePhase(){
   state.current = null;
   state.phase = 'idle';
 }
+// Click a SOLD team: un-sell it (misclick fix) — the pick is removed, later
+// picks renumber, the pot recalculates, and the team can be auctioned again.
+function unsellTeam(num){
+  if(spinning) return;
+  const idx = state.picks.findIndex(p => p.num === num);
+  if(idx === -1) return;
+  const p = state.picks[idx], t = T(num);
+  let detail = '';
+  if(p.amount != null && p.buyer) detail = ` (sold to ${p.buyer} for $${p.amount.toLocaleString()})`;
+  else if(p.buyer) detail = ` (sold to ${p.buyer})`;
+  else if(p.amount != null) detail = ` (sold for $${p.amount.toLocaleString()})`;
+  if(!confirm(`Put ${shortLabel(t)} back up for auction${detail}? Pick #${idx+1} is removed and later picks renumber.`)) return;
+  snapshot();
+  state.picks.splice(idx, 1);
+  if(state.phase === 'done') state.phase = 'idle';
+  editingIdx = null;
+  save(); render(); drawWheel(rot);
+}
 // Click a flight header: put that flight on the block manually (host override,
 // no spin needed — also lets you switch flights mid-auction).
 function activateFlight(fk, teamNum){
@@ -731,13 +749,20 @@ function render(){
       }
       el.innerHTML = `<span class="tinfo"><span class="tleader">${shortLabel(t)}</span></span>
         <span class="pickno">${picked ? pickNoByNum[t.num] : ''}</span>`;
-      el.title = `${t.member} & ${t.guest} — ${t.club} — index ${t.hcp} · click = on the block · double-click = edit team`;
-      // single click puts the team up; double click edits it. Delay the click
-      // action briefly so a double-click doesn't also fire it.
+      el.title = picked
+        ? `${t.member} & ${t.guest} — ${t.club} — index ${t.hcp} · click = un-sell (back up for auction) · double-click = edit team`
+        : `${t.member} & ${t.guest} — ${t.club} — index ${t.hcp} · click = on the block · double-click = edit team`;
+      // single click puts the team up (or un-sells a sold one); double click
+      // edits it. Delay the click action briefly so a double-click doesn't
+      // also fire it.
       let clickTimer = null;
       el.addEventListener('click', ()=>{
         if(clickTimer) clearTimeout(clickTimer);
-        clickTimer = setTimeout(()=>{ clickTimer = null; putUp(t.num); }, 260);
+        clickTimer = setTimeout(()=>{
+          clickTimer = null;
+          if(pickedSet().has(t.num)) unsellTeam(t.num);
+          else putUp(t.num);
+        }, 260);
       });
       el.addEventListener('dblclick', ev=>{
         ev.preventDefault();
