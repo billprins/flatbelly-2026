@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Calcutta — The 2026 Flatbelly</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0d1728; --navy2: #152035; --navy3: #08111e; --line: #1e3050;
+    --gold: #C9A84C; --pink: #e87ab8; --mut: #7a8faf; --dim: #5a7090; --wc: #b07ae8;
+  }
+  body { background: var(--navy); font-family: Georgia, 'Times New Roman', serif; color: #fff; padding-bottom: 3rem; }
+  .hero-stripe { height: 6px; background: linear-gradient(90deg, var(--gold) 60%, var(--pink)); }
+  .nav { background: var(--navy3); border-bottom: 1px solid var(--line); padding: 0.5rem 1rem; text-align: center; }
+  .nav a { display: inline-block; padding: 5px 10px; margin: 0 1px; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; color: var(--mut); text-decoration: none; border-radius: 6px; text-transform: uppercase; letter-spacing: 0.07em; }
+  .nav a:hover { background: var(--navy2); color: #c8d4e8; }
+  .nav a.active { color: var(--gold); background: rgba(201,168,76,0.1); border: 1px solid rgba(201,168,76,0.3); }
+  .hero-inner { padding: 2rem 1.5rem 1.4rem; text-align: center; border-bottom: 1px solid var(--gold); }
+  .hero-eyebrow { font-size: 11px; letter-spacing: 0.18em; color: var(--gold); font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 500; text-transform: uppercase; margin-bottom: 0.5rem; }
+  .hero-title { font-size: clamp(26px, 4vw, 38px); font-weight: normal; letter-spacing: 0.02em; margin-bottom: 0.3rem; }
+  .hero-title span { color: var(--gold); }
+  .hero-sub { font-size: 13px; color: var(--mut); font-family: 'Helvetica Neue', Arial, sans-serif; margin-bottom: 1.1rem; }
+  .hero-pot { font-size: clamp(40px, 7vw, 64px); color: var(--gold); line-height: 1; margin-bottom: 0.3rem; }
+  .hero-pot-lbl { font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--dim); font-family: 'Helvetica Neue', Arial, sans-serif; margin-bottom: 1.1rem; }
+  .hero-badges { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
+  .hbadge { font-size: 11px; padding: 4px 12px; border-radius: 20px; font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 500; border: 1px solid rgba(201,168,76,0.4); color: var(--gold); background: rgba(201,168,76,0.08); }
+  .hbadge.muted { border-color: rgba(255,255,255,0.15); color: #8fa3c0; background: rgba(255,255,255,0.05); }
+  .hbadge.pink { border-color: rgba(232,122,184,0.5); color: var(--pink); background: rgba(232,122,184,0.08); }
+  .content { max-width: 1080px; margin: 0 auto; padding: 1.5rem 1rem; }
+  .sec-head { display: flex; align-items: center; gap: 10px; margin: 1.6rem 0 0.8rem; padding-bottom: 8px; border-bottom: 1px solid var(--line); }
+  .sec { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 500; white-space: nowrap; }
+  .sec-line { flex: 1; height: 1px; background: var(--line); }
+
+  .pay-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px; }
+  .pay-card { background: var(--navy2); border: 1px solid var(--line); border-radius: 10px; padding: 1rem 1.2rem; }
+  .pay-card.gold { border-color: rgba(201,168,76,0.6); }
+  .pay-card.pinkb { border-color: rgba(232,122,184,0.55); }
+  .pay-pct { font-size: 30px; color: var(--gold); font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 600; line-height: 1; }
+  .pay-card.pinkb .pay-pct { color: var(--pink); }
+  .pay-lbl { font-size: 14px; margin: 6px 0 4px; }
+  .pay-sub { font-size: 11.5px; color: var(--mut); font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.55; }
+  .pay-sub b { color: #c8d4e8; font-weight: 500; }
+
+  .own-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(215px, 1fr)); gap: 10px; }
+  .own-card { background: var(--navy2); border: 1px solid var(--line); border-radius: 10px; padding: 0.85rem 1rem; }
+  .own-name { font-size: 16px; color: #fff; margin-bottom: 2px; }
+  .own-spend { font-size: 20px; color: var(--gold); font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 600; }
+  .own-count { font-size: 11px; color: var(--dim); font-family: 'Helvetica Neue', Arial, sans-serif; margin-bottom: 6px; }
+  .own-teams { font-size: 11px; color: var(--mut); font-family: 'Helvetica Neue', Arial, sans-serif; line-height: 1.6; }
+  .own-teams b { color: #c8d4e8; font-weight: 500; }
+
+  .fl-sec { background: var(--navy2); border: 1px solid var(--line); border-radius: 10px; overflow: hidden; margin-bottom: 0.9rem; }
+  .fl-head { display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap; padding: 0.65rem 1rem; border-bottom: 1px solid var(--line); background: rgba(0,0,0,0.22); }
+  .fl-name { font-size: 18px; color: var(--fc); }
+  .fl-pool { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 12px; color: var(--mut); }
+  .fl-pool b { color: var(--gold); font-weight: 600; font-size: 14px; }
+  .fl-pays { margin-left: auto; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; color: var(--dim); }
+  .fl-pays b { color: #c8d4e8; font-weight: 500; }
+  table.bt { width: 100%; border-collapse: collapse; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 13px; }
+  .bt th { text-align: left; padding: 6px 10px; font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: #3a5070; border-bottom: 1px solid var(--line); font-weight: 500; }
+  .bt th.r, .bt td.r { text-align: right; }
+  .bt td { padding: 7px 10px; border-bottom: 1px solid #111e30; color: #8fa3c0; vertical-align: middle; }
+  .bt tr:last-child td { border-bottom: none; }
+  .bt tr:hover td { background: #192840; }
+  .bt .team-n { color: #e8eef8; font-size: 14px; }
+  .bt .club { font-size: 11px; color: var(--dim); }
+  .bt .owner { color: var(--gold); font-weight: 500; }
+  .bt .owner.none { color: var(--dim); font-weight: 400; font-style: italic; }
+  .bt .price { color: #c8d4e8; font-weight: 600; }
+  .bt .pts { font-weight: 600; color: #c8d4e8; }
+  .fn { font-size: 11px; color: var(--dim); font-family: 'Helvetica Neue', Arial, sans-serif; margin: 0.8rem 0 0; line-height: 1.6; }
+  .footer { text-align: center; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 11px; color: var(--dim); margin-top: 2.5rem; line-height: 1.8; }
+  .footer a { color: var(--mut); }
+  .pending { text-align: center; border: 1px dashed var(--line); border-radius: 10px; padding: 1.6rem 1rem; font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 13px; color: var(--dim); }
+</style>
+</head>
+<body>
+<div class="hero-stripe"></div>
+<nav class="nav">
+  <a href="index.html">Home</a><a href="schedule.html">Schedule</a><a href="format.html">Format</a><a href="field.html">Field</a><a href="prizes.html">Prizes</a><a href="practice.html">Practice</a><a href="calcutta.html" class="active">Calcutta</a><a href="party.html">Party ✦</a><a href="course.html">Course</a><a href="guests.html">Guests</a><a href="history.html">History</a><a href="photos.html">Photos</a><a href="https://hcc-2026flatbelly.golfgenius.com" target="_blank" rel="noopener" style="color:var(--gold);">⛳ Golf Genius</a>
+</nav>
+
+<div class="hero-inner">
+  <div class="hero-eyebrow">Hillwood Country Club · The 2026 Flatbelly · Auctioned July 23</div>
+  <div class="hero-title">The Calcutta <span>Board</span></div>
+  <div class="hero-sub">Every team sold in the Men's Grill — now the sweat begins</div>
+  <div class="hero-pot" id="heroPot">$—</div>
+  <div class="hero-pot-lbl">Total Pot</div>
+  <div class="hero-badges">
+    <span class="hbadge" id="bTeams">66 Teams</span>
+    <span class="hbadge muted">11 Flights</span>
+    <span class="hbadge muted" id="bOwners">— Owners</span>
+    <span class="hbadge pink">🏆 Shootout Saturday ~3 PM</span>
+  </div>
+</div>
+
+<div class="content">
+
+  <div class="sec-head"><span class="sec">Payout structure</span><div class="sec-line"></div></div>
+  <div class="pay-grid">
+    <div class="pay-card gold"><div class="pay-pct">60%</div><div class="pay-lbl">Flight Winner</div>
+      <div class="pay-sub">60% of that flight's auction pool to the owner of each of the <b>11 flight winners</b> (five 9-hole round-robin matches, most points wins the flight).</div></div>
+    <div class="pay-card gold"><div class="pay-pct">30%</div><div class="pay-lbl">Flight Runner-Up</div>
+      <div class="pay-sub">30% of the flight pool to the owner of <b>second place</b> in each flight.</div></div>
+    <div class="pay-card pinkb"><div class="pay-pct">10%</div><div class="pay-lbl">Overall Champion</div>
+      <div class="pay-sub">10% of every flight pool — <b id="overallPrize">$—</b> total — to the owner of the team that survives the <b>Championship Shootout</b> and takes the Pink Jacket.</div></div>
+  </div>
+
+  <div class="sec-head"><span class="sec">The stables · who owns whom</span><div class="sec-line"></div></div>
+  <div class="own-grid" id="ownGrid"><div class="pending" style="grid-column:1/-1;">Owners post when the auction results are entered.</div></div>
+
+  <div class="sec-head"><span class="sec">The board · all 66 teams by flight</span><div class="sec-line"></div></div>
+  <div id="flightsWrap"></div>
+  <div class="fn">Match points: 10 per 9-hole match — 1 per hole won, ½ per halved hole, 1 for the match, ½ for a halved match. Flight standings update as Friday and Saturday results post. Flight winner advances to Saturday's 14-team Championship Shootout (11 winners + 3 wildcards, alternate-shot sudden death).</div>
+
+  <div class="footer">
+    Hillwood Country Club · Nashville, TN · The 2026 Flatbelly Calcutta<br>
+    <a href="wheel.html">Auction-night wheel &amp; sale record</a> · <a href="https://hcc-2026flatbelly.golfgenius.com" target="_blank" rel="noopener">Live scoring on Golf Genius</a>
+  </div>
+</div>
+
+<script>
+/* ============================================================================
+   DATA — paste zone.
+   RESULTS comes straight from the auction wheel's ⬇ Export button (the JSON it
+   copies/downloads). MATCH_POINTS is filled by hand as matches complete:
+   team number -> total match points.
+   ========================================================================== */
+const RESULTS = null; /* <- replace null with the exported JSON object */
+const MATCH_POINTS = {}; // e.g. {1: 7.5, 2: 6, ...} — fills in Friday/Saturday
+
+const FLIGHT_DEFS = [
+  { key:'1',  name:'Flight 1',  color:'#C9A84C' },
+  { key:'2',  name:'Flight 2',  color:'#4fc87a' },
+  { key:'3',  name:'Flight 3',  color:'#7acce8' },
+  { key:'4',  name:'Flight 4',  color:'#e08a5a' },
+  { key:'5',  name:'Flight 5',  color:'#e87ab8' },
+  { key:'6',  name:'Flight 6',  color:'#4ec9b0' },
+  { key:'7',  name:'Flight 7',  color:'#e05a5a' },
+  { key:'8',  name:'Flight 8',  color:'#d8c86a' },
+  { key:'9',  name:'Flight 9',  color:'#6a8ae8' },
+  { key:'10', name:'Flight 10', color:'#a8e86a' },
+  { key:'11', name:'Flight 11', color:'#e8e8e8' },
+];
+const TEAMS = [
+  {flight:'1',  num:1,  member:"Chris Morris",       guest:"Gray Hunter",        club:"Tucson CC",             hcp:"+2.2"},
+  {flight:'1',  num:2,  member:"Eddie Ryan",         guest:"Kevin Ryan",         club:"Richland CC",           hcp:"+2.1"},
+  {flight:'1',  num:3,  member:"Nathaniel Beaver",   guest:"Drew Jones",         club:"Club TBA",              hcp:"+1.6"},
+  {flight:'1',  num:4,  member:"Roe Moore",          guest:"Will Robson",        club:"Coldstream CC",         hcp:"0.7"},
+  {flight:'1',  num:5,  member:"Curt Casali",        guest:"Kevin Wilson",       club:"Golf Club of TN",       hcp:"3.9"},
+  {flight:'1',  num:6,  member:"Sean Buck",          guest:"Warren Goodrich",    club:"Richland CC",           hcp:"6.4"},
+  {flight:'2',  num:7,  member:"Cris Goddard",       guest:"Clay Goddard",       club:"Horseshoe Bend CC",     hcp:"6.5"},
+  {flight:'2',  num:8,  member:"Josh Robinson",      guest:"Luke Fredrickson",   club:"Towhee Club",           hcp:"6.7"},
+  {flight:'2',  num:9,  member:"Jonathan Williams",  guest:"Matt McGill",        club:"The Club at Olde Stone",hcp:"8.0"},
+  {flight:'2',  num:10, member:"Morgan Anderson",    guest:"Justin Hill",        club:"Golden Eagle GC",       hcp:"8.3"},
+  {flight:'2',  num:11, member:"Mike Hassen",        guest:"Clay Bentley",       club:"NCGA",                  hcp:"8.6"},
+  {flight:'2',  num:12, member:"Brandon Bannock",    guest:"William Mayfield",   club:"Brentwood CC",          hcp:"9.1"},
+  {flight:'3',  num:13, member:"Nate Fend",          guest:"David Lubnik",       club:"Richland CC",           hcp:"9.2"},
+  {flight:'3',  num:14, member:"Kyle Strongin",      guest:"Logan Young",        club:"Towhee Club",           hcp:"10.4"},
+  {flight:'3',  num:15, member:"Patrick Baird",      guest:"Matt Ruppenthal",    club:"TGA",                   hcp:"11.1"},
+  {flight:'3',  num:16, member:"Evan Malone",        guest:"Colin Anthony",      club:"The Grove",             hcp:"11.6"},
+  {flight:'3',  num:17, member:"Billy May",          guest:"Alan Kirby",         club:"Westhaven GC",          hcp:"12.1"},
+  {flight:'3',  num:18, member:"Ryan Youngerman",    guest:"Cole Blassey",       club:"Hedingham GC",          hcp:"12.6"},
+  {flight:'4',  num:19, member:"Jay Fulmer",         guest:"David Tudor",        club:"Belle Meade CC",        hcp:"13.2"},
+  {flight:'4',  num:20, member:"Kevin Murphy",       guest:"Brian Urness",       club:"Spring Hill GC",        hcp:"13.2"},
+  {flight:'4',  num:21, member:"Zachary Hall",       guest:"Landon Meier",       club:"Old Natchez",           hcp:"14.0"},
+  {flight:'4',  num:22, member:"Walker Cox",         guest:"Jody Glover",        club:"TGA",                   hcp:"14.5"},
+  {flight:'4',  num:23, member:"Lee Lewis",          guest:"Will Peffen",        club:"TGA",                   hcp:"14.6"},
+  {flight:'4',  num:24, member:"Jim Jacobs",         guest:"Jonathan Harris",    club:"Belle Meade CC",        hcp:"14.7"},
+  {flight:'5',  num:25, member:"Tyler Pinson",       guest:"Cam Arnold",         club:"Old Natchez",           hcp:"14.9"},
+  {flight:'5',  num:26, member:"Will Hatfield",      guest:"Mark Butrico",       club:"GAP GC",                hcp:"15.2"},
+  {flight:'5',  num:27, member:"Michael Bash",       guest:"Brad Price",         club:"Indian Hills CC",       hcp:"15.3"},
+  {flight:'5',  num:28, member:"Rob Leathers",       guest:"Kerry Oakley",       club:"Belle Meade CC",        hcp:"15.6"},
+  {flight:'5',  num:29, member:"Kellen Moore",       guest:"Clint Ing",          club:"Legacy Golf Club",      hcp:"15.9"},
+  {flight:'5',  num:30, member:"Matthew VanArsdale", guest:"Justin Smith",       club:"Links at Stono Ferry",  hcp:"15.9"},
+  {flight:'6',  num:31, member:"Clark Malloy",       guest:"Daniel Byrd",        club:"Greystone G&CC",        hcp:"16.2"},
+  {flight:'6',  num:32, member:"Edward Poirier",     guest:"Julian Scruggs",     club:"Belle Meade CC",        hcp:"16.4"},
+  {flight:'6',  num:33, member:"Chris Fowler",       guest:"Clay Fowler",        club:"Jackson CC",            hcp:"16.6"},
+  {flight:'6',  num:34, member:"Cary Leaman",        guest:"Joe Cox",            club:"Richland CC",           hcp:"16.6"},
+  {flight:'6',  num:35, member:"Andrew Quinn",       guest:"Richard Howell",     club:"TGA",                   hcp:"16.8"},
+  {flight:'6',  num:36, member:"Nick Harb",          guest:"Andrew Moreton",     club:"Richland CC",           hcp:"16.9"},
+  {flight:'7',  num:37, member:"Mitch Carrington",   guest:"Sam Baber",          club:"CC of Little Rock",     hcp:"17.7"},
+  {flight:'7',  num:38, member:"Will David Coleman", guest:"Caleb Morris",       club:"Grasslands Club",       hcp:"17.8"},
+  {flight:'7',  num:39, member:"Pete Arsenault",     guest:"David Taylor",       club:"TGA",                   hcp:"18.3"},
+  {flight:'7',  num:40, member:"Adam Burke",         guest:"Brandon Johnson",    club:"TGA",                   hcp:"18.5"},
+  {flight:'7',  num:41, member:"Andrew Kelly",       guest:"Cody Eaton",         club:"Temple Hills Club",     hcp:"18.7"},
+  {flight:'7',  num:42, member:"Jim Hughes",         guest:"Grant Fee",          club:"FSGA",                  hcp:"19.6"},
+  {flight:'8',  num:43, member:"Michael Ribas",      guest:"Matt Cooper",        club:"TGA",                   hcp:"19.9"},
+  {flight:'8',  num:44, member:"Nathan Lyons",       guest:"Jeremy Lyons",       club:"Old Natchez",           hcp:"20.1"},
+  {flight:'8',  num:45, member:"Peter Casey",        guest:"William Carpenter",  club:"Richland CC",           hcp:"20.3"},
+  {flight:'8',  num:46, member:"Shaun Bivens",       guest:"Michael Brumm",      club:"Belleair CC",           hcp:"20.6"},
+  {flight:'8',  num:47, member:"Dan Martin",         guest:"Thomas Pilcher",     club:"Lakewood GC",           hcp:"20.6"},
+  {flight:'8',  num:48, member:"Brian Tolbert",      guest:"Colin Crosby",       club:"Belle Meade CC",        hcp:"20.7"},
+  {flight:'9',  num:49, member:"Tyler Augusty",      guest:"Bryan Schivera",     club:"Savannah GC",           hcp:"22.0"},
+  {flight:'9',  num:50, member:"Ben Wagonfield",     guest:"Michael Streams",    club:"TGA",                   hcp:"22.1"},
+  {flight:'9',  num:51, member:"Travis Hollett",     guest:"Ben Flick",          club:"McCabe GC",             hcp:"22.6"},
+  {flight:'9',  num:52, member:"Brent Blackburn",    guest:"David Schadel",      club:"Old Natchez",           hcp:"24.3"},
+  {flight:'9',  num:53, member:"Reece Lovell",       guest:"Jake Ogle",          club:"Cherokee CC",           hcp:"24.8"},
+  {flight:'9',  num:54, member:"Blake Wilson",       guest:"Richard Jacques",    club:"Belle Meade CC",        hcp:"26.4"},
+  {flight:'10', num:55, member:"Raoul Richardson",   guest:"Chase Miller",       club:"Belle Meade CC",        hcp:"27.2"},
+  {flight:'10', num:56, member:"Jason Roberson",     guest:"David Pemberton",    club:"Brentwood CC",          hcp:"28.0"},
+  {flight:'10', num:57, member:"Nick Reasoner",      guest:"Scott Houdek",       club:"Glenview Park GC",      hcp:"28.2"},
+  {flight:'10', num:58, member:"Russell Riebeling",  guest:"Daniel Terrell",     club:"Ted Rhodes",            hcp:"29.7"},
+  {flight:'10', num:59, member:"Greg Schiefer",      guest:"Cochrane Jamison",   club:"TGA",                   hcp:"30.2"},
+  {flight:'10', num:60, member:"Lee White",          guest:"Davis Bond",         club:"Masters Club",          hcp:"30.8"},
+  {flight:'11', num:61, member:"Zack Samples",       guest:"Andrew Walker",      club:"Gaylord Springs",       hcp:"32.7"},
+  {flight:'11', num:62, member:"Frederick Grace",    guest:"Kevin Galligan",     club:"Meadow Brook Club",     hcp:"33.0"},
+  {flight:'11', num:63, member:"Jeremy Hutzel",      guest:"David Hutzel",       club:"GSGA",                  hcp:"33.4"},
+  {flight:'11', num:64, member:"Clint Cady",         guest:"Nick Nicholson",     club:"Lexington CC",          hcp:"37.3"},
+  {flight:'11', num:65, member:"William Prins",      guest:"Jimmy Magic",        club:"Club TBA",              hcp:"29.4"},
+  {flight:'11', num:66, member:"Steven Ludlam",      guest:"Thomas Sinowski",    club:"GSGA",                  hcp:"42.0"},
+];
+/* ========================== end of data ==================================== */
+
+const flightByKey = {}; FLIGHT_DEFS.forEach(f => flightByKey[f.key] = f);
+function lastName(n){ return n.trim().split(' ').pop(); }
+
+// Merge auction results (and any team edits made during the auction) onto the roster.
+const saleByNum = {};
+if(RESULTS && Array.isArray(RESULTS.results)){
+  RESULTS.results.forEach(r => saleByNum[r.team] = r);
+}
+const board = TEAMS.map(t => {
+  const o = RESULTS && RESULTS.overrides && RESULTS.overrides[t.num];
+  const s = saleByNum[t.num];
+  return { ...t, ...(o || {}),
+    owner: s && s.buyer ? s.buyer : null,
+    price: s && s.amount != null ? s.amount : null,
+    points: MATCH_POINTS[t.num] != null ? MATCH_POINTS[t.num] : null };
+});
+const POT = board.reduce((s,t)=> s + (t.price || 0), 0);
+
+// hero
+document.getElementById('heroPot').textContent = POT ? '$' + POT.toLocaleString() : '$—';
+document.getElementById('overallPrize').textContent = POT ? '$' + Math.round(POT*0.10).toLocaleString() : '$—';
+const ownerNames = [...new Set(board.filter(t=>t.owner).map(t=>t.owner))];
+document.getElementById('bOwners').textContent = ownerNames.length ? ownerNames.length + ' Owners' : '— Owners';
+
+// stables
+if(ownerNames.length){
+  const byOwner = {};
+  board.forEach(t => { if(t.owner){ (byOwner[t.owner] = byOwner[t.owner] || []).push(t); } });
+  const rows = Object.entries(byOwner)
+    .map(([name, ts]) => ({ name, ts, spend: ts.reduce((s,t)=> s + (t.price||0), 0) }))
+    .sort((a,b)=> b.spend - a.spend);
+  document.getElementById('ownGrid').innerHTML = rows.map(o => `
+    <div class="own-card">
+      <div class="own-name">${o.name}</div>
+      <div class="own-spend">$${o.spend.toLocaleString()}</div>
+      <div class="own-count">${o.ts.length} team${o.ts.length===1?'':'s'}</div>
+      <div class="own-teams">${o.ts.map(t => `<b>${lastName(t.member)} / ${lastName(t.guest)}</b> <span style="color:#4a6080">F${t.flight}${t.price!=null ? ' · $'+t.price.toLocaleString() : ''}</span>`).join('<br>')}</div>
+    </div>`).join('');
+}
+
+// flights
+document.getElementById('flightsWrap').innerHTML = FLIGHT_DEFS.map(f => {
+  const ts = board.filter(t => t.flight === f.key);
+  const anyPoints = ts.some(t => t.points != null);
+  const rows = anyPoints
+    ? ts.slice().sort((a,b)=> (b.points||0) - (a.points||0))
+    : ts;
+  const pool = ts.reduce((s,t)=> s + (t.price||0), 0);
+  return `<div class="fl-sec" style="--fc:${f.color}">
+    <div class="fl-head">
+      <span class="fl-name">${f.name}</span>
+      <span class="fl-pool">Pool <b>${pool ? '$'+pool.toLocaleString() : '$—'}</b></span>
+      <span class="fl-pays">Winner <b>${pool ? '$'+Math.round(pool*0.6).toLocaleString() : '—'}</b> · Runner-up <b>${pool ? '$'+Math.round(pool*0.3).toLocaleString() : '—'}</b> · to the Jacket pool <b>${pool ? '$'+Math.round(pool*0.1).toLocaleString() : '—'}</b></span>
+    </div>
+    <table class="bt">
+      <thead><tr><th>Team</th><th>Guest club</th><th class="r">Index</th><th>Owner</th><th class="r">Price</th><th class="r">Match pts</th></tr></thead>
+      <tbody>${rows.map(t => `
+        <tr>
+          <td><span class="team-n">${t.member} &amp; ${t.guest}</span></td>
+          <td><span class="club">${t.club}</span></td>
+          <td class="r">${t.hcp}</td>
+          <td>${t.owner ? `<span class="owner">${t.owner}</span>` : '<span class="owner none">—</span>'}</td>
+          <td class="r">${t.price != null ? `<span class="price">$${t.price.toLocaleString()}</span>` : '—'}</td>
+          <td class="r">${t.points != null ? `<span class="pts">${t.points}</span>` : '<span style="color:#2e4260">·</span>'}</td>
+        </tr>`).join('')}</tbody>
+    </table>
+  </div>`;
+}).join('');
+</script>
+</body>
+</html>
