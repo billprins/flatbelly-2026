@@ -156,8 +156,24 @@
     .cbtn.ed-save { border-color: var(--gold); color: var(--gold); background: rgba(201,168,76,0.12); }
     .cbtn.ed-save:hover { background: rgba(201,168,76,0.25); color: var(--gold); }
 
-    .done-card { width: 100%; text-align: center; border: 1px solid var(--gold); border-radius: 16px; background: rgba(201,168,76,0.1); padding: 2.2rem 1rem; font-size: clamp(20px, 3.6vh, 40px); color: var(--gold); display: none; }
+    .done-card { width: 100%; text-align: center; border: 1px solid var(--gold); border-radius: 16px; background: rgba(201,168,76,0.1); padding: 1.4rem 1rem; font-size: clamp(18px, 3vh, 34px); color: var(--gold); display: none; }
     body.done .done-card { display: block; }
+
+    /* ---------- owner settlement ---------- */
+    .owners-card { display: none; width: 100%; border: 1px solid var(--gold); border-radius: 14px; background: var(--navy2); overflow: hidden; }
+    .owners-card.show { display: block; }
+    body.owners-open .wheel-zone { display: none; }
+    .oc-head { display: flex; justify-content: space-between; align-items: center; padding: 0.7rem 1.1rem; border-bottom: 1px solid var(--gold); font-family: Georgia, serif; font-size: clamp(15px, 2.2vh, 22px); color: var(--gold); }
+    .oc-head span:last-child { font-family: 'Helvetica Neue', Arial, sans-serif; font-weight: 600; }
+    .oc-list { max-height: 62vh; overflow-y: auto; }
+    .oc-row { display: flex; align-items: center; gap: 12px; padding: 0.55rem 1.1rem; border-bottom: 1px solid var(--line); }
+    .oc-row:last-child { border-bottom: none; }
+    .oc-rank { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: clamp(11px, 1.5vh, 15px); color: var(--dim); min-width: 22px; text-align: right; }
+    .oc-owner { flex: 1; min-width: 0; }
+    .oc-name { font-size: clamp(16px, 2.4vh, 26px); color: #fff; }
+    .oc-teams { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: clamp(9px, 1.2vh, 12px); color: var(--dim); margin-top: 2px; line-height: 1.5; }
+    .oc-total { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: clamp(18px, 2.8vh, 30px); font-weight: 600; color: var(--gold); flex-shrink: 0; }
+    .oc-count { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: clamp(9px, 1.2vh, 12px); color: var(--dim); text-align: right; }
   </style>
 </head>
 <body>
@@ -172,6 +188,7 @@
       <div class="pickcount"><div class="n" id="pickN">0 / 66</div><div class="l">Teams Sold</div></div>
       <div class="ctl">
         <a class="cbtn" href="index.html" style="text-decoration:none;display:inline-flex;align-items:center;">⌂ Flatbelly Home</a>
+        <button class="cbtn" id="ownersBtn">💰 Owners</button>
         <button class="cbtn" id="soundBtn">🔊 Sound</button>
         <button class="cbtn" id="undoBtn">↩ Undo</button>
         <button class="cbtn" id="fsBtn">⛶ Fullscreen</button>
@@ -202,6 +219,10 @@
         <div class="bc-hint" id="bcHint"></div>
       </div>
       <div class="done-card">🏆 That's the board — all 66 teams sold.<br><span style="font-size:0.55em;color:var(--mut);font-family:'Helvetica Neue',Arial,sans-serif;">See you Saturday at the shootout.</span></div>
+      <div class="owners-card" id="ownersCard">
+        <div class="oc-head"><span>💰 Owner Settlement — Who Owes What</span><span id="ocPot"></span></div>
+        <div class="oc-list" id="ownersList"></div>
+      </div>
       <div class="wheel-zone">
         <div class="wheel-wrap">
           <div class="pointer"></div>
@@ -657,6 +678,7 @@ function activateFlight(fk, teamNum){
 function maybeDone(){
   if(TEAMS.every(t => pickedSet().has(t.num))){
     state.phase = 'done'; state.activeFlight = null; state.current = null;
+    showOwners = true; // straight to settlement
   }
 }
 
@@ -666,6 +688,18 @@ let lastBlockTeam = null; // clears the sale inputs when a new team comes up
 let editingIdx = null;    // stream row being edited (transient)
 
 function potTotal(){ return state.picks.reduce((s,p)=> s + (p.amount || 0), 0); }
+let showOwners = false; // owner settlement panel (auto-opens when the board is done)
+function ownerTotals(){
+  const map = {};
+  state.picks.forEach(p=>{
+    const t = T(p.num);
+    const key = (p.buyer || '').trim() || '— no purchaser entered —';
+    if(!map[key]) map[key] = { total: 0, teams: [] };
+    map[key].total += p.amount || 0;
+    map[key].teams.push(`${shortLabel(t)}${p.amount != null ? ' $' + p.amount.toLocaleString() : ' ($?)'}`);
+  });
+  return Object.entries(map).sort((a,b)=> b[1].total - a[1].total);
+}
 function buyersSeen(){
   const out = [];
   state.picks.forEach(p => { if(p.buyer && !out.includes(p.buyer)) out.push(p.buyer); });
@@ -853,6 +887,24 @@ function render(){
     </div>`;
   }).join('');
 
+  // ---- owner settlement panel ----
+  document.body.classList.toggle('owners-open', showOwners);
+  const oCard = document.getElementById('ownersCard');
+  oCard.classList.toggle('show', showOwners);
+  if(showOwners){
+    document.getElementById('ocPot').textContent = 'Pot $' + potTotal().toLocaleString();
+    const rows = ownerTotals();
+    document.getElementById('ownersList').innerHTML = rows.length
+      ? rows.map(([name, o], i) => `<div class="oc-row">
+          <span class="oc-rank">${i+1}</span>
+          <span class="oc-owner"><span class="oc-name">${name}</span>
+            <div class="oc-teams">${o.teams.join(' · ')}</div></span>
+          <span style="text-align:right;"><div class="oc-total">$${o.total.toLocaleString()}</div>
+            <div class="oc-count">${o.teams.length} team${o.teams.length===1?'':'s'}</div></span>
+        </div>`).join('')
+      : '<div class="oc-row"><span class="oc-owner"><span class="oc-name" style="color:var(--dim);font-size:15px;">Nothing sold yet.</span></span></div>';
+  }
+
   // ---- counts + controls ----
   document.getElementById('pickN').textContent = `${state.picks.length} / ${TEAMS.length}`;
   document.getElementById('potN').textContent = '$' + potTotal().toLocaleString();
@@ -984,6 +1036,7 @@ document.getElementById('spinBtn').addEventListener('click', spin);
 canvas.addEventListener('click', spin);
 document.getElementById('undoBtn').addEventListener('click', e=>{ undo(); e.currentTarget.blur(); });
 document.getElementById('soundBtn').addEventListener('click', e=>{ soundOn = !soundOn; save(); render(); e.currentTarget.blur(); });
+document.getElementById('ownersBtn').addEventListener('click', e=>{ showOwners = !showOwners; render(); e.currentTarget.blur(); });
 document.getElementById('resetBtn').addEventListener('click', e=>{
   e.currentTarget.blur();
   if(!confirm('Reset the whole auction board? This clears every pick and spin.')) return;
@@ -1023,6 +1076,7 @@ new ResizeObserver(()=> drawWheel(rot)).observe(canvas);
 
 /* ---------------- boot ---------------- */
 load();
+if(state.phase === 'done') showOwners = true; // board finished — open settlement on load
 // One-shot fix via URL: ?rebid=malloy (or ?unsell=malloy / a team number).
 // Un-sells the matched team if it was sold; rebid also puts it straight back
 // on the block. The param is stripped so a refresh doesn't repeat the fix.
