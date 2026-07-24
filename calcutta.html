@@ -102,6 +102,8 @@
     .flight.active { border-color: var(--fc); box-shadow: 0 0 0 1px var(--fc), 0 0 26px -8px var(--fc); }
     .flight.spent { opacity: 0.5; }
     .fl-head { display: flex; align-items: center; justify-content: space-between; gap: 6px; padding: 0.4rem 0.65rem; border-bottom: 1px solid var(--line); background: rgba(0,0,0,0.22); }
+    .fl-head.clickable { cursor: pointer; }
+    .fl-head.clickable:hover { background: rgba(255,255,255,0.09); box-shadow: inset 0 0 0 1px var(--fc); }
     .fl-name { font-size: clamp(12px, 1.5vh, 16px); color: var(--fc); }
     .fl-tag { font-family: 'Helvetica Neue', Arial, sans-serif; font-size: 8px; letter-spacing: 0.1em; text-transform: uppercase; padding: 2px 7px; border-radius: 9px; color: var(--navy); background: var(--fc); font-weight: 600; display: none; }
     .flight.active .fl-tag { display: inline-block; animation: pulse 1.4s infinite; }
@@ -564,6 +566,26 @@ function advancePhase(){
   state.current = null;
   state.phase = 'idle';
 }
+// Click a flight header: put that flight on the block manually (host override,
+// no spin needed — also lets you switch flights mid-auction).
+function activateFlight(fk){
+  if(spinning || state.phase === 'done') return;
+  if(state.phase === 'flight' && state.activeFlight === fk) return;
+  const q = unpickedIn(fk);
+  if(!q.length) return; // nothing left to sell in that flight
+  snapshot();
+  // leaving a half-finished flight puts it back on the wheel
+  if(state.phase === 'flight' && state.activeFlight && unpickedIn(state.activeFlight).length){
+    state.spunFlights = state.spunFlights.filter(k => k !== state.activeFlight);
+  }
+  // walking away from an unused wild card puts the WILD slice back on the wheel
+  if(state.phase === 'wild') state.wildUsed = Math.max(0, state.wildUsed - 1);
+  if(!state.spunFlights.includes(fk)) state.spunFlights.push(fk);
+  state.phase = 'flight';
+  state.activeFlight = fk;
+  state.current = q[0].num;
+  save(); render(); drawWheel(rot);
+}
 function maybeDone(){
   if(TEAMS.every(t => pickedSet().has(t.num))){
     state.phase = 'done'; state.activeFlight = null; state.current = null;
@@ -645,6 +667,12 @@ function render(){
         <span class="fl-tag">On the Block</span>
         <span class="fl-count">${teams.length - remaining}/${teams.length} sold</span>
       </div><div class="teams"></div>`;
+    const head = div.querySelector('.fl-head');
+    if(!spinning && state.phase !== 'done' && remaining > 0 && !(state.phase === 'flight' && state.activeFlight === f.key)){
+      head.classList.add('clickable');
+      head.title = `Put ${f.name} on the block (no spin)`;
+      head.addEventListener('click', ()=> activateFlight(f.key));
+    }
     const wrap = div.querySelector('.teams');
     teams.forEach(t=>{
       const el = document.createElement('div');
@@ -742,7 +770,7 @@ function render(){
     sub.textContent = 'Auction complete';
   } else {
     const n = wheelOptions().length;
-    sub.textContent = n ? `Ready — ${n} slice${n===1?'':'s'} on the wheel. Click to spin.` : '';
+    sub.textContent = n ? `Ready — ${n} slice${n===1?'':'s'} on the wheel. Spin, or click a flight name to start it manually.` : '';
   }
 }
 
